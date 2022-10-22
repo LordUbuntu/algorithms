@@ -1,3 +1,4 @@
+# Jacobus Burger (2022)
 # Sieve of Eratosthenes
 # see: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 from math import sqrt as sqrt
