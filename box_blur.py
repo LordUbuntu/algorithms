@@ -3,6 +3,15 @@
 #   I was helping some students understand the algorithm behind a box
 #   blur. I realized that writing a script to blur images would be
 #   a fun project. So here is my attempt at it.
+# Explanation
+#   The basic process here is to treat every pixel in the image like a
+#   tile on a grid. Next, we imagine an NxN box (kernel) by tracking
+#   the position of it's imagined middle. We then set all the pixels
+#   inside the imagined box to the average of all the pixels in the
+#   box, and we then move over to the next position of the box.
+#   We move the imagined middle over by increments of half the width
+#   of the box, and we go down rows by half the height of the box.
+#   Once iteration is done, we've blurred the image.
 from PIL import Image
 
 
@@ -19,7 +28,7 @@ def box_blur(kernel_size: int, image_path: str):
 
             # get pixels in box
             #   done by getting indices of pixels relative to middle pixel
-            #   eg: pretending middle = (0, 0), upper left = (-1, -1)
+            #   eg: pretending middle = (0, 0), then upper left = (-1, -1)
             box = [
                     image.getpixel((i + x, j + y))
                     for x in range(-middle, kernel_size - middle)
