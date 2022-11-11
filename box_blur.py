@@ -12,6 +12,8 @@
 #   We move the imagined middle over by increments of half the width
 #   of the box, and we go down rows by half the height of the box.
 #   Once iteration is done, we've blurred the image.
+# More Info
+#   https://en.wikipedia.org/wiki/Box_blur
 from PIL import Image
 
 
