@@ -14,7 +14,6 @@
 #   Once iteration is done, we've blurred the image.
 # More Info
 #   https://en.wikipedia.org/wiki/Box_blur
-# FIXME algorithm isn't implemented correctly
 from PIL import Image
 
 
