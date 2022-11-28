@@ -1,4 +1,9 @@
 # Jacobus Burger (2022)
+# Info
+#   This file contains various image manipulation functions (like blurs, filters, and more)
+from PIL import Image
+
+
 # Box Blur
 #   I was helping some students understand the algorithm behind a box
 #   blur. I realized that writing a script to blur images would be
@@ -14,9 +19,6 @@
 #   Once iteration is done, we've blurred the image.
 # More Info
 #   https://en.wikipedia.org/wiki/Box_blur
-from PIL import Image
-
-
 def box_blur(kernel_size: int, image_path: str):
     # open image file
     image = Image.open(image_path)
@@ -51,3 +53,43 @@ def box_blur(kernel_size: int, image_path: str):
 
     # save to new image
     image.save("output.jpg")
+
+
+
+
+
+# filter out all colurs except for red
+def red_filter(image_path: str):
+    image = Image.open(image_path)
+    
+    for i in range(image.width):
+        for j in range(image.height):
+            red, _, _ = image.getpixel((i, j))
+            image.putpixel((i, j), (red, 0, 0))
+
+    image.save("output.jpg")
+
+
+# filter out all colurs except for green
+def green_filter(image_path: str):
+    image = Image.open(image_path)
+    
+    for i in range(image.width):
+        for j in range(image.height):
+            _, green, _ = image.getpixel((i, j))
+            image.putpixel((i, j), (0, green, 0))
+
+    image.save("output.jpg")
+
+
+# filter out all colurs except for blue
+def blue_filter(image_path: str):
+    image = Image.open(image_path)
+    
+    for i in range(image.width):
+        for j in range(image.height):
+            _, _, blue = image.getpixel((i, j))
+            image.putpixel((i, j), (0, 0, blue))
+
+    image.save("output.jpg")
+
