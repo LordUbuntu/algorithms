@@ -93,3 +93,15 @@ def blue_filter(image_path: str):
 
     image.save("output.jpg")
 
+
+# invert image colours
+def invert(image_path: str):
+    image = Image.open(image_path)
+
+    for i in range(image.width):
+        for j in range(image.height):
+            pixel = image.getpixel((i, j))
+            inverse_pixel = (256 - pixel[0], 256 - pixel[1], 256 - pixel[2])
+            image.putpixel((i, j), inverse_pixel)
+
+    image.save("output.jpg")
