@@ -45,17 +45,10 @@ class List:
 
 
     def index(self, value):
-        i = 0
-        current = self
-        while current.next is not None:
+        for index, current in enumerate(self):
             if current.value == value:
-                return i
-            current, i = current.next, i + 1
-        if current.next is None:
-            if current.value == value:
-                return i
-            else:
-                return -1
+                return index
+        return -1
 
 
     def add(self, value):
