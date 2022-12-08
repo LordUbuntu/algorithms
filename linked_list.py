@@ -12,7 +12,9 @@ class List:
 
 
     def __eq__(self, other):
-        return self.value is other.value
+        if len(self) == len(other):
+            return all([a.value == b.value for a, b in zip(self, other)])
+        return False
 
 
     def __len__(self):
