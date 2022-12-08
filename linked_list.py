@@ -6,14 +6,104 @@ class List:
         self.value = value
         self.next = next
 
+
+    def __str__(self):
+        return f"{self.value}"
+
+
     def __eq__(self, other):
         return self.value is other.value
 
-    def add(self, value):
+
+    def __len__(self):
+        length = 0
+        current = self
+        while current.next is not None:
+            current, length = current.next, length + 1
+        return length + 1
+
+
+    def __iter__(self):
+        current = self
+        while current.next is not None:
+            yield current
+            current = current.next
+        yield current
+
+
+    def head(self):
+        return self
+
+
+    def tail(self):
         current = self
         while current.next is not None:
             current = current.next
+        return current
+
+
+    def index(self, value):
+        i = 0
+        current = self
+        while current.next is not None:
+            if current.value == value:
+                return i
+            current, i = current.next, i + 1
+        if current.next is None:
+            if current.value == value:
+                return i
+            else:
+                return -1
+
+
+    def add(self, value):
+        current = self.tail()
         current.next = List(value)
+
+
+    def append(self, other):
+        current = self.tail()
+        current.next = other
+
+
+    def insert(self, index, value):
+        if index == 0:
+            next = List(self.value, self.next)
+            self.value, self.next = value, next
+        elif index > 0:
+            current = self
+            for _ in range(index - 1):
+                current = current.next
+            current.next = List(value, current.next)
+
+
+    def pop(self):
+        current = self
+        # return value and destroy list if only 1 node exists
+        if current.next is None:
+            value, self.value = self.value, None
+            return value
+        # return value of last element in list otherwise
+        while current.next is not None:
+            if current.next.next is None:
+                node = current.next
+                value = node.value
+                current.next = node.next
+                del(node)
+                return value
+            current = current.next
+
+
+    def remove_all(self, value):
+        current = self
+        while current.next is not None:
+            if current.next.value is value:
+                node = current.next
+                current.next = current.next.next
+                del(node)
+            else:
+                current = current.next
+
 
     def remove(self, value):
         current = self
@@ -25,20 +115,6 @@ class List:
                 break
             current = current.next
 
-    def insert(self, index, value):
-        current = self
-        if index == 0:
-            temp = current
-            current = List(value, temp)
-        else:
-            for _ in range(index - 1):
-                if current.next is not None:
-                    current = current.next
-            current.next = List(value, current.next)
 
     def show(self):
-        current = self
-        while current.next is not None:
-            print(f"{current.value} => ", end="")
-            current = current.next
-        print(f"{current.value}")
+        return " => ".join(map(str, self))
