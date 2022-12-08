@@ -18,11 +18,9 @@ class List:
 
 
     def __len__(self):
-        length = 0
-        current = self
-        while current.next is not None:
-            current, length = current.next, length + 1
-        return length + 1
+        for index, node in enumerate(self):
+            if node.next is None:
+                return index + 1
 
 
     def __iter__(self):
