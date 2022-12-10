@@ -43,7 +43,7 @@ class List:
 
 
     def contains(self, value):
-        return any([current.value == node.value for current in self])
+        return any([current.value == value for current in self])
 
 
     def index(self, value):
