@@ -53,14 +53,15 @@ class List:
         return -1
 
 
-    def add(self, value):
+    def add(self, *values):
         current = self.tail()
-        current.next = List(value)
+        for value in values:
+            current.next = List(value)
+            current = current.next
 
 
     def append(self, other):
-        current = self.tail()
-        current.next = other
+        self.tail().next = other
 
 
     def insert(self, index, value):
