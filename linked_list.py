@@ -79,7 +79,6 @@ class List:
         current = self
         # return value and destroy list if only 1 node exists
         if current.next is None:
-            value, self.value = self.value, None
             return value
         # return value of last element in list otherwise
         while current.next is not None:
