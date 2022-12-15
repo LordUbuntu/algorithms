@@ -91,6 +91,15 @@ class List:
             current = current.next
 
 
+    def take(self, n):
+        result = List(self.value)
+        current = self
+        for _ in range(n):
+            current = current.next
+            result.add(current.value)
+        return result
+
+
     def remove_all(self, value):
         current = self
         while current.next is not None:
