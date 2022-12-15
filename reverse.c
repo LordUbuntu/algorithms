@@ -1,15 +1,11 @@
 #include <stdio.h>
-#include <math.h>
 
-// reverse array of ints
-//      swaps every element with its match on the opposite end. O(n/2)
-void reverse(int* array, size_t length) {
-        int temp;
-        for (int i = 0; i < floor(length / 2) + 1; i++) {
-                temp = array[i];
-                array[i] = array[length - 1 - i];
-                array[length - 1 - i] = temp;
-                printf("t %i ai %i al %i : i %i l %lu\n", temp, array[i], array[length - 1 - i], i, length);
+
+void reverse(int* array, int length) {
+        for (int i = 0; i < length / 2 + 1; i++) {
+                int temp = array[i];
+                array[i] = array[length - i - 1];
+                array[length - i - 1] = temp;
         }
 }
 
