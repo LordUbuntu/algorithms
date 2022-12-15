@@ -8,7 +8,7 @@ class List:
 
 
     def __str__(self):
-        return f"{self.value}"
+        return ' => '.join([str(node.value) for node in self])
 
 
     def __eq__(self, other):
@@ -120,10 +120,6 @@ class List:
                 del(node)
                 break
             current = current.next
-
-
-    def show(self):
-        return " => ".join(map(str, self))
 
 
 
