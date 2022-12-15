@@ -1,3 +1,16 @@
+/* Jacobus Burger (2022)
+ *
+ * Info:
+ *      I wondered about a fast way to reverse an array of elements
+ *      and imagined iterating halfway across the array and then
+ *      swapping the current element with its "mirror".
+ * Explanation:
+ *      The algorithm works by iterating through half the length of
+ *      the array, it then swaps the current element with its
+ *      "mirror" (the current index from the length of the whole array).
+ *      This results in swapping all the elements swapping in what
+ *      I approximate to be O(n/2) time.
+ */
 #include <stdio.h>
 
 
