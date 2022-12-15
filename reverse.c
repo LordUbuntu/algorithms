@@ -12,6 +12,7 @@
  *      I approximate to be O(n/2) time.
  */
 #include <stdio.h>
+#include <assert.h>
 
 
 void reverse(int* array, int length) {
@@ -41,11 +42,22 @@ char equals_array(int* A, int A_length, int* B, int B_length) {
 
 
 int main(void) {
+        // create array
         #define LEN 16
         int a[LEN] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+
+        // check that it works as intended
+        print_array(a, LEN);
         reverse(a, LEN);
-        for (int i = 0; i < LEN; i++) {
-                printf("%i ", a[i]);
-        }
-        printf("\n");
+        print_array(a, LEN);
+        reverse(a, LEN);
+        print_array(a, LEN);
+
+        // test properties
+        //   property: identity (a == a)
+        assert(equals_array(a, LEN, a, LEN));
+        //   property: idempotence (rev(rev(a)) == a)
+        reverse(a, LEN);
+        reverse(a, LEN);
+        assert(equals_array(a, LEN, a, LEN));
 }
