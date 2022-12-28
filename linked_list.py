@@ -1,9 +1,29 @@
 # Jacobus Burger (2022)
 # Linked List implementation in Python for fun and practice
 import operator as op
+from functools import total_ordering
 
 
-# TODO: compose List attributes into LinkedList and DoubleList classes
+@total_ordering
+class Node:
+    def __init__(self, data=0):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+
+    def __str__(self):
+        return str(self.data)
+
+
+    def __lt__(self, other):
+        return self.data < other.data
+
+
+    def __eq__(self, other):
+        return self.data == other.data
+
+
 class List:
     def __init__(self, value=0, next=None):
         self.value = value
