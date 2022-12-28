@@ -2,6 +2,7 @@
 # Info
 #   This file contains various image manipulation functions (like blurs, filters, and more)
 from PIL import Image
+from itertools import product, repeat
 
 
 # Box Blur
@@ -30,13 +31,15 @@ def box_blur(kernel_size: int, image_path: str):
     for i in range(middle, image.width - middle, middle):
         for j in range(middle, image.height - middle, middle):
 
+            # iterate over range of pixels inside box kernel
+            box_kernel = range(-middle, kernel_size - middle)
+
             # get pixels in box
             #   done by getting indices of pixels relative to middle pixel
             #   eg: pretending middle = (0, 0), then upper left = (-1, -1)
             box = [
                     image.getpixel((i + x, j + y))
-                    for x in range(-middle, kernel_size - middle)
-                    for y in range(-middle, kernel_size - middle)
+                    for x, y in product(*repeat(box_kernel, 2))
             ]
 
             # get average of all pixel (red, green, blue) in box
@@ -47,9 +50,8 @@ def box_blur(kernel_size: int, image_path: str):
             )
 
             # set all pixels in box to average colour
-            for x in range(-middle, kernel_size - middle):
-                for y in range(-middle, kernel_size - middle):
-                    image.putpixel((i + x, j + y), average)
+            for x, y in product(*repeat(box_kernel, 2)):
+                image.putpixel((i + x, j + y), average)
 
     # save to new image
     image.save("output.jpg")
@@ -59,49 +61,45 @@ def box_blur(kernel_size: int, image_path: str):
 
 
 # filter out all colurs except for red
-def red_filter(image_path: str):
+def red_filter(image_path: str, output_path = "output.jpg"):
     image = Image.open(image_path)
     
-    for i in range(image.width):
-        for j in range(image.height):
-            red, _, _ = image.getpixel((i, j))
-            image.putpixel((i, j), (red, 0, 0))
+    for pixel in product(range(image.width), range(image.height)):
+        red, _, _ = image.getpixel(pixel)
+        image.putpixel(pixel, (red, 0, 0))
 
-    image.save("output.jpg")
+    image.save(output_path)
 
 
 # filter out all colurs except for green
-def green_filter(image_path: str):
+def green_filter(image_path: str, output_path = "output.jpg"):
     image = Image.open(image_path)
     
-    for i in range(image.width):
-        for j in range(image.height):
-            _, green, _ = image.getpixel((i, j))
-            image.putpixel((i, j), (0, green, 0))
+    for pixel in product(range(image.width), range(image.height)):
+        _, green, _ = image.getpixel(pixel)
+        image.putpixel(pixel, (0, green, 0))
 
-    image.save("output.jpg")
+    image.save(output_path)
 
 
 # filter out all colurs except for blue
-def blue_filter(image_path: str):
+def blue_filter(image_path: str, output_path = "output.jpg"):
     image = Image.open(image_path)
     
-    for i in range(image.width):
-        for j in range(image.height):
-            _, _, blue = image.getpixel((i, j))
-            image.putpixel((i, j), (0, 0, blue))
+    for pixel in product(range(image.width), range(image.height)):
+        _, _, blue = image.getpixel(pixel)
+        image.putpixel(pixel, (0, 0, blue))
 
-    image.save("output.jpg")
+    image.save(output_path)
 
 
 # invert image colours
-def invert(image_path: str):
+def invert(image_path: str, output_path = "output.jpg"):
     image = Image.open(image_path)
 
-    for i in range(image.width):
-        for j in range(image.height):
-            pixel = image.getpixel((i, j))
-            inverse_pixel = (256 - pixel[0], 256 - pixel[1], 256 - pixel[2])
-            image.putpixel((i, j), inverse_pixel)
+    for pixel in product(range(image.width), range(image.height)):
+        pixel_color = image.getpixel(pixel)
+        pixel_color = tuple(256 - color for color in pixel_color)
+        image.putpixel(pixel, pixel_color)
 
-    image.save("output.jpg")
+    image.save(output_path)
