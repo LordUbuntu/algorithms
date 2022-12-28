@@ -1,6 +1,6 @@
 # Jacobus Burger (2022)
 # Linked List implementation in Python for fun and practice
-
+import operator as op
 
 
 class List:
@@ -10,7 +10,7 @@ class List:
 
 
     def __str__(self):
-        return ' => '.join([str(node.value) for node in self])
+        return ' => '.join(map(str, [node for node in self]))
 
 
     def __eq__(self, other):
