@@ -3,6 +3,7 @@
 import operator as op
 
 
+# TODO: compose List attributes into LinkedList and DoubleList classes
 class List:
     def __init__(self, value=0, next=None):
         self.value = value
@@ -146,19 +147,3 @@ class DoubleList:
         self.value = value
         self.next = next
         self.prev = prev
-
-
-    def __str__(self):
-        return ' => '.join([str(node.value) for node in self])
-
-
-    def __eq__(self, other):
-        if len(self) == len(other):
-            return all([a.value == b.value for a, b in zip(self, other)])
-        return False
-
-
-    def __len__(self):
-        for index, node in enumerate(self):
-            if node.next is None:
-                return index + 1
