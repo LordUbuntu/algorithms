@@ -18,6 +18,11 @@ class List:
             return False
         return all(map(op.eq, self, other))
 
+    def __lt__(self, other):
+        if len(self) != len(other):
+            return False
+        return all(map(op.lt, self, other))
+
 
     def __len__(self):
         for index, node in enumerate(self):
