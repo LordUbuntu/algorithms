@@ -10,7 +10,7 @@ class List:
 
 
     def __str__(self):
-        return ' => '.join(map(str, [node for node in self]))
+        return ' => '.join(map(str, [node.value for node in self]))
 
 
     def __eq__(self, other):
