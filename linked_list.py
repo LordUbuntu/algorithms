@@ -14,9 +14,9 @@ class List:
 
 
     def __eq__(self, other):
-        if len(self) == len(other):
-            return all([a.value == b.value for a, b in zip(self, other)])
-        return False
+        if len(self) != len(other):
+            return False
+        return all(map(op.eq, self, other))
 
 
     def __len__(self):
