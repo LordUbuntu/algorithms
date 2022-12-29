@@ -78,9 +78,17 @@ class LinkedList:
             self.tail = self.tail.next
 
 
+    # remove elements from end of list
     def remove(self, amount):
         for _ in range(amount):
             self.pop()
+
+
+    def count(self, value):
+        total = 0
+        for node in self:
+            total += 1 if node.value == value else 0
+        return total
 
 
     # Floyd's algorithm for finding cycles
