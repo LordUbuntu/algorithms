@@ -78,6 +78,13 @@ class LinkedList:
             self.tail = self.tail.next
 
 
+    # sticks a LinkedList onto this LinkedList
+    def extend(self, List: type[LinkedList]):
+        for node in List:
+            self.tail.next = node
+            self.tail = node
+
+
     # remove elements from end of list
     def remove(self, amount):
         for _ in range(amount):
