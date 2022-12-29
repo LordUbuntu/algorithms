@@ -6,156 +6,90 @@ from functools import total_ordering
 
 @total_ordering
 class Node:
-    def __init__(self, data=0):
-        self.data = data
+    def __init__(self, value=None):
+        self.value = value
         self.next = None
         self.prev = None
 
 
-    def __str__(self):
-        return str(self.data)
+    def __repr__(self):
+        return str(self.value)
 
 
     def __lt__(self, other):
-        return self.data < other.data
+        return self.value < other.value
 
 
     def __eq__(self, other):
-        return self.data == other.data
+        return self.value == other.value
 
 
-class List:
-    def __init__(self, value=0, next=None):
-        self.value = value
-        self.next = next
 
 
-    def __str__(self):
-        return ' => '.join(map(str, [node.value for node in self]))
 
-
-    def __eq__(self, other):
-        if len(self) != len(other):
-            return False
-        return all(map(op.eq, self, other))
-
-    def __lt__(self, other):
-        if len(self) != len(other):
-            return False
-        return all(map(op.lt, self, other))
+class LinkedList:
+    def __init__(self, *values):
+        self.head = Node(values[0]) if len(values) > 0 else Node()
+        node = self.head
+        for value in values[1:]:
+            node.next = Node(value)
+            node = node.next
+        node.next = None
+        self.tail = node
 
 
     def __len__(self):
         for index, node in enumerate(self):
-            if node.next is None:
+            if node == self.tail:
                 return index + 1
 
 
     def __iter__(self):
-        current = self
-        while current.next is not None:
-            yield current
-            current = current.next
-        yield current
+        node = self.head
+        while node is not None:
+            yield node
+            node = node.next
 
 
-    def head(self):
-        return self
+    def __repr__(self):
+        return ' => '.join(map(str, self))
 
 
-    def tail(self):
-        current = self
-        while current.next is not None:
-            current = current.next
-        return current
+    # push element to start of list (new head)
+    def push(self, value):
+        node = Node(value)
+        node.next = self.head
+        self.head = node
 
 
-    def contains(self, value):
-        return any([current.value == value for current in self])
-
-
-    def index(self, value):
-        for index, current in enumerate(self):
-            if current.value == value:
-                return index
-        return -1
-
-
-    def add(self, *values):
-        current = self.tail()
-        for value in values:
-            current.next = List(value)
-            current = current.next
-
-
-    def append(self, other):
-        self.tail().next = other
-
-
-    def insert(self, index, value):
-        if index == 0:
-            next = List(self.value, self.next)
-            self.value, self.next = value, next
-        elif index > 0:
-            current = self
-            for _ in range(index - 1):
-                current = current.next
-            current.next = List(value, current.next)
-
-
+    # pop element off end of list (new tail)
     def pop(self):
-        current = self
-        # return value and destroy list if only 1 node exists
-        if current.next is None:
-            return value
-        # return value of last element in list otherwise
-        while current.next is not None:
-            if current.next.next is None:
-                node = current.next
-                value = node.value
-                current.next = node.next
-                del(node)
-                return value
-            current = current.next
+        for node in self:
+            if node.next is self.tail:
+                result = Node(self.tail.value)
+                node.next = None
+                self.tail = node
 
 
-    def take(self, n):
-        result = List(self.value)
-        current = self
-        for _ in range(n):
-            current = current.next
-            result.add(current.value)
-        return result
+    # add elements to end of list
+    def append(self, *values):
+        for value in values:
+            self.tail.next = Node(value)
+            self.tail = self.tail.next
 
-
-    def remove_all(self, value):
-        current = self
-        while current.next is not None:
-            if current.next.value is value:
-                node = current.next
-                current.next = current.next.next
-                del(node)
-            else:
-                current = current.next
-
-
-    def remove(self, value):
-        current = self
-        while current.next is not None:
-            if current.next.value is value:
-                node = current.next
-                current.next = current.next.next
-                del(node)
-                break
-            current = current.next
-
-
-
-
-
-
-
-
+    
+    # Floyd's algorithm for finding cycles
+    def has_cycle(self):
+        turtle = self.head
+        hare = self.head
+        while turtle is not None \
+                and hare is not None \
+                and hare.next is not None:
+            turtle = turtle.next
+            hare = hare.next.next
+            if turtle is hare:
+                return True
+        return False
 
 
 
