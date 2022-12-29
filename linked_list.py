@@ -77,7 +77,12 @@ class LinkedList:
             self.tail.next = Node(value)
             self.tail = self.tail.next
 
-    
+
+    def remove(self, amount):
+        for _ in range(amount):
+            self.pop()
+
+
     # Floyd's algorithm for finding cycles
     def has_cycle(self):
         turtle = self.head
