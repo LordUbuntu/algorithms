@@ -40,7 +40,7 @@ class LinkedList:
 
     def __len__(self):
         for index, node in enumerate(self):
-            if node == self.tail:
+            if node is self.tail:
                 return index + 1
 
 
@@ -66,7 +66,7 @@ class LinkedList:
     def pop(self):
         for node in self:
             if node.next is self.tail:
-                result = Node(self.tail.value)
+                result = Node(self.next.value)
                 node.next = None
                 self.tail = node
 
@@ -78,11 +78,12 @@ class LinkedList:
             self.tail = self.tail.next
 
 
-    # sticks a LinkedList onto this LinkedList
-    def extend(self, List: type[LinkedList]):
+    # adds  the elements of a LinkedList onto this list
+    def extend(self, List):
         for node in List:
-            self.tail.next = node
-            self.tail = node
+            next = Node(node.value)
+            self.tail.next = next
+            self.tail = next
 
 
     # remove elements from end of list
@@ -91,6 +92,7 @@ class LinkedList:
             self.pop()
 
 
+    # count number of occurences of a given value
     def count(self, value):
         total = 0
         for node in self:
