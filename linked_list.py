@@ -39,9 +39,13 @@ class LinkedList:
 
 
     def __iter__(self):
+        visited = []  # avoid infinite loops
         node = self.head
         while node is not None:
             yield node
+            if node in visited:
+                break
+            visited.append(node)
             node = node.next
 
 
