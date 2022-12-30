@@ -24,18 +24,20 @@ class Node:
         return self.value == other.value
 
 
+    def copy(self):
+        return Node(self.value)
+
+
 
 
 
 class LinkedList:
-    def __init__(self, *values):
-        self.head = Node(values[0]) if len(values) > 0 else Node()
-        node = self.head
-        for value in values[1:]:
-            node.next = Node(value)
-            node = node.next
-        node.next = None
-        self.tail = node
+    def __init__(self, *nodes: type[Node]):
+        self.head = nodes[0] if len(nodes) > 0 else None
+        self.tail = self.head
+        for node in nodes[1:]:
+            self.tail.next = node
+            self.tail = self.tail.next
 
 
     def __iter__(self):
@@ -67,8 +69,8 @@ class LinkedList:
 
 
     # push element to start of list (new head)
-    def push(self, value):
-        node = Node(value)
+    def push(self, node):
+        node = Node(node.value)
         node.next = self.head
         self.head = node
 
@@ -84,18 +86,17 @@ class LinkedList:
 
 
     # add elements to end of list
-    def append(self, *values):
-        for value in values:
-            self.tail.next = Node(value)
+    def append(self, *nodes):
+        for node in nodes:
+            self.tail.next = node
             self.tail = self.tail.next
 
 
     # adds  the elements of a LinkedList onto this list
     def extend(self, List):
         for node in List:
-            next = Node(node.value)
-            self.tail.next = next
-            self.tail = next
+            self.tail.next = node
+            self.tail = self.tail.next
 
 
     # remove elements from end of list
