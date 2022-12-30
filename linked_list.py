@@ -41,14 +41,21 @@ class LinkedList:
 
 
     def __iter__(self):
-        visited = []  # avoid infinite loops
-        node = self.head
+        # we have to avoid loops
+        hare = self.head
+
+        # iterate through all nodes
+        node = self.head  # the "turtle"
         while node is not None:
             yield node
-            if node in visited:
-                break
-            visited.append(node)
             node = node.next
+
+            # manage loops
+            if hare is not None and hare.next is not None:
+                hare = hare.next.next
+                if node is hare:
+                    yield node
+                    break
 
 
     def __len__(self):
@@ -58,7 +65,8 @@ class LinkedList:
 
 
     def __repr__(self):
-        return ' => '.join(map(str, self))
+        cycle = " (cycle)" if self.has_cycle() else ''
+        return ' => '.join(map(str, self)) + cycle
 
 
     def __contains__(self, item):
@@ -111,6 +119,23 @@ class LinkedList:
         for node in self:
             total += 1 if node.value == value else 0
         return total
+
+
+    # reverse the linked list in place using DFS
+    def reverse(self):
+        # traverse down list
+        visited = []
+        visited.extend(node for node in self)
+
+        # set last element as first
+        self.head = visited.pop()
+        self.tail = self.head
+        
+        # visit and link nodes in reverse order
+        for _ in range(len(visited)):
+            self.tail.next = visited.pop()
+            self.tail = self.tail.next
+        self.tail.next = None
 
 
     # Floyd's algorithm for finding cycles
