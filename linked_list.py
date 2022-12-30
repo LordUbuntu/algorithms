@@ -69,6 +69,7 @@ class LinkedList:
                 result = Node(self.next.value)
                 node.next = None
                 self.tail = node
+                return result
 
 
     # add elements to end of list
