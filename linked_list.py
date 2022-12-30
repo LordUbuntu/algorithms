@@ -38,17 +38,17 @@ class LinkedList:
         self.tail = node
 
 
-    def __len__(self):
-        for index, node in enumerate(self):
-            if node is self.tail:
-                return index + 1
-
-
     def __iter__(self):
         node = self.head
         while node is not None:
             yield node
             node = node.next
+
+
+    def __len__(self):
+        for index, node in enumerate(self):
+            if node is self.tail:
+                return index + 1
 
 
     def __repr__(self):
