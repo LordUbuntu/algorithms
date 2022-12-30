@@ -59,6 +59,13 @@ class LinkedList:
         return ' => '.join(map(str, self))
 
 
+    def __contains__(self, item):
+        for node in self:
+            if node is item:
+                return True
+        return False
+
+
     # push element to start of list (new head)
     def push(self, value):
         node = Node(value)
@@ -70,7 +77,7 @@ class LinkedList:
     def pop(self):
         for node in self:
             if node.next is self.tail:
-                result = Node(self.next.value)
+                result = Node(self.tail.value)
                 node.next = None
                 self.tail = node
                 return result
