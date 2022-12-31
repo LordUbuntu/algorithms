@@ -165,3 +165,20 @@ class DoublyLinkedList:
             prev = self.tail
             self.tail = self.tail.next
             self.tail.prev = prev
+
+
+    def __iter__(self):
+        return LinkedList.__iter__(self)
+
+
+    def __len__(self):
+        return LinkedList.__len__(self)
+
+
+    def __repr__(self):
+        cycle = " (cycle)" if self.has_cycle() else ''
+        return ' <=> '.join(map(str, self)) + cycle
+
+
+    def __contains__(self, item):
+        return LinkedList.__contains__(self, item)
