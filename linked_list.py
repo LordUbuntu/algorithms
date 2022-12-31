@@ -216,3 +216,21 @@ class DoublyLinkedList:
             node.next, node.prev = node.prev, node.next
         # swap head and tail
         self.head, self.tail = self.tail, self.head
+
+
+    # Floyd's algorithm (checking both ways)
+    def has_cycle(self):
+        # check forwards
+        if LinkedList.has_cycle(self):
+            return True
+        # check backwards
+        turtle = self.tail
+        hare = self.tail
+        while turtle is not None \
+                and hare is not None \
+                and hare.prev is not None:
+            turtle = turtle.prev
+            hare = hare.prev.prev
+            if turtle is hare:
+                return True
+        return False
