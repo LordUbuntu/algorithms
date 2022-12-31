@@ -207,3 +207,12 @@ class DoublyLinkedList:
     # count number of occurences of a given value
     def count(self, value):
         return LinkedList.count(self, value)
+
+
+    # reverse the doubly linked list in place by swapping prev and next
+    def reverse(self):
+        # forall nodes swap next and prev direction
+        for node in self:
+            node.next, node.prev = node.prev, node.next
+        # swap head and tail
+        self.head, self.tail = self.tail, self.head
