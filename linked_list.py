@@ -202,3 +202,8 @@ class DoublyLinkedList:
             node.prev = None
             nodes.append(node)
         return DoubleList(*nodes)
+
+
+    # count number of occurences of a given value
+    def count(self, value):
+        return LinkedList.count(self, value)
