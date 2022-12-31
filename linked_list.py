@@ -212,8 +212,10 @@ class DoublyLinkedList:
     # reverse the doubly linked list in place by swapping prev and next
     def reverse(self):
         # forall nodes swap next and prev direction
-        for node in self:
+        node = self.head
+        while node is not None:
             node.next, node.prev = node.prev, node.next
+            node = node.prev
         # swap head and tail
         self.head, self.tail = self.tail, self.head
 
