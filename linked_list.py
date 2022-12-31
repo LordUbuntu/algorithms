@@ -155,9 +155,13 @@ class LinkedList:
 
 
 
-class DoubleList:
+class DoublyLinkedList:
     # doubly linked list
-    def __init__(self, value=0, next=None, prev=None):
-        self.value = value
-        self.next = next
-        self.prev = prev
+    def __init__(self, *nodes: type[Node]):
+        self.head = nodes[0] if len(nodes) > 0 else None
+        self.tail = self.head
+        for node in nodes[1:]:
+            self.tail.next = node
+            prev = self.tail
+            self.tail = self.tail.next
+            self.tail.prev = prev
