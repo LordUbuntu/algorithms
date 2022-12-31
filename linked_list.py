@@ -182,3 +182,23 @@ class DoublyLinkedList:
 
     def __contains__(self, item):
         return LinkedList.__contains__(self, item)
+
+
+    # enqueue (place on left side at head)
+    def enqueue(self, *nodes):
+        for node in nodes:
+            self.head.prev = node
+            node.next = self.head
+            self.head = self.head.prev
+
+
+    # dequeue (remove from right side at tail)
+    def dequeue(self, amount):
+        nodes = []
+        for _ in range(amount):
+            node = self.tail
+            self.tail = self.tail.prev
+            self.tail.next = None
+            node.prev = None
+            nodes.append(node)
+        return DoubleList(*nodes)
