@@ -204,6 +204,17 @@ class DoublyLinkedList:
         return DoubleList(*nodes)
 
 
+    def head_insert(self, index, node):
+        current = self.head
+        for _ in range(index):
+            current = current.next
+        next = current.next
+        current.next = node
+        node.prev = current
+        next.prev = node
+        node.next = next
+
+
     # count number of occurences of a given value
     def count(self, value):
         return LinkedList.count(self, value)
