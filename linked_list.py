@@ -142,6 +142,10 @@ class LinkedList:
         self.tail.next = None
 
 
+    def take(self, amount):
+        return LinkedList(*[node.copy() for node in self][:amount])
+
+
     # Floyd's algorithm for finding cycles
     def has_cycle(self):
         turtle = self.head
