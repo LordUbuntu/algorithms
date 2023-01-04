@@ -76,6 +76,10 @@ class LinkedList:
         return False
 
 
+    def copy(self):
+        return LinkedList(*[node.copy() for node in self])
+
+
     # push element to start of list (new head)
     def push(self, node):
         node = Node(node.value)
@@ -182,6 +186,10 @@ class DoublyLinkedList:
 
     def __contains__(self, item):
         return LinkedList.__contains__(self, item)
+
+
+    def copy(self):
+        return DoublyLinkedList(*[node.copy() for node in self])
 
 
     # enqueue (place on left side at head)
