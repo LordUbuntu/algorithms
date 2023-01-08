@@ -1,6 +1,6 @@
 # Jacobus Burger (2022)
 # Info
-#   This file contains various image manipulation functions (like blurs, filters, and more)
+#   Various image blur algorithms in Python
 from PIL import Image
 from itertools import product, repeat
 
@@ -55,51 +55,3 @@ def box_blur(kernel_size: int, image_path: str):
 
     # save to new image
     image.save("output.jpg")
-
-
-
-
-
-# filter out all colurs except for red
-def red_filter(image_path: str, output_path = "output.jpg"):
-    image = Image.open(image_path)
-    
-    for pixel in product(range(image.width), range(image.height)):
-        red, _, _ = image.getpixel(pixel)
-        image.putpixel(pixel, (red, 0, 0))
-
-    image.save(output_path)
-
-
-# filter out all colurs except for green
-def green_filter(image_path: str, output_path = "output.jpg"):
-    image = Image.open(image_path)
-    
-    for pixel in product(range(image.width), range(image.height)):
-        _, green, _ = image.getpixel(pixel)
-        image.putpixel(pixel, (0, green, 0))
-
-    image.save(output_path)
-
-
-# filter out all colurs except for blue
-def blue_filter(image_path: str, output_path = "output.jpg"):
-    image = Image.open(image_path)
-    
-    for pixel in product(range(image.width), range(image.height)):
-        _, _, blue = image.getpixel(pixel)
-        image.putpixel(pixel, (0, 0, blue))
-
-    image.save(output_path)
-
-
-# invert image colours
-def invert(image_path: str, output_path = "output.jpg"):
-    image = Image.open(image_path)
-
-    for pixel in product(range(image.width), range(image.height)):
-        pixel_color = image.getpixel(pixel)
-        pixel_color = tuple(256 - color for color in pixel_color)
-        image.putpixel(pixel, pixel_color)
-
-    image.save(output_path)
