@@ -31,7 +31,7 @@ class Node:
 
 
 
-class ListIteratorMixin:
+class ListIterator:
     def __iter__(self):
         # we have to avoid loops
         hare = self.head
@@ -74,7 +74,7 @@ class ListIteratorMixin:
 
 
 
-class SinglyLinkedList(ListIteratorMixin):
+class SinglyLinkedList(ListIterator):
     def __init__(self, *nodes: type[Node]):
         self.head = nodes[0] if len(nodes) > 0 else None
         self.tail = self.head
@@ -90,43 +90,6 @@ class SinglyLinkedList(ListIteratorMixin):
 
     def copy(self):
         return SinglyLinkedList(*[node.copy() for node in self])
-
-
-    # push element to start of list (new head)
-    def push(self, node):
-        node = Node(node.value)
-        node.next = self.head
-        self.head = node
-
-
-    # pop element off end of list (new tail)
-    def pop(self):
-        for node in self:
-            if node.next is self.tail:
-                result = Node(self.tail.value)
-                node.next = None
-                self.tail = node
-                return result
-
-
-    # add elements to end of list
-    def append(self, *nodes):
-        for node in nodes:
-            self.tail.next = node
-            self.tail = self.tail.next
-
-
-    # adds  the elements of a LinkedList onto this list
-    def extend(self, List):
-        for node in List:
-            self.tail.next = node
-            self.tail = self.tail.next
-
-
-    # remove elements from end of list
-    def remove(self, amount):
-        for _ in range(amount):
-            self.pop()
 
 
     # reverse the linked list in place using DFS
@@ -146,14 +109,6 @@ class SinglyLinkedList(ListIteratorMixin):
         self.tail.next = None
 
 
-    def take(self, amount):
-        return SinglyLinkedList(*[node.copy() for node in self][:amount])
-
-
-    def drop(self, amount):
-        return SinglyLinkedList(*[node.copy() for node in self][amount:])
-
-
     # Floyd's algorithm for finding cycles
     def has_cycle(self):
         turtle = self.head
@@ -171,7 +126,7 @@ class SinglyLinkedList(ListIteratorMixin):
 
 
 
-class DoublyLinkedList(ListIteratorMixin):
+class DoublyLinkedList(ListIterator):
     # doubly linked list
     def __init__(self, *nodes: type[Node]):
         self.head = nodes[0] if len(nodes) > 0 else None
@@ -190,37 +145,6 @@ class DoublyLinkedList(ListIteratorMixin):
 
     def copy(self):
         return DoublyLinkedList(*[node.copy() for node in self])
-
-
-    # enqueue (place on left side at head)
-    def enqueue(self, *nodes):
-        for node in nodes:
-            self.head.prev = node
-            node.next = self.head
-            self.head = self.head.prev
-
-
-    # dequeue (remove from right side at tail)
-    def dequeue(self, amount):
-        nodes = []
-        for _ in range(amount):
-            node = self.tail
-            self.tail = self.tail.prev
-            self.tail.next = None
-            node.prev = None
-            nodes.append(node)
-        return DoubleList(*nodes)
-
-
-    def head_insert(self, index, node):
-        current = self.head
-        for _ in range(index):
-            current = current.next
-        next = current.next
-        current.next = node
-        node.prev = current
-        next.prev = node
-        node.next = next
 
 
     # reverse the doubly linked list in place by swapping prev and next
