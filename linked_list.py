@@ -4,6 +4,8 @@ import operator as op
 from functools import total_ordering
 
 
+
+
 @total_ordering
 class Node:
     def __init__(self, value=None):
@@ -92,6 +94,25 @@ class SinglyLinkedList(ListIterator):
         return SinglyLinkedList(*[node.copy() for node in self])
 
 
+    def insert(self, index, node):
+        i = 0
+        for current in self:
+            if i == index - 1:
+                node.next = current.next
+                current.next = node
+                break
+
+
+    def remove(self, index):
+        i = 0
+        for current in self:
+            if i == index - 1:
+                node = current.next
+                current.next = node.next
+                node.next = None
+                break
+
+
     # reverse the linked list in place using DFS
     def reverse(self):
         # traverse down list
@@ -145,6 +166,34 @@ class DoublyLinkedList(ListIterator):
 
     def copy(self):
         return DoublyLinkedList(*[node.copy() for node in self])
+
+
+    def insert(self, index, node):
+        i = 0
+        for current in self:
+            if i == index - 1:
+                # attach target node to list
+                node.next = current.next
+                node.next.prev = node
+                # attach current node to target node
+                node.prev = current
+                current.next = node
+                # done
+                break
+
+
+    def remove(self, index):
+        i = 0
+        for current in self:
+            if i == index - 1:
+                # detach current node from target node
+                node = current.next
+                current.next = current.next.next
+                current.next.prev = current
+                # detach target node from list
+                node.next = None
+                node.prev = None
+                break
 
 
     # reverse the doubly linked list in place by swapping prev and next
