@@ -31,15 +31,7 @@ class Node:
 
 
 
-class LinkedList:
-    def __init__(self, *nodes: type[Node]):
-        self.head = nodes[0] if len(nodes) > 0 else None
-        self.tail = self.head
-        for node in nodes[1:]:
-            self.tail.next = node
-            self.tail = self.tail.next
-
-
+class ListIteratorMixin:
     def __iter__(self):
         # we have to avoid loops
         hare = self.head
@@ -64,11 +56,6 @@ class LinkedList:
                 return index + 1
 
 
-    def __repr__(self):
-        cycle = " (cycle)" if self.has_cycle() else ''
-        return ' => '.join(map(str, self)) + cycle
-
-
     def __contains__(self, item):
         for node in self:
             if node is item:
@@ -76,8 +63,33 @@ class LinkedList:
         return False
 
 
+    # count number of occurences of a given value
+    def count(self, value):
+        total = 0
+        for node in self:
+            total += 1 if node.value == value else 0
+        return total
+
+
+
+
+
+class SinglyLinkedList(ListIteratorMixin):
+    def __init__(self, *nodes: type[Node]):
+        self.head = nodes[0] if len(nodes) > 0 else None
+        self.tail = self.head
+        for node in nodes[1:]:
+            self.tail.next = node
+            self.tail = self.tail.next
+
+
+    def __repr__(self):
+        cycle = " (cycle)" if self.has_cycle() else ''
+        return ' => '.join(map(str, self)) + cycle
+
+
     def copy(self):
-        return LinkedList(*[node.copy() for node in self])
+        return SinglyLinkedList(*[node.copy() for node in self])
 
 
     # push element to start of list (new head)
@@ -117,14 +129,6 @@ class LinkedList:
             self.pop()
 
 
-    # count number of occurences of a given value
-    def count(self, value):
-        total = 0
-        for node in self:
-            total += 1 if node.value == value else 0
-        return total
-
-
     # reverse the linked list in place using DFS
     def reverse(self):
         # traverse down list
@@ -143,11 +147,11 @@ class LinkedList:
 
 
     def take(self, amount):
-        return LinkedList(*[node.copy() for node in self][:amount])
+        return SinglyLinkedList(*[node.copy() for node in self][:amount])
 
 
     def drop(self, amount):
-        return LinkedList(*[node.copy() for node in self][amount:])
+        return SinglyLinkedList(*[node.copy() for node in self][amount:])
 
 
     # Floyd's algorithm for finding cycles
@@ -167,7 +171,7 @@ class LinkedList:
 
 
 
-class DoublyLinkedList:
+class DoublyLinkedList(ListIteratorMixin):
     # doubly linked list
     def __init__(self, *nodes: type[Node]):
         self.head = nodes[0] if len(nodes) > 0 else None
@@ -179,21 +183,9 @@ class DoublyLinkedList:
             self.tail.prev = prev
 
 
-    def __iter__(self):
-        return LinkedList.__iter__(self)
-
-
-    def __len__(self):
-        return LinkedList.__len__(self)
-
-
     def __repr__(self):
         cycle = " (cycle)" if self.has_cycle() else ''
         return ' <=> '.join(map(str, self)) + cycle
-
-
-    def __contains__(self, item):
-        return LinkedList.__contains__(self, item)
 
 
     def copy(self):
@@ -231,11 +223,6 @@ class DoublyLinkedList:
         node.next = next
 
 
-    # count number of occurences of a given value
-    def count(self, value):
-        return LinkedList.count(self, value)
-
-
     # reverse the doubly linked list in place by swapping prev and next
     def reverse(self):
         # forall nodes swap next and prev direction
@@ -250,7 +237,7 @@ class DoublyLinkedList:
     # Floyd's algorithm (checking both ways)
     def has_cycle(self):
         # check forwards
-        if LinkedList.has_cycle(self):
+        if SinglyLinkedList.has_cycle(self):
             return True
         # check backwards
         turtle = self.tail
