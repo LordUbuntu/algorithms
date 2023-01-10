@@ -8,12 +8,12 @@ def reverse(array):
     return array[::-1]
 
 
-def stack_reverse(array):
-    result = []
-    for _ in range(len(array)):
-        result.append(array.pop())
-    return result
-
+# another general solution
+def rev(array):
+    reversed = type(array)()
+    for element in array:
+        reversed = element + reversed
+    return reversed
 
 
 if __name__ == '__main__':
