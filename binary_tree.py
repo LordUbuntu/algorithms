@@ -3,8 +3,8 @@
 #   Very basic implementation of a binary tree.
 
 
-# All subtrees are trees, ergo recursive definition
-class BTree:
+# recursive node based tree
+class BinaryNodeTree:
     def __init__(self, data=None, left=None, right=None):
         self.data = data
         self.left = left
@@ -16,7 +16,7 @@ class BTree:
 
 # my preferred solution: a binary heap tree
 from math import ceil, floor, log
-class HeapTree:
+class BinaryHeapTree:
     def __init__(self, *data):
         self.index = 0
         if len(data) > 0:
