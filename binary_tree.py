@@ -51,18 +51,23 @@ class BinaryHeapTree:
     def preorder(self):
         visited = []
         index = 0
-        root = self.tree[index]
-        while root not in visited:
+        # until all nodes left and right of root are visited
+        while self.tree[self.left(0)] not in visited \
+                and self.tree[self.right(0)] not in visited:
             # go left if possible
-            if self.tree[self.left(index)] not in visited \
+            if self.left(index) < len(self.tree) \
+                    and self.tree[self.left(index)] not in visited \
                     and self.tree[self.left(index)] is not None:
                 index = self.left(index)
             # else go right if possible
-            elif self.tree[self.right(index)] not in visited \
+            if self.right(index) < len(self.tree) \
+                    and self.tree[self.right(index)] not in visited \
                     and self.tree[self.right(index)] is not None:
                 index = self.right(index)
             # otherwise record node as visited and return to parent
             else:
                 visited.append(self.tree[index])
                 index = self.parent(index)
-
+        # record root as visited and return result
+        visited.append(self.tree[index])
+        return visited
