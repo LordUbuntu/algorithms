@@ -11,6 +11,12 @@ class BinaryNodeTree:
         self.right = right
 
 
+    def left(self):
+        return self.left
+
+
+    def right(self):
+        return self.right
 
 
 
