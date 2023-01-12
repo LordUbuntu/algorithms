@@ -1,6 +1,6 @@
 # Jacobus Burger (2023)
 # Info:
-#   Very basic implementation of a binary tree.
+#   Practice implementing a binary tree
 
 
 # recursive node based tree
@@ -11,12 +11,6 @@ class BinaryNodeTree:
         self.right = right
 
 
-    def left(self):
-        return self.left
-
-
-    def right(self):
-        return self.right
 
 
 
@@ -24,7 +18,6 @@ class BinaryNodeTree:
 from math import ceil, floor, log
 class BinaryHeapTree:
     def __init__(self, *data):
-        self.index = 0
         if len(data) > 0:
             # create a complete tree of 2**h nodes
             self.height = ceil(log(len(data)) / log(2))
@@ -35,20 +28,12 @@ class BinaryHeapTree:
                 for i in range(2**self.height)
             ]
         else:
-            self.tree = [None]
             self.height = 1
+            self.tree = [None]
 
 
     def __repr__(self):
         return str(self.tree)
-
-
-    def __setitem__(self, index, item):
-        self.tree[index] = item
-
-
-    def __getitem__(self, index):
-        return self.tree[index]
 
 
     def parent(self, index):
@@ -61,3 +46,23 @@ class BinaryHeapTree:
 
     def right(self, index):
         return 2 * index + 2
+
+
+    def preorder(self):
+        visited = []
+        index = 0
+        root = self.tree[index]
+        while root not in visited:
+            # go left if possible
+            if self.tree[self.left(index)] not in visited \
+                    and self.tree[self.left(index)] is not None:
+                index = self.left(index)
+            # else go right if possible
+            elif self.tree[self.right(index)] not in visited \
+                    and self.tree[self.right(index)] is not None:
+                index = self.right(index)
+            # otherwise record node as visited and return to parent
+            else:
+                visited.append(self.tree[index])
+                index = self.parent(index)
+
