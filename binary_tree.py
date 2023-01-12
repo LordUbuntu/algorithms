@@ -51,14 +51,13 @@ class BinaryHeapTree:
         return self.tree[index]
 
 
-    def parent(self):
-        if self.index > 0:
-            self.index = floor((self.index - 1) / 2)
+    def parent(self, index):
+        return floor((index - 1) / 2)
 
 
-    def left(self):
-        self.index = 2 * self.index + 1
+    def left(self, index):
+        return 2 * index + 1
 
 
-    def right(self):
-        self.index = 2 * self.index + 2
+    def right(self, index):
+        return 2 * index + 2
