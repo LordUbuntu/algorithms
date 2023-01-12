@@ -37,6 +37,14 @@ class BinaryHeapTree:
         return str(self.tree)
 
 
+    def __setitem__(self, index, item):
+        self.tree[index] = item
+
+
+    def __getitem__(self, index):
+        return self.tree[index]
+
+
     def parent(self):
         if self.index > 0:
             self.index = floor((self.index - 1) / 2)
