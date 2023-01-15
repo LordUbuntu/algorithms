@@ -1,5 +1,6 @@
 # Jacobus Burger (2023)
 # Practice implementing a binary heap tree (array representation)
+# See https://en.wikipedia.org/wiki/Binary_heap
 from math import ceil, floor, log
 
 

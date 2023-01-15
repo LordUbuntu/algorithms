@@ -1,6 +1,6 @@
 # Jacobus Burger (2023)
-# Info:
-#   Practice implementing a binary tree
+# Practice implementing a binary tree (bifurcating arborescence)
+# See https://en.wikipedia.org/wiki/Binary_tree
 
 
 # recursive node based tree
