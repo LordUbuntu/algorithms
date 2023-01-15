@@ -130,13 +130,6 @@ class SinglyLinkedList(ListIterator):
         self.tail.next = None
 
 
-    def encycle(self):
-        if self.tail.next == self.head:
-            self.tail.next = None
-        else:
-            self.tail.next = self.head
-
-
     # Floyd's algorithm for finding cycles
     def has_cycle(self):
         turtle = self.head
@@ -212,16 +205,6 @@ class DoublyLinkedList(ListIterator):
             node = node.prev
         # swap head and tail
         self.head, self.tail = self.tail, self.head
-
-
-    def encycle(self):
-        if self.tail.next == self.head \
-                and self.head.prev == self.tail:
-            self.tail.next = None
-            self.head.prev = None
-        else:
-            self.tail.next = self.head
-            self.head.prev = self.tail
 
 
     # Floyd's algorithm (checking both ways)
