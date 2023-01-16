@@ -1,23 +1,18 @@
 # Jacobus Burger (2023)
-# Practice implementing a binary heap tree (array representation)
+# A binary heap tree (array representation)
 # See https://en.wikipedia.org/wiki/Binary_heap
 from math import ceil, floor, log
 
 
 class BinaryHeapTree:
     def __init__(self, *data):
-        if len(data) > 0:
-            # create a complete tree of 2**h nodes
-            self.height = ceil(log(len(data)) / log(2))
-            self.tree = [
-                data[i]
-                if i < len(data)
-                else None
-                for i in range(2**self.height)
-            ]
-        else:
-            self.height = 1
-            self.tree = [None]
+        # calculate height of complete tree that can fit data
+        self.height = ceil(log(len(data) + 1, 2))
+        # create a complete tree of 2**h - 1 nodes
+        self.tree = [None] * (2**self.height - 1)
+        # put data into tree if it exists
+        for index, item in enumerate(data):
+            self.tree[index] = item
 
 
     def __repr__(self):
