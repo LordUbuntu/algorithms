@@ -16,6 +16,12 @@ def rev(array):
     return reversed
 
 
+def rec_rev(array):
+    if len(array) == 0:
+        return []
+    return [array[-1]] + rec_rev(array[:-1])
+
+
 if __name__ == '__main__':
     array = [i for i in range(1, 17)]
     print(array, reverse(array))
