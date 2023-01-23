@@ -18,20 +18,8 @@ def dfs(G, v):
     visited, stack = {v}, [v]
     while stack:
         v = stack.pop()
-        visited.append(v)
+        visited.add(v)
         for w in G[v]:
             if w not in visited:
                 stack.append(w)
-    return visited
-        # or
-        # stack.append([w if w not in visited for w in G[v]])
-
-
-# same but using a list comprehension
-def dfs(G, v):
-    visited, stack = {v}, [v]
-    while stack:
-        v = stack.pop()
-        visited.append(v)
-        stack.append([w if w not in visited for w in G[v]])
     return visited
