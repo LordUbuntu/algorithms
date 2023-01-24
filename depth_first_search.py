@@ -21,7 +21,7 @@ def dfs(G, v):
     while stack:
         v = stack.pop()
         visited.add(v)
-        for w in G[v]:
+        for w in reversed(G[v]):
             if w not in visited:
                 stack.append(w)
     return list(visited)
