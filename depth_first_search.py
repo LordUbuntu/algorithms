@@ -2,13 +2,15 @@
 # Depth First Search algorithm on a graph G
 
 G = {
-    'A': ['B', 'C', 'D'],
-    'B': ['A', 'G'],
-    'C': ['A', 'F'],
-    'D': ['A', 'E', 'F'],
-    'E': ['D'],
-    'F': ['C', 'D'],
-    'G': ['B'],
+    'A': ['B', 'C'],
+    'B': ['D', 'E', 'F'],
+    'C': ['G'],
+    'D': [],
+    'E': [],
+    'F': ['H', 'I'],
+    'G': [],
+    'H': [],
+    'I': []
 }
 
 
@@ -22,4 +24,4 @@ def dfs(G, v):
         for w in G[v]:
             if w not in visited:
                 stack.append(w)
-    return visited
+    return list(visited)
