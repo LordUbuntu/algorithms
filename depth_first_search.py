@@ -1,16 +1,19 @@
 # Jacobus Burger (2023)
 # Depth First Search algorithm on a graph G
 
+
+# looks like
+#     D
+#  B     E
+# A C   F G
 G = {
     'A': ['B', 'C'],
-    'B': ['D', 'E', 'F'],
-    'C': ['G'],
-    'D': [],
-    'E': [],
-    'F': ['H', 'I'],
-    'G': [],
-    'H': [],
-    'I': []
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F', 'G'],
+    'D': ['B'],
+    'E': ['B'],
+    'F': ['C'],
+    'G': ['C']
 }
 
 
