@@ -20,11 +20,12 @@ G = {
 # G is graph, v is starting vertex
 # most straigh-forward solution
 def dfs(G, v):
-    visited, stack = {v}, [v]
+    visited, stack = [], [v]
     while stack:
         v = stack.pop()
-        visited.add(v)
+        visited.append(v)
         for w in reversed(G[v]):
             if w not in visited:
+                print("add: ", w)
                 stack.append(w)
-    return list(visited)
+    return visited
