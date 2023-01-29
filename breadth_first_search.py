@@ -22,12 +22,11 @@ G = {
 
 
 def bfs(G, v):
-    visited, result, queue = {v}, [v], deque([v])
+    visited, queue = [v], deque([v])
     while queue:
         v = queue.popleft()
         for w in G[v]:
             if w not in visited:
-                visited.add(w)
-                result.append(w)
+                visited.append(w)
                 queue.append(w)
-    return list(result)
+    return visited

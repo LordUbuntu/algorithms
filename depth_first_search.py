@@ -3,9 +3,11 @@
 
 
 # looks like
-#     D
-#  B     E
-# A C   F G
+#     A
+#    B I
+#   C   J
+#  DEF
+#    GH
 G = {
     'A': ['B', 'H'],
     'B': ['A', 'C', 'D', 'E'],
