@@ -7,13 +7,15 @@
 #  B     E
 # A C   F G
 G = {
-    'A': ['B', 'C'],
-    'B': ['A', 'D', 'E'],
-    'C': ['A', 'F', 'G'],
+    'A': ['B', 'H'],
+    'B': ['A', 'C', 'D', 'E'],
+    'C': ['B'],
     'D': ['B'],
-    'E': ['B'],
-    'F': ['C'],
-    'G': ['C']
+    'E': ['B', 'F', 'G'],
+    'F': ['E'],
+    'G': ['E'],
+    'H': ['A', 'I'],
+    'I': ['H'],
 }
 
 
@@ -26,6 +28,5 @@ def dfs(G, v):
         visited.append(v)
         for w in reversed(G[v]):
             if w not in visited:
-                print("add: ", w)
                 stack.append(w)
     return visited
