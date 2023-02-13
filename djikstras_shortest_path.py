@@ -16,12 +16,12 @@ G = {
 
 
 def djikstra(G, source, sink):
+    # TODO - check added cost before visiting vertices instead of after
     unvisited = [[source, 0]]
     visited = []
 
     while unvisited:
         v, cost = unvisited.pop(0)
-        print(unvisited, visited, v, cost)
         if v not in visited:
             visited.append(v)
             for w, c in G[v]:
@@ -29,5 +29,5 @@ def djikstra(G, source, sink):
                     continue
                 unvisited.append([w, cost + c])
             if v == sink:
-                return cost
+                return [visited, cost]
     return [None, float("inf")]
