@@ -13,6 +13,10 @@ G = {
 # from to weight
 # eg:
 # A B 1 => {'A': [('B', 1)]}
+# use a min-heap priority queue (heapq) to automatically order next
+#   vertices in queue by priority of least to most weight (added cost)
+from heapq import heappush as enque
+from heapq import heappop as deque
 
 
 def djikstra(G, source, sink):
@@ -21,13 +25,13 @@ def djikstra(G, source, sink):
     visited = []
 
     while unvisited:
-        v, cost = unvisited.pop(0)
+        v, cost = deque(unvisited)
         if v not in visited:
             visited.append(v)
             for w, c in G[v]:
                 if w in visited:
                     continue
-                unvisited.append([w, cost + c])
+                enque(unvisited, [w, cost + c])
             if v == sink:
-                return [visited, cost]
-    return [None, float("inf")]
+                return cost
+    return -1
