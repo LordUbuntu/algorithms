@@ -35,3 +35,26 @@ def djikstra(G, source, sink):
                     continue
                 enque(unvisited, [w, cost + c])
     return -1
+
+
+
+
+
+# same algorithm, but with a different measure of the distances from
+#   the start node to the end node.
+# inspired by https://www.youtube.com/watch?v=niB1tTeC2yI&t=318s
+import heapq
+def alt_djikstra(G, start):
+    distance = {start: 0}  # distance from start to a given node
+    visited = set()
+    priority_queue = [(start, 0)]
+    while priority_queue:
+        node, weight = heapq.heappop(priority_queue)
+        if node in visited:
+            continue
+        for adj_node, adj_distance in G[node]:
+            if adj_node not in distance \
+            or distance[node] + adj_distance < distance[adj_node]:
+                distance[adj_node] = adj_distance
+                heapq.heappush(priority_queue, (adj_node, distance[adj_node]))
+    return distance
