@@ -26,12 +26,12 @@ def djikstra(G, source, sink):
 
     while unvisited:
         v, cost = deque(unvisited)
+        if v == sink:
+            return cost
         if v not in visited:
             visited.append(v)
             for w, c in G[v]:
                 if w in visited:
                     continue
                 enque(unvisited, [w, cost + c])
-            if v == sink:
-                return cost
     return -1
