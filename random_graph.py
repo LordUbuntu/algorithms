@@ -18,3 +18,14 @@ def terminals(G):
     to = G.values()
     from = G.keys()
     return list(filter(lambda v: v not in to, from))
+
+
+# reverse edges of a given graph G
+def rev(G):
+    g = {}
+    for k, v in G.items():
+        if v in g:
+            g.update({v: [g[v], k]})
+        else:
+            g[v] = [k]
+    return g
