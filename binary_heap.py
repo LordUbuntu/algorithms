@@ -48,3 +48,7 @@ class BinaryHeapTree:
                 stack.append(self.left(v))
         return result
 
+
+class MinHeap(BinaryHeapTree):
+    def __init__(self, *data):
+        super().__init__(*data)
