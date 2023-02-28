@@ -32,6 +32,7 @@ class BinaryHeapTree:
 
 
     def preorder(self):
+        # TODO - switch this to a DFS (less code)
         visited = []
         index = 0
         while self.tree[0] not in visited:
