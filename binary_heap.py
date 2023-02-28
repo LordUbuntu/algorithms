@@ -32,29 +32,19 @@ class BinaryHeapTree:
 
 
     def preorder(self):
-        # TODO - switch this to a DFS (less code)
-        visited = []
-        index = 0
-        while self.tree[0] not in visited:
-            # visit node and return to parent if children outide tree
-            if self.left(index) >= len(self.tree):
-                visited.append(self.tree[index])
-                index = self.parent(index)
+        # navigate by index
+        visited, stack = [], [0]
+        # result by value
+        result = []
+        while stack:
+            v = stack.pop()
+            if self.tree[v] is None:
                 continue
+            visited.append(v)
+            result.append(self.tree[v])
+            if self.right(v) < len(self.tree):
+                stack.append(self.right(v))
+            if self.left(v) < len(self.tree):
+                stack.append(self.left(v))
+        return result
 
-            left = self.tree[self.left(index)]
-            right = self.tree[self.right(index)]
-            # if left can be visited
-            if left not in visited and left is not None:
-                # go left
-                index = self.left(index)
-            # if left can't be visited but right can be visited
-            elif right not in visited and right is not None:
-                # go right
-                index = self.right(index)
-            # if left and right have been visited
-            else:
-                # mark current node as visited and return to parent
-                visited.append(self.tree[index])
-                index = self.parent(index)
-        return visited
