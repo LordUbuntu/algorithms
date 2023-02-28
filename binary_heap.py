@@ -1,7 +1,7 @@
 # Jacobus Burger (2023)
 # A binary heap tree (array representation)
 # See https://en.wikipedia.org/wiki/Binary_heap
-from math import ceil, floor, log
+from math import ceil, log
 
 
 class BinaryHeapTree:
@@ -20,7 +20,7 @@ class BinaryHeapTree:
 
 
     def parent(self, index):
-        return floor((index - 1) / 2)
+        return (index - 1) // 2
 
 
     def left(self, index):
