@@ -55,6 +55,10 @@ class MinHeap(BinaryHeapTree):
 
 
     def insert(self, data):
+        # grow array if no more room
+        if all(node is not None for node in self.tree):
+            self.height += 1
+            self.tree.extend([None] * (2**self.height - 2**(self.height-1)))
         # put item in first available space
         visited, stack = [], [0]
         node = None
