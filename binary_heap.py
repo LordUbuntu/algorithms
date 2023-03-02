@@ -54,7 +54,7 @@ class MinHeap(BinaryHeapTree):
         super().__init__(*data)
 
 
-    def insert(data):
+    def insert(self, data):
         # put item in first available space
         visited, stack = [], [0]
         node = None
@@ -62,6 +62,7 @@ class MinHeap(BinaryHeapTree):
             v = stack.pop()
             if self.tree[v] is None:
                 self.tree[v] = data
+                node = v
                 break
             visited.append(v)
             if self.right(v) < len(self.tree):
@@ -69,3 +70,8 @@ class MinHeap(BinaryHeapTree):
             if self.left(v) < len(self.tree):
                 stack.append(self.left(v))
         # rebalance tree (parent <= children)
+        while node != 0 and self.tree[self.parent(node)] > self.tree[node]:
+            temp = self.tree[node]
+            self.tree[node] = self.tree[self.parent(node)]
+            self.tree[self.parent(node)] = temp
+            node = self.parent(node)
