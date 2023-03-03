@@ -79,3 +79,7 @@ class MinHeap(BinaryHeapTree):
             self.tree[node] = self.tree[self.parent(node)]
             self.tree[self.parent(node)] = temp
             node = self.parent(node)
+
+
+    def remove(self):
+        return self.tree.pop(0)
