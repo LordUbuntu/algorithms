@@ -118,3 +118,18 @@ class MinHeap(BinaryHeapTree):
             right = self.right(index)
         # return result
         return result
+
+
+    def search(self, data):
+        # DFS search tree for first occurence of value
+        visited, stack = [], [0]
+        while stack:
+            v = stack.pop()
+            if self.tree[v] == data:
+                return v
+            if self.right(v) < len(self.tree) \
+                    and self.tree[self.right(v)] is not None:
+                stack.append(self.right(v))
+            if self.left(v) < len(self.tree) \
+                    and self.tree[self.left(v)] is not None:
+                stack.append(self.left(v))
