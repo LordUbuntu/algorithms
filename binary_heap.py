@@ -16,7 +16,12 @@ class BinaryHeapTree:
 
 
     def __repr__(self):
-        return ' '.join(map(str, self.tree))
+        tree = self.tree
+        result = ""
+        for i in range(self.height):
+            result += ' '.join(map(str, tree[:2**i])) + '\n'
+            tree = tree[2**i:]
+        return result
 
 
     def parent(self, index):
