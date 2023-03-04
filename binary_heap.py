@@ -61,12 +61,12 @@ class MinHeap(BinaryHeapTree):
             self.tree.extend([None] * (2**self.height - 2**(self.height-1)))
         # put item in first available space
         visited, stack = [], [0]
-        node = None
+        index = None
         while stack:
             v = stack.pop()
             if self.tree[v] is None:
                 self.tree[v] = data
-                node = v
+                index = v
                 break
             visited.append(v)
             if self.right(v) < len(self.tree):
@@ -74,12 +74,51 @@ class MinHeap(BinaryHeapTree):
             if self.left(v) < len(self.tree):
                 stack.append(self.left(v))
         # rebalance tree (parent <= children)
-        while node != 0 and self.tree[self.parent(node)] > self.tree[node]:
-            temp = self.tree[node]
-            self.tree[node] = self.tree[self.parent(node)]
-            self.tree[self.parent(node)] = temp
-            node = self.parent(node)
+        while index != 0 and self.tree[self.parent(index)] > self.tree[index]:
+            temp = self.tree[index]
+            self.tree[index] = self.tree[self.parent(index)]
+            self.tree[self.parent(index)] = temp
+            index = self.parent(index)
 
 
     def remove(self):
-        return self.tree.pop(0)
+        # grab smalest item in heap (root)
+        result = self.tree[0]
+        # end early if only root element in tree:
+        if len(self.tree) == 1 or all(node is None for node in self.tree[1:]):
+            self.tree[0] = None
+            return result
+        # replace root with most recent child (first valid on end of list)
+        for index, value in enumerate(reversed(self.tree)):
+            if value is not None:
+                self.tree[0] = value
+                self.tree[index] = None
+                break
+        # rebalance tree
+        index = 0
+        while self.tree[index] > self.tree[self.left(index)] or self.tree[index] > self.tree[self.right(index)]:
+            left = self.left(index)
+            right = self.right(index)
+            if self.tree[left] > self.tree[index] and self.tree[left] is not None:
+                # swap left
+                temp = self.tree[left]
+                self.tree[left] = self.tree[index]
+                self.tree[index] = temp
+                # follow
+                index = left
+            elif self.tree[right] > self.tree[index] and self.tree[right] is not None:
+                # swap right
+                temp = self.tree[right]
+                self.tree[right] = self.tree[index]
+                self.tree[index] = temp
+                # follow
+                index = right
+            elif self.tree[left] <= self.tree[index] and self.tree[right] <= self.tree[index]:
+                # tree is balnced, end rebalancing
+                break
+            # don't continue if next indices are None value or out of bounds
+            if self.left(left) >= len(self.tree) or self.right(right) >= len(self.tree) or index >= len(self.tree):
+                break
+            if self.tree[self.left(left)] is None or self.tree[self.right(right)] is None:
+                break
+        return result
