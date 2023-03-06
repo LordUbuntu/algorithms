@@ -1,5 +1,5 @@
 # Jacobus Burger (2023)
-# binary search on an array of values
+# binary search on an array of values, O(log n) time
 # see: https://en.wikipedia.org/wiki/Binary_search_algorithm
 def search(array, target):
     left, right = 0, len(array) - 1
