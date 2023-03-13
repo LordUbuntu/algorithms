@@ -88,19 +88,12 @@ class MinHeap(BinaryHeapTree):
             self.height += 1
             self.tree.extend([None] * (2**self.height - 2**(self.height-1)))
         # put item in first available space
-        visited, stack = [], [0]
-        index = None
-        while stack:
-            v = stack.pop()
+        index = -1
+        for v in self.preorder():
             if self.tree[v] is None:
                 self.tree[v] = data
                 index = v
                 break
-            visited.append(v)
-            if self.right(v) < len(self.tree):
-                stack.append(self.right(v))
-            if self.left(v) < len(self.tree):
-                stack.append(self.left(v))
         # bubble up to satisfy heap invariant
         while index != 0 and self.tree[self.parent(index)] > self.tree[index]:
             temp = self.tree[index]
