@@ -60,7 +60,7 @@ class MinHeap(BinaryHeapTree):
 
 
     def insert(self, data):
-        # grow array if no more room
+        # extend array to include a new level of tree
         if all(node is not None for node in self.tree):
             self.height += 1
             self.tree.extend([None] * (2**self.height - 2**(self.height-1)))
@@ -78,7 +78,7 @@ class MinHeap(BinaryHeapTree):
                 stack.append(self.right(v))
             if self.left(v) < len(self.tree):
                 stack.append(self.left(v))
-        # rebalance tree (parent <= children)
+        # bubble up to satisfy heap invariant
         while index != 0 and self.tree[self.parent(index)] > self.tree[index]:
             temp = self.tree[index]
             self.tree[index] = self.tree[self.parent(index)]
@@ -99,7 +99,7 @@ class MinHeap(BinaryHeapTree):
                 self.tree[0] = self.tree[index]
                 self.tree[index] = None
                 break
-        # swap nodes to satisfy heap property
+        # bubble up to satisfy heap invariant
         smallest = index = 0
         left = self.left(index)
         right = self.right(index)
