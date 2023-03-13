@@ -170,3 +170,30 @@ class MinHeap(BinaryHeapTree):
 class MaxHeap(BinaryHeapTree):
     def __init__(self, *data):
         super().__init__(*data)
+
+
+    def insert(self, data):
+        # make more space if tree is complete (add new level)
+        if all(node is not None for node in self.tree):
+            self.height += 1
+            self.tree.extend([None] * (2**self.height - 2**(self.height-1)))
+        # put item in first available space
+        visited, stack = [], [0]
+        index = None
+        while stack:
+            v = stack.pop()
+            if self.tree[v] is None:
+                self.tree[v] = data
+                index = v
+                break
+            visited.append(v)
+            if self.right(v) < len(self.tree):
+                stack.append(self.right(v))
+            if self.left(v) < len(self.tree):
+                stack.append(self.left(v))
+        # bubble up to satisfy heap invariant
+        while index != 0 and self.tree[self.parent(index)] < self.tree[index]:
+            temp = self.tree[index]
+            self.tree[index] = self.tree[self.parent(index)]
+            self.tree[self.parent(index)] = temp
+            index = self.parent(index)
