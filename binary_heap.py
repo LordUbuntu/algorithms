@@ -77,6 +77,7 @@ class BinaryHeapTree:
 
 
 
+
 class MinHeap(BinaryHeapTree):
     def __init__(self, *data):
         super().__init__(*data)
@@ -149,7 +150,7 @@ class MinHeap(BinaryHeapTree):
 
 
     def search(self, data):
-        # DFS search tree for first occurence of value
+        # DFS for first occurence of value
         visited, stack = [], [0]
         while stack:
             v = stack.pop()
@@ -161,3 +162,11 @@ class MinHeap(BinaryHeapTree):
             if self.left(v) < len(self.tree) \
                     and self.tree[self.left(v)] is not None:
                 stack.append(self.left(v))
+
+
+
+
+
+class MaxHeap(BinaryHeapTree):
+    def __init__(self, *data):
+        super().__init__(*data)
