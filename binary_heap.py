@@ -2,6 +2,7 @@
 # A binary heap tree (array representation)
 # See https://en.wikipedia.org/wiki/Binary_heap
 from math import ceil, log
+from collections import deque
 
 
 class BinaryHeapTree:
@@ -47,11 +48,33 @@ class BinaryHeapTree:
                 continue
             visited.append(v)
             result.append(self.tree[v])
+            # note: right comes before left, FILO stack
             if self.right(v) < len(self.tree):
                 stack.append(self.right(v))
             if self.left(v) < len(self.tree):
                 stack.append(self.left(v))
         return result
+
+
+    def levelorder(self):
+        # navigate by index
+        visited, queue = [], deque([0])
+        # result by value
+        result = []
+        while queue:
+            v = queue.popleft()
+            if self.tree[v] is None:
+                continue
+            visited.append(v)
+            result.append(self.tree[v])
+            # note: left comes before right, FIFO queue
+            if self.left(v) < len(self.tree):
+                queue.append(self.left(v))
+            if self.right(v) < len(self.tree):
+                queue.append(self.right(v))
+        return result
+
+
 
 
 class MinHeap(BinaryHeapTree):
