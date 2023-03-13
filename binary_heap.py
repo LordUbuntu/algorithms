@@ -25,6 +25,11 @@ class BinaryHeapTree:
         return result
 
 
+    # generates values in the tree based on traversal order generator
+    def gen(self, generator):
+        return [self.tree[i] for i in generator()]
+
+
     def parent(self, index):
         return (index - 1) // 2
 
@@ -37,42 +42,36 @@ class BinaryHeapTree:
         return 2 * index + 2
 
 
+    # generate indices in DFS preorder
     def preorder(self):
-        # navigate by index
         visited, stack = [], [0]
-        # result by value
-        result = []
         while stack:
             v = stack.pop()
             if self.tree[v] is None:
                 continue
+            yield v
             visited.append(v)
-            result.append(self.tree[v])
             # note: right comes before left, FILO stack
             if self.right(v) < len(self.tree):
                 stack.append(self.right(v))
             if self.left(v) < len(self.tree):
                 stack.append(self.left(v))
-        return result
 
 
+    # generate indices in BFS levelorder
     def levelorder(self):
-        # navigate by index
         visited, queue = [], deque([0])
-        # result by value
-        result = []
         while queue:
             v = queue.popleft()
             if self.tree[v] is None:
                 continue
+            yield v
             visited.append(v)
-            result.append(self.tree[v])
             # note: left comes before right, FIFO queue
             if self.left(v) < len(self.tree):
                 queue.append(self.left(v))
             if self.right(v) < len(self.tree):
                 queue.append(self.right(v))
-        return result
 
 
 
