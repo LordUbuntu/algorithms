@@ -43,6 +43,8 @@ class BinaryHeapTree:
 
 
     # generate indices in DFS preorder
+    # noticed that this pattern appears a lot. So I made it a generator
+    #   so that it could be used elsewhere.
     def preorder(self):
         visited, stack = [], [0]
         while stack:
@@ -59,6 +61,8 @@ class BinaryHeapTree:
 
 
     # generate indices in BFS levelorder
+    # noticed that this pattern appears a lot. So I made it a generator
+    #   so that it could be used elsewhere.
     def levelorder(self):
         visited, queue = [], deque([0])
         while queue:
