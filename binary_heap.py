@@ -178,3 +178,10 @@ class MaxHeap(BinaryHeapTree):
             self.tree[index] = self.tree[self.parent(index)]
             self.tree[self.parent(index)] = temp
             index = self.parent(index)
+
+
+    def search(self, data):
+        # DFS for first occurence of value
+        for v in self.preorder():
+            if self.tree[v] == data:
+                return v
