@@ -5,10 +5,16 @@ def search(array, target):
     left, right = 0, len(array) - 1
     while left <= right:
         mid = (left + right) // 2
-        if target == nums[mid]:
+        if target == array[mid]:
             return mid
-        elif target >= nums[mid]:
+        elif target >= array[mid]:
             left = mid + 1
-        elif target < nums[mid]:
+        elif target < array[mid]:
             right = mid - 1
     return -1
+
+
+if __name__ == '__main__':
+    array = [1, 3, 4, 7, 8]
+    print("target: ", 3, "result: ", search(array, 3))
+    print("target: ", 10, "result: ", search(array, 10))

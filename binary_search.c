@@ -24,5 +24,4 @@ int main(void) {
         int arr[5] = {1, 3, 4, 7, 8};
         printf("target: %i, result: %i\n", 3, search(3, arr, 5));
         printf("target: %i, result: %i\n", 10, search(10, arr, 5));
-        printf("target: %i, result: %i\n", 10, search(10, arr, 5));
 }
