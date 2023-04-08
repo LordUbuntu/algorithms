@@ -55,3 +55,6 @@ def box_blur(kernel_size: int, image_path: str):
 
     # save to new image
     image.save("output.jpg")
+
+
+# n-pass box-blur
