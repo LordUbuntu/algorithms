@@ -54,7 +54,10 @@ def box_blur(kernel_size: int, image_path: str):
                 image.putpixel((i + x, j + y), average)
 
     # save to new image
-    image.save("output.jpg")
+    image.save(image_path)
 
 
 # n-pass box-blur
+def n_box_blur(passes: int, kernel_size: int, image_path: str):
+    for _ in range(passes):
+        box_blur(kernel_size, image_path)
