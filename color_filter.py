@@ -28,3 +28,14 @@ def invert(image_path: str, output_path = "output.jpg"):
         image.putpixel(pixel, pixel_color)
 
     image.save(output_path)
+
+
+def saturation(image_path: str, output_path = "output.jpg", value = 1):
+    image = Image.open(image_path)
+
+    for pixel in product(range(image.width), range(image.height)):
+        pixel_color = image.getpixel(pixel)
+        pixel_color = tuple(max(255, min(0, color * value)) for color in pixel_color)
+        image.putpixel(pixel, pixel_color)
+
+    image.save(output_path)
