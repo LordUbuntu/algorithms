@@ -20,7 +20,7 @@ from itertools import product, repeat
 #   Once iteration is done, we've blurred the image.
 # More Info
 #   https://en.wikipedia.org/wiki/Box_blur
-def box_blur(kernel_size: int, image_path: str):
+def box_blur(kernel_size: int, image_path: str, output_path: str):
     # open image file
     image = Image.open(image_path)
 
@@ -54,10 +54,13 @@ def box_blur(kernel_size: int, image_path: str):
                 image.putpixel((i + x, j + y), average)
 
     # save to new image
-    image.save(image_path)
+    image.save(output_path)
 
 
 # n-pass box-blur
 def n_box_blur(passes: int, kernel_size: int, image_path: str):
-    for _ in range(passes):
-        box_blur(kernel_size, image_path)
+    output_path = "new_{}".format(image_path)
+    box_blur(kernel_size, image_path, output_path)
+    image_path = output_path
+    for _ in range(passes - 1):
+        box_blur(kernel_size, image_path, output_path)
