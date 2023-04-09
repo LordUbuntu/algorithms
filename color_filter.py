@@ -36,7 +36,7 @@ def grey(image_path: str, output_path = "output.jpg"):
 
     for pixel in product(range(image.width), range(image.height)):
         pixel_color = image.getpixel(pixel)
-        pixel_color = tuple(pixel[0] * 2125/10000, pixel[1] * 7154/10000, pixel[2] * 0721/10000)
+        pixel_color = tuple(pixel[0] * 2125/10000, pixel[1] * 7154/10000, pixel[2] * 721/10000)
         image.putpixel(pixel, pixel_color)
 
     image.save(output_path)
