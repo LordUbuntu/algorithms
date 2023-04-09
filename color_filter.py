@@ -30,6 +30,19 @@ def invert(image_path: str, output_path = "output.jpg"):
     image.save(output_path)
 
 
+# greyscale color filter
+def grey(image_path: str, output_path = "output.jpg"):
+    image = Image.open(image_path)
+
+    for pixel in product(range(image.width), range(image.height)):
+        pixel_color = image.getpixel(pixel)
+        pixel_color = tuple(pixel[0] * 2125/10000, pixel[1] * 7154/10000, pixel[2] * 0721/10000)
+        image.putpixel(pixel, pixel_color)
+
+    image.save(output_path)
+
+
+
 def saturation(image_path: str, output_path = "output.jpg", value = 1):
     image = Image.open(image_path)
 
