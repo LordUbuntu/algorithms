@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageEnhance
 from itertools import product, repeat
 
 
@@ -32,18 +32,10 @@ def invert(image_path: str, output_path = "output.jpg"):
 
 # greyscale color filter
 def grey(image_path: str, output_path = "output.jpg"):
-    image = Image.open(image_path)
-    out = Image.new("L", image.size)
-    out.putdata([data[0]*0.2125 + data[1]*0.7174 + data[2]*0.0721 for data in image.getdata()])
-    out.save(output_path)
+    saturation(image_path, output_path, value = 0)
 
 
 def saturation(image_path: str, output_path = "output.jpg", value = 1):
     image = Image.open(image_path)
-
-    for pixel in product(range(image.width), range(image.height)):
-        pixel_color = image.getpixel(pixel)
-        pixel_color = tuple(max(255, min(0, color * value)) for color in pixel_color)
-        image.putpixel(pixel, pixel_color)
-
-    image.save(output_path)
+    out = ImageEnhance.Color(image).enhance(value)
+    out.save(output_path)
