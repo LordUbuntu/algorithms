@@ -5,13 +5,11 @@
 def sort(l: list) -> list:
     result = l.copy()
     for _ in range(1, len(result)):
-        sorted = False
+        sorted = True
         for index in range(1, len(result)):
             if result[index - 1] >= result[index]:
                 sorted = False
                 result[index - 1], result[index] = result[index], result[index - 1]
-            else:
-                sorted = True
         if sorted == True:
             break
     return result
