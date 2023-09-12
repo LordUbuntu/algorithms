@@ -1,6 +1,7 @@
 # Jacobus Burger (2023)
 # A binary heap tree (array representation)
 # See https://en.wikipedia.org/wiki/Binary_heap
+#     https://www.youtube.com/watch?v=AE5I0xACpZs
 from math import ceil, log
 from collections import deque
 
