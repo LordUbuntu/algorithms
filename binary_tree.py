@@ -23,3 +23,15 @@ class BTree:
                 self.left.insert(data)
         else:
             self.data = data
+
+    def remove(self, data):
+        if self.left.data == data:
+            self.left = None
+        elif self.right.data == data:
+            self.right = None
+        else:
+            if data >= self.data:
+                self.right.remove(data)
+            if data < self.data:
+                self.left.remove(data)
+        
