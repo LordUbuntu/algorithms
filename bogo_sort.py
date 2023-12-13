@@ -1,3 +1,4 @@
+# TODO: use choice?
 from random import randint as rand
 from time import sleep
 
