@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 
+// TODO: live life dangerously and generically with void*
 int search(int target, int *array, int length) {
         int left = 0, right = length - 1;
         while (left <= right) {
