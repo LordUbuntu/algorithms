@@ -2,15 +2,15 @@
 # binary search on an array of values, O(log n) time
 # see: https://en.wikipedia.org/wiki/Binary_search_algorithm
 def search(array, target):
-    left, right = 0, len(array) - 1
-    while left <= right:
-        mid = (left + right) // 2
+    low, high = 0, len(array) - 1
+    while low <= high:
+        mid = (low + high) // 2
         if target == array[mid]:
             return mid
         elif target >= array[mid]:
-            left = mid + 1
+            low = mid + 1
         elif target < array[mid]:
-            right = mid - 1
+            high = mid - 1
     return -1
 
 
