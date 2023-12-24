@@ -3,7 +3,7 @@
 
 def sort(l: list) -> list:
     for current in range(len(l)):
-        min = i  # assume min is first element
+        min = current  # assume min is first element
         # search for a smaller value in the indices after current
         for index in range(current + 1, len(l)):
             if l[index] < l[min]:
