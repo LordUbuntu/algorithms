@@ -1,4 +1,5 @@
 from random import randint
+from random import sample
 from time import sleep
 
 
@@ -13,4 +14,4 @@ def bogo(arr: list) -> list:
 
 
 if __name__ == "__main__":
-    bogo([3, 5, 4, 2, 1])
+    bogo(sample(range(0, 100), randint(1, 30)))
