@@ -1,13 +1,12 @@
-# TODO: use choice?
-from random import randint as rand
+from random import randint
 from time import sleep
 
 
 def bogo(arr: list) -> list:
     while arr != sorted(arr):
-        for i in range(len(arr)):
-            pick = rand(0, len(arr) - 1)
-            arr[i], arr[pick] = arr[pick], arr[i]
+        i = randint(0, len(list) - 1)
+        j = randint(0, len(list) - 1)
+        arr[i], arr[j] = arr[j], arr[i]
         print(arr)
         sleep(1)
     return arr
