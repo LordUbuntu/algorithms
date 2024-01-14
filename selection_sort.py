@@ -3,11 +3,11 @@
 
 def sort(l: list) -> list:
     for current in range(len(l)):
-        min = current  # assume min is first element
+        minimum = current  # assume minimum is first element
         # search for a smaller value after current
         for index in range(current + 1, len(l)):
-            if l[index] < l[min]:
-                min = index
+            if l[index] < l[minimum]:
+                minimum = index
         # swap elements
-        l[current], l[min] = l[min], l[current]
+        l[current], l[minimum] = l[minimum], l[current]
     return l
