@@ -22,3 +22,8 @@ def pangram(a):
     if set(a.lower()) == set(ascii_lowercase):
         return True
     return False
+
+
+# used to find substrings quickly
+def bmss(string, substring):
+    pass
