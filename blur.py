@@ -5,6 +5,9 @@ from PIL import Image
 from itertools import product, repeat
 
 
+# PERF: need to find  way to make a faster box-blur
+
+
 # Box Blur
 #   I was helping some students understand the algorithm behind a box
 #   blur. I realized that writing a script to blur images would be
