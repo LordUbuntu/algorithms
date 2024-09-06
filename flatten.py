@@ -5,3 +5,8 @@
 # nieve solution assuming a generator (Python specific)
 def flatten(generator):
     return [*generator]
+
+
+def flat(L):
+    # for a 2d list [[][]]
+    return [*l for l in L]
