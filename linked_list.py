@@ -110,7 +110,8 @@ class SinglyLinkedList(ListIterator):
                 node = current.next
                 current.next = node.next
                 node.next = None
-                break
+                return node
+            i += 1
 
 
     # reverse the linked list in place using DFS
