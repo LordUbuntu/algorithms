@@ -121,6 +121,15 @@ class SinglyLinkedList(ListIterator):
         return node
 
 
+    def remove_tail(self):
+        for current in self:
+            if current.next.next is None:
+                self.tail = current
+                node = current.next
+                self.tail.next = None
+                return node
+
+
     # reverse the linked list in place using DFS
     def reverse(self):
         # traverse down list
