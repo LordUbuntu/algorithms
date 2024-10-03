@@ -114,6 +114,13 @@ class SinglyLinkedList(ListIterator):
             i += 1
 
 
+    def remove_head(self):
+        node = self.head
+        self.head = node.next
+        node.next = None
+        return node
+
+
     # reverse the linked list in place using DFS
     def reverse(self):
         # traverse down list
