@@ -33,6 +33,8 @@ class Node:
 
 
 
+# TODO:
+# why is this a seperate class? Seems like bad design
 class ListIterator:
     def __iter__(self):
         # we have to avoid loops
