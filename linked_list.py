@@ -87,6 +87,8 @@ class SinglyLinkedList(ListIterator):
             self.tail = self.tail.next
 
 
+    # TODO:
+    # I should change the repr of the stuff, and move more things to the base Node class
     def __repr__(self):
         cycle = " (cycle)" if self.has_cycle() else ''
         return ' => '.join(map(str, self)) + cycle
