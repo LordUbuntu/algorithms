@@ -32,10 +32,11 @@ class Node:
 
 class LinkedList:
     def __init__(self, *values):
-        self.head = self.tail = None
+        self.head = None
+        self.tail = None
         for value in values:
             # set head and tail to first Node
-            if self.head = None
+            if self.head is None
                 self.head = Node(value)
                 self.tail = self.head
                 continue
