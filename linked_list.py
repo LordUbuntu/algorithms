@@ -36,7 +36,7 @@ class LinkedList:
         self.tail = None
         for value in values:
             # set head and tail to first Node
-            if self.head is None
+            if self.head is None:
                 self.head = Node(value)
                 self.tail = self.head
                 continue
