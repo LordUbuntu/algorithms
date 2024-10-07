@@ -34,6 +34,8 @@ class Node:
         return Node(self.value)
 
 
+# A linked list is composed of Nodes, so it does not inherit from a Node base class
+# composition over inheritence
 class LinkedList:
     # A karg of values of any type are taken instead of a karg of Nodes to make it
     # much easier to simply initialize a long linked list of generic values.
