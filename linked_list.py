@@ -44,6 +44,12 @@ class LinkedList:
             self.tail.next = Node(value)
             self.tail = self.tail.next
 
+    def __iter__(self):
+        current = self.head
+        while current is not None:
+            yield current
+            current = current.next
+
 
 class DoublyLinkedList(Node):
     pass
