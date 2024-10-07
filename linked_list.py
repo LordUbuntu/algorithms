@@ -30,8 +30,18 @@ class Node:
         return Node(self.value)
 
 
-class LinkedList(Node):
-    pass
+class LinkedList:
+    def __init__(self, *values):
+        self.head = self.tail = None
+        for value in values:
+            # set head and tail to first Node
+            if self.head = None
+                self.head = Node(value)
+                self.tail = self.head
+                continue
+            # append every subsequent Node
+            self.tail.next = Node(value)
+            self.tail = self.tail.next
 
 
 class DoublyLinkedList(Node):
