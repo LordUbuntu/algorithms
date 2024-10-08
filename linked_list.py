@@ -64,6 +64,9 @@ class LinkedList:
             yield current
             current = current.next
 
+    def __repr__(self):
+        pass
+
 
 class DoublyLinkedList(Node):
     pass
