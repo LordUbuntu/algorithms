@@ -30,6 +30,9 @@ class Node:
 
 # A linked list is composed of Nodes, so it does not inherit from a Node base class
 # composition over inheritence
+# It's possible to implement singly and doubly linked lists recursively by defining
+# each object with a recurrence relation, thus not needing a compositional Node
+# class, and not needing both a next and prev reference in that
 class LinkedList:
     # A karg of values of any type are taken instead of a karg of Nodes to make it
     # much easier to simply initialize a long linked list of generic values.
