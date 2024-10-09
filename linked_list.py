@@ -60,6 +60,11 @@ class LinkedList:
         while current is not None:
             yield current
             current = current.next
+    
+    def insert_head(self, value):
+        current = Node(value)
+        current.next = self.head
+        self.head = current
 
 
 class DoublyLinkedList(Node):
