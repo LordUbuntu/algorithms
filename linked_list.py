@@ -61,6 +61,29 @@ class LinkedList:
         self.tail.next = Node(value)
         self.tail = self.tail.next
 
+    # decided that if index exceeds length of linked list, that it should always just
+    # append to the end, and if an index before list, then insert at head
+    def insert(self, value, index):
+        # insert at head
+        if index <= 0:
+            self.insert_head(value)
+        else:
+            current = self.head
+            for _ in range(index - 1):
+                # insert into the tail of the linked list
+                if current == self.tail:
+                    self.insert_tail(value)
+                current = current.next
+            # insert into the spine of the linked list
+            else:
+                node = Node(value)
+                node.next = current.next
+                current.next = node
 
+
+
+
+# TODO: Do I need to make 2 seperate linked list implementations, or can I simply do a
+# doubly linked list?
 class DoublyLinkedList(Node):
     pass
