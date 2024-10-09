@@ -12,23 +12,17 @@ class Node:
         # I include both next and prev for singly and doubly linked list
         # implementations, but I could just as well have a list of reference nodes
         # for a more generic graph (where each vertex can have n edges). Because
-        # linked lists are a tree graph where each vertex has one child.
+        # linked lists are a linear directed graph which is a subset of a more
+        # general graph.
         self.value = value
         self.next = None
         self.prev = None
 
-
-    def __repr__(self):
-        return str(self.value)
-
-
     def __lt__(self, other):
         return self.value < other.value
 
-
     def __eq__(self, other):
         return self.value == other.value
-
 
     def copy(self):
         return Node(self.value)
@@ -63,9 +57,6 @@ class LinkedList:
         while current is not None:
             yield current
             current = current.next
-
-    def __repr__(self):
-        pass
 
 
 class DoublyLinkedList(Node):
