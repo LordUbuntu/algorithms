@@ -57,6 +57,10 @@ class LinkedList:
         node.next = self.head
         self.head = node
 
+    def insert_tail(self, value):
+        self.tail.next = Node(value)
+        self.tail = self.tail.next
+
 
 class DoublyLinkedList(Node):
     pass
