@@ -51,20 +51,11 @@ class LinkedList:
             # append every subsequent Node
             self.tail.next = Node(value)
             self.tail = self.tail.next
-
-    # iteration is simple. I start at the head, and then for every node I just yeild
-    # the current one and then go to the next one, until I reach the end of the
-    # linked list.
-    def __iter__(self):
-        current = self.head
-        while current is not None:
-            yield current
-            current = current.next
     
     def insert_head(self, value):
-        current = Node(value)
-        current.next = self.head
-        self.head = current
+        node = Node(value)
+        node.next = self.head
+        self.head = node
 
 
 class DoublyLinkedList(Node):
