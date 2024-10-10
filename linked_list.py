@@ -33,6 +33,7 @@ class Node:
 # It's possible to implement singly and doubly linked lists recursively by defining
 # each object with a recurrence relation, thus not needing a compositional Node
 # class, and not needing both a next and prev reference in that
+# I decided to implement just a doubly linked list since it's an extension of the singly linked list and has broader applications
 class LinkedList:
     # A karg of values of any type are taken instead of a karg of Nodes to make it
     # much easier to simply initialize a long linked list of generic values.
@@ -79,11 +80,3 @@ class LinkedList:
                 node = Node(value)
                 node.next = current.next
                 current.next = node
-
-
-
-
-# TODO: Do I need to make 2 seperate linked list implementations, or can I simply do a
-# doubly linked list?
-class DoublyLinkedList(Node):
-    pass
