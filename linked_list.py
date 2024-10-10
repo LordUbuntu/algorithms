@@ -30,10 +30,10 @@ class Node:
 
 # A linked list is composed of Nodes, so it does not inherit from a Node base class
 # composition over inheritence
-# It's possible to implement singly and doubly linked lists recursively by defining
-# each object with a recurrence relation, thus not needing a compositional Node
-# class, and not needing both a next and prev reference in that
-# I decided to implement just a doubly linked list since it's an extension of the singly linked list and has broader applications. The difference only involves anywhere were prev is used.
+# It's possible to implement singly and doubly linked lists recursively
+# I decided to implement just a doubly linked list since it's an extension of the
+# singly linked list and has broader applications. The difference only involves
+# anywhere where prev is used
 class LinkedList:
     # A karg of values of any type are taken instead of a karg of Nodes to make it
     # much easier to simply initialize a long linked list of generic values.
@@ -73,6 +73,9 @@ class LinkedList:
                 node.next = current.next
                 node.prev = current
                 current.next = node
+
+    def remove(self, index):
+        pass
 
     # I implemeted as O(n) because that's how I remember the length function operating,
     # but you could just as well add a single variable to remember the length and
