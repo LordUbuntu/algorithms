@@ -33,7 +33,7 @@ class Node:
 # It's possible to implement singly and doubly linked lists recursively by defining
 # each object with a recurrence relation, thus not needing a compositional Node
 # class, and not needing both a next and prev reference in that
-# I decided to implement just a doubly linked list since it's an extension of the singly linked list and has broader applications
+# I decided to implement just a doubly linked list since it's an extension of the singly linked list and has broader applications. The difference only involves anywhere were prev is used.
 class LinkedList:
     # A karg of values of any type are taken instead of a karg of Nodes to make it
     # much easier to simply initialize a long linked list of generic values.
@@ -51,6 +51,7 @@ class LinkedList:
                 continue
             # append every subsequent Node
             self.tail.next = Node(value)
+            self.tail.next.prev = self.tail
             self.tail = self.tail.next
     
     def insert_head(self, value):
@@ -60,6 +61,7 @@ class LinkedList:
 
     def insert_tail(self, value):
         self.tail.next = Node(value)
+        self.tail.next.prev = self.tail
         self.tail = self.tail.next
 
     # decided that if index exceeds length of linked list, that it should always just
@@ -79,4 +81,5 @@ class LinkedList:
             else:
                 node = Node(value)
                 node.next = current.next
+                node.prev = current
                 current.next = node
