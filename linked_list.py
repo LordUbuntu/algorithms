@@ -67,7 +67,7 @@ class LinkedList:
     # decided that if index exceeds length of linked list, that it should always just
     # append to the end, and if an index before list, then insert at head
     def insert(self, value, index):
-        # insert at head
+        # insert the head of the linked list
         if index <= 0:
             self.insert_head(value)
         else:
@@ -83,3 +83,14 @@ class LinkedList:
                 node.next = current.next
                 node.prev = current
                 current.next = node
+
+    # I implemeted as O(n) because that's how I remember the length function operating,
+    # but you could just as well add a single variable to remember the length and
+    # update it whenever you insert or remove values, then the time complexity and
+    # space complexity both become O(1), which is far better
+    def __len__(self):
+        current = self.head
+        count = 0
+        while current is not None:
+            current = current.next
+            count += 1
