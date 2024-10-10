@@ -37,29 +37,19 @@ class Node:
 class LinkedList:
     # A karg of values of any type are taken instead of a karg of Nodes to make it
     # much easier to simply initialize a long linked list of generic values.
-    def __init__(self, *values):
+    def __init__(self):
         # head and tail are initially both None because the simplest linked list
         # graph is an empty one, and from there the initial node and all subsequent
         # nodes can be constructed
         self.head = None
         self.tail = None
-        for value in values:
-            # set head and tail to first Node
-            if self.head is None:
-                self.head = Node(value)
-                self.tail = self.head
-                continue
-            # append every subsequent Node
-            self.tail.next = Node(value)
-            self.tail.next.prev = self.tail
-            self.tail = self.tail.next
     
-    def insert_head(self, value):
+    def prepend(self, value):
         node = Node(value)
         node.next = self.head
         self.head = node
 
-    def insert_tail(self, value):
+    def append(self, value):
         self.tail.next = Node(value)
         self.tail.next.prev = self.tail
         self.tail = self.tail.next
@@ -94,3 +84,4 @@ class LinkedList:
         while current is not None:
             current = current.next
             count += 1
+        return count
