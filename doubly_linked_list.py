@@ -47,9 +47,13 @@ class DoublyLinkedList:
     
     def prepend(self, value):
         node = Node(value)
-        node.next = self.head
-        self.head.prev = node
-        self.head = node
+        if self.length == 0:
+            self.head = node
+            self.tail = node
+        else:
+            node.next = self.head
+            self.head.prev = node
+            self.head = node
 
     def append(self, value):
         self.tail.next = Node(value)
