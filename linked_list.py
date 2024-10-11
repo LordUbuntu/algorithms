@@ -74,6 +74,12 @@ class LinkedList:
                 node.prev = current
                 current.next = node
 
+    def pop(self):
+        pass
+
+    def truncate(self):
+        pass
+
     def remove(self, index):
         pass
 
