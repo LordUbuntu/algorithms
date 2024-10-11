@@ -54,25 +54,22 @@ class LinkedList:
         self.tail.next.prev = self.tail
         self.tail = self.tail.next
 
-    # decided that if index exceeds length of linked list, that it should always just
-    # append to the end, and if an index before list, then insert at head
     def insert(self, value, index):
-        # insert the head of the linked list
         if index <= 0:
+            # insert into the head
             self.insert_head(value)
+        if index >= len(self) - 1:
+            # insert into the tail
+            self.insert_tail(value)
         else:
+            # insert into the spine/body
             current = self.head
-            for _ in range(index - 1):
-                # insert into the tail of the linked list
-                if current == self.tail:
-                    self.insert_tail(value)
+            for _ in range(index):
                 current = current.next
-            # insert into the spine of the linked list
-            else:
-                node = Node(value)
-                node.next = current.next
-                node.prev = current
-                current.next = node
+            node = Node(value)
+            node.next = current.next
+            node.prev = current
+            current.next = node
 
     def pop(self):
         node = self.head
@@ -88,24 +85,21 @@ class LinkedList:
 
     def remove(self, index):
         if index <= 0:
-            # get node at head
+            # remove from head
             return self.pop()
         elif index >= len(self) - 1:
-            # get node at tail
+            # remove from tail
             return self.truncate()
         else:
-            # get node at index along spine/body
+            # remove from spine/body
             current = self.head
             for _ in range(index):
                 current = current.next
             node = current
-            # relink prev and next nodes to eachother
             node.prev.next = node.next
             node.next.prev = node.prev
-            # seperate node from list
             node.next = None
             node.prev = None
-            # return node
             return node
 
     # I implemeted as O(n) because that's how I remember the length function operating,
