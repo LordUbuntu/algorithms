@@ -88,18 +88,24 @@ class LinkedList:
 
     def remove(self, index):
         if index <= 0:
+            # get node at head
             return self.pop()
-        elif index > len(self):
+        elif index >= len(self) - 1:
+            # get node at tail
             return self.truncate()
         else:
+            # get node at index along spine/body
             current = self.head
             for _ in range(index):
                 current = current.next
             node = current
+            # relink prev and next nodes to eachother
             node.prev.next = node.next
             node.next.prev = node.prev
+            # seperate node from list
             node.next = None
             node.prev = None
+            # return node
             return node
 
     # I implemeted as O(n) because that's how I remember the length function operating,
