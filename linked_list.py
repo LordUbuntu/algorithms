@@ -81,7 +81,10 @@ class LinkedList:
         return node
 
     def truncate(self):
-        pass
+        node = self.tail
+        self.tail = self.tail.prev
+        node.prev = None
+        return node
 
     def remove(self, index):
         pass
