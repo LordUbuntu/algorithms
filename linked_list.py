@@ -47,6 +47,7 @@ class LinkedList:
     def prepend(self, value):
         node = Node(value)
         node.next = self.head
+        self.head.prev = node
         self.head = node
 
     def append(self, value):
