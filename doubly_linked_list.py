@@ -43,6 +43,7 @@ class DoublyLinkedList:
         # nodes can be constructed
         self.head = None
         self.tail = None
+        self.length = 0
     
     def prepend(self, value):
         node = Node(value)
