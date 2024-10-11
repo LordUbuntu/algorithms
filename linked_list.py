@@ -75,7 +75,10 @@ class LinkedList:
                 current.next = node
 
     def pop(self):
-        pass
+        node = self.head
+        self.head = self.head.next
+        node.next = None
+        return node
 
     def truncate(self):
         pass
