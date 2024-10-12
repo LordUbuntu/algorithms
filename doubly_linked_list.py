@@ -90,10 +90,14 @@ class DoublyLinkedList:
         self.length += 1
 
     def pop(self):
-        node = self.head
-        self.head = self.head.next
-        node.next = None
-        return node
+        if self.length == 0:
+            return None
+        else:
+            node = self.head
+            self.head = self.head.next
+            node.next = None
+            self.length -= 1
+            return node
 
     def truncate(self):
         node = self.tail
