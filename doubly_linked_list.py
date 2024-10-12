@@ -56,9 +56,14 @@ class DoublyLinkedList:
             self.head = node
 
     def append(self, value):
-        self.tail.next = Node(value)
-        self.tail.next.prev = self.tail
-        self.tail = self.tail.next
+        node = Node(value)
+        if self.length == 0:
+            self.head = node
+            self.tail = node
+        else:
+            self.tail.next = node
+            node.prev = self.tail
+            self.tail = node
 
     def insert(self, value, index):
         if index <= 0:
