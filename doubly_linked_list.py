@@ -100,10 +100,14 @@ class DoublyLinkedList:
             return node
 
     def truncate(self):
-        node = self.tail
-        self.tail = self.tail.prev
-        node.prev = None
-        return node
+        if self.length == 0:
+            return None
+        else:
+            node = self.tail
+            self.tail = self.tail.prev
+            node.prev = None
+            self.length -= 1
+            return node
 
     def remove(self, index):
         if index <= 0:
