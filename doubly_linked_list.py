@@ -68,12 +68,15 @@ class DoublyLinkedList:
         self.length += 1
 
     def insert(self, value, index):
-        if index <= 0:
+        if self.length == 0:
+            # insert into empty list
+            self.prepend(value)
+        elif index <= 0:
             # insert into the head
-            self.insert_head(value)
-        if index >= len(self) - 1:
+            self.prepend(value)
+        elif index > self.length:
             # insert into the tail
-            self.insert_tail(value)
+            self.append(value)
         else:
             # insert into the spine/body
             current = self.head
@@ -81,8 +84,10 @@ class DoublyLinkedList:
                 current = current.next
             node = Node(value)
             node.next = current.next
+            current.next.prev = node
             node.prev = current
             current.next = node
+        self.length += 1
 
     def pop(self):
         node = self.head
