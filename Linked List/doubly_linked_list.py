@@ -74,7 +74,7 @@ class DoublyLinkedList:
         elif index <= 0:
             # insert into the head
             self.prepend(value)
-        elif index > self.length:
+        elif index > self.length - 1:
             # insert into the tail
             self.append(value)
         else:
