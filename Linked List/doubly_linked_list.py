@@ -110,10 +110,13 @@ class DoublyLinkedList:
             return node
 
     def remove(self, index):
-        if index <= 0:
+        if self.length == 0:
+            # remove from empty list
+            return None
+        elif index <= 0:
             # remove from head
             return self.pop()
-        elif index >= len(self) - 1:
+        elif index > self.length - 1:
             # remove from tail
             return self.truncate()
         else:
