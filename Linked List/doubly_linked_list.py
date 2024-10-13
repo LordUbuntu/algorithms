@@ -43,7 +43,7 @@ class DoublyLinkedList:
         # nodes can be constructed
         self.head = None
         self.tail = None
-        self.length = 0
+        self.length = 0  # memoize length for O(1) time and space
     
     def prepend(self, value):
         node = Node(value)
@@ -130,15 +130,3 @@ class DoublyLinkedList:
             node.next = None
             node.prev = None
             return node
-
-    # I implemeted as O(n) because that's how I remember the length function operating,
-    # but you could just as well add a single variable to remember the length and
-    # update it whenever you insert or remove values, then the time complexity and
-    # space complexity both become O(1), which is far better
-    def __len__(self):
-        current = self.head
-        count = 0
-        while current is not None:
-            current = current.next
-            count += 1
-        return count
