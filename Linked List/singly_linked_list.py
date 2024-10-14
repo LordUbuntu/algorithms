@@ -81,8 +81,6 @@ class DoublyLinkedList:
                 current = current.next
             node = Node(value)
             node.next = current.next
-            current.next.prev = node
-            node.prev = current
             current.next = node
         self.length += 1
 
