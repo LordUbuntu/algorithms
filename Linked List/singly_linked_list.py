@@ -119,11 +119,11 @@ class DoublyLinkedList:
         else:
             # remove from spine/body
             current = self.head
+            prev = self.head
             for _ in range(index):
+                prev = current
                 current = current.next
             node = current
-            node.prev.next = node.next
-            node.next.prev = node.prev
+            prev.next = node.next
             node.next = None
-            node.prev = None
             return node
