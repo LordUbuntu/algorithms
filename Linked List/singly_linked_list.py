@@ -16,7 +16,6 @@ class Node:
         # general graph.
         self.value = value
         self.next = None
-        self.prev = None
 
     def __lt__(self, other):
         return self.value < other.value
