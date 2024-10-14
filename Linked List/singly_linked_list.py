@@ -61,7 +61,6 @@ class DoublyLinkedList:
             self.tail = node
         else:
             self.tail.next = node
-            node.prev = self.tail
             self.tail = node
         self.length += 1
 
