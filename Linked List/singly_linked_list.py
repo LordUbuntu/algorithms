@@ -98,9 +98,11 @@ class DoublyLinkedList:
         if self.length == 0:
             return None
         else:
+            prev = self.head
+            while prev.next != self.tail:
+                prev = prev.next
             node = self.tail
-            self.tail = self.tail.prev
-            node.prev = None
+            self.tail = prev
             self.length -= 1
             return node
 
