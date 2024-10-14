@@ -33,7 +33,7 @@ class Node:
 # I decided to implement just a doubly linked list since it's an extension of the
 # singly linked list and has broader applications. The difference only involves
 # anywhere where prev is used
-class DoublyLinkedList:
+class List:
     # A karg of values of any type are taken instead of a karg of Nodes to make it
     # much easier to simply initialize a long linked list of generic values.
     def __init__(self):
