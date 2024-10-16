@@ -1,9 +1,10 @@
+# Jacobus buger (Oct 2024)
 from random import randint
 
 
-def bogo(arr: list) -> list:
-    while arr != sorted(arr):
-        i = randint(0, len(arr) - 1)
-        j = randint(0, len(arr) - 1)
-        arr[i], arr[j] = arr[j], arr[i]
-    return arr
+def sort(array: list) -> list:
+    while array != sorted(array):
+        i = randint(0, len(array) - 1)
+        j = randint(0, len(array) - 1)
+        array[i], array[j] = array[j], array[i]
+    return array

@@ -1,13 +1,13 @@
 # Jacobus Burger (2023)
 # A simple selection sort algorithm
 
-def sort(l: list) -> list:
-    for current in range(len(l)):
+def sort(array: list) -> list:
+    for current in range(len(array)):
         minimum = current  # assume minimum is first element
         # search for a smaller value after current
-        for index in range(current + 1, len(l)):
-            if l[index] < l[minimum]:
+        for index in range(current + 1, len(array)):
+            if array[index] < array[minimum]:
                 minimum = index
         # swap elements
-        l[current], l[minimum] = l[minimum], l[current]
-    return l
+        array[current], array[minimum] = array[minimum], array[current]
+    return array

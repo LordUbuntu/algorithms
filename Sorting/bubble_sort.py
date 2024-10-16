@@ -3,13 +3,13 @@
 # Bubble sort compaires pairs of adjacent values and swaps them
 #     if they're out of order. It's worst case is O(n^2). So not
 #     great on big inputs...
-def sort(l: list) -> list:
-    for _ in range(1, len(l)):
+def sort(array: list) -> list:
+    for _ in range(1, len(array)):
         sorted = True
-        for index in range(1, len(l)):
-            if l[index - 1] >= l[index]:
+        for index in range(1, len(array)):
+            if array[index - 1] >= array[index]:
                 sorted = False
-                l[index - 1], l[index] = l[index], l[index - 1]
-        if sorted == True:
+                array[index - 1], array[index] = array[index], array[index - 1]
+        if sorted:
             break
-    return l
+    return array
