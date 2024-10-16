@@ -5,11 +5,8 @@
 #     great on big inputs...
 def sort(array: list) -> list:
     for _ in range(1, len(array)):
-        sorted = True
         for index in range(1, len(array)):
             if array[index - 1] >= array[index]:
                 sorted = False
                 array[index - 1], array[index] = array[index], array[index - 1]
-        if sorted:
-            break
     return array
