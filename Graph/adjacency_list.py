@@ -25,3 +25,6 @@ G = {
 class Graph:
     def __init__(self):
         self.G = {}
+
+    def insert(self, vertex, adjacencies):
+        self.G[vertex] = adjacencies
