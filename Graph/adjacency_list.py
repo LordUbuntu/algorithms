@@ -29,7 +29,15 @@ class Graph:
     def insert(self, vertex, adjacencies):
         self.G[vertex] = adjacencies
 
-    # FIX: removing vertex is more involved, this is a temp solution
+    def subgraph(self, *vertices):
+        if len(vertices) == 0:
+            return self.G
+        subgraph = {
+            vertex: self.G[vertex]
+            for vertex in vertices
+        }
+        return subgraph
+
     def remove(self, vertex):
         subgraph = {vertex: self.G.pop(vertex)}
         return subgraph
