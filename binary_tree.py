@@ -4,6 +4,7 @@
 
 
 # recursive node based tree
+# need to work on this one more
 class BTree:
     def __init__(self, data=None, left=None, right=None):
         self.data = data
@@ -34,4 +35,3 @@ class BTree:
                 self.right.remove(data)
             if data < self.data:
                 self.left.remove(data)
-        
