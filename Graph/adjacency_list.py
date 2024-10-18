@@ -21,3 +21,7 @@ G = {
     'C': ['A', 'D'],
     'D': ['B', 'C']
 }
+
+class Graph:
+    def __init__(self):
+        self.G = {}
