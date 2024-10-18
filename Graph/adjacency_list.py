@@ -38,6 +38,7 @@ class Graph:
         }
         return subgraph
 
+    # TODO: remove all references of vertex, not just its list of adjacencies
     def remove(self, vertex):
         subgraph = {vertex: self.G.pop(vertex)}
         return subgraph
