@@ -28,3 +28,8 @@ class Graph:
 
     def insert(self, vertex, adjacencies):
         self.G[vertex] = adjacencies
+
+    # FIX: removing vertex is more involved, this is a temp solution
+    def remove(self, vertex):
+        subgraph = {vertex: self.G.pop(vertex)}
+        return subgraph
