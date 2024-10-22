@@ -1,6 +1,11 @@
-# Jacobus Burger (2023)
+# Jacobus Burger (Oct 2024)
+# Algorithm:
+#   Pangram
+# Desc:
+#   An algorithm that determines if a string has every letter of the
+#   alphabet in it.
 # Info:
-#   Algorithms to compare different arrangements of letters in a string
+#   https://en.wikipedia.org/wiki/Pangram
 from string import ascii_lowercase
 
 # has all the letters of the alphabet
