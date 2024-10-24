@@ -1,11 +1,13 @@
 # Jacobus Burger (2022)
-# Info
-#   Various image blur algorithms in Python
+# Algorithm:
+#   Box Blur
+# Desc:
+#   Basic image blurring algorithm that creates an average of pixels
+#   using a box kernel
+# Info:
+#   https://en.wikipedia.org/wiki/Box_blur
 from PIL import Image
 from itertools import product, repeat
-
-
-# PERF: need to find  way to make a faster box-blur
 
 
 # Box Blur
