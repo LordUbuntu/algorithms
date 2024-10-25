@@ -28,3 +28,6 @@
 #   consequence of guaranteeing a sorted array given a
 #   smaller infinite time than bogosort while still
 #   being random.
+
+
+# Is this a practical idea? Seems like it would be O(n^2), maybe O(n log n) at best.
