@@ -3,3 +3,7 @@
 #   "Introduction to Algorithms" 3rd Edition.
 #   This was practice to get better at understanding this algorithm
 #   during the blackout today.
+
+
+def sort(A: list) -> list:
+    pass
