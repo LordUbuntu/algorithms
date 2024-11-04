@@ -7,8 +7,6 @@
 
 def sort(A: list[int | float]) -> list[int | float]:
     """
-    sort(A: list) -> list
-
     Sorts an array `A` using selection sort according to the implementation
         specified in "Introduction to Algorithms 3rd Ed."
 
@@ -28,5 +26,4 @@ def sort(A: list[int | float]) -> list[int | float]:
             i = i - 1
         A[i + 1] = key
     ```
-
     """
