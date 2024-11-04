@@ -27,3 +27,9 @@ def sort(A: list[int | float]) -> list[int | float]:
         A[i + 1] = key
     ```
     """
+    # Python is 0 indexed, so 2 -> 1
+    # Python len gives count of elements, so maximum index is len - 1
+    for j in range(1, len(A) - 1):
+        key = A[j]
+        i = j - 1
+        pass
