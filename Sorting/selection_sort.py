@@ -30,13 +30,13 @@ def sort(A: list[int | float]) -> list[int | float]:
     # Python is 0 indexed, so 2 -> 1.
     # Python len gives count of elements, so maximum index is len - 1.
     for j in range(1, len(A) - 1):
-        key = A[j]  # set element at index j as reference point in array.
-        i = j - 1   # start index i at the element before j.
+        key = A[j]  # Set element at index j as reference point in array.
+        i = j - 1   # Start index i at the element before j.
         # Iterate over subarray A[1..j - 1] leftwards until reaching start of
         #   array or an index with a value less than the key (indicating that
         #   the subarray is sorted beyond that point).
         # Python is 0 indexed, so i > 0 -> i >= 0.
         while i >= 0 and A[i] > key:
-            A[i + 1] = A[i]  # swap next element with current element of array
-            i = i - 1        # continue to previous index in array
-        A[i + 1] = key  # swap key with final unsorted element in array
+            A[i + 1] = A[i]  # Swap next element with current element of array.
+            i = i - 1        # Continue to previous index in array.
+        A[i + 1] = key  # Swap key with final unsorted element in array.
