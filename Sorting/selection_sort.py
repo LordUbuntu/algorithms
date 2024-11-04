@@ -1,13 +1,5 @@
-# Jacobus Burger (2023)
-# A simple selection sort algorithm
-
-def sort(array: list) -> list:
-    for current in range(len(array)):
-        minimum = current  # assume minimum is first element
-        # search for a smaller value after current
-        for index in range(current + 1, len(array)):
-            if array[index] < array[minimum]:
-                minimum = index
-        # swap elements
-        array[current], array[minimum] = array[minimum], array[current]
-    return array
+# Jacobus Burger (2024-11-04)
+# A correct implementation of insertion sort. Taken from studying
+#   "Introduction to Algorithms" 3rd Edition.
+#   This was practice to get better at understanding this algorithm
+#   during the blackout today.
