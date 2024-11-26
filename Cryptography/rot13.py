@@ -13,7 +13,7 @@ def rot13(plaintext: str) -> str:
         number = cyphertext[i]
         if 65 <= number <= 90:
             if number + 13 > 90:
-                number = 65 + (90 - (number + 13))
+                number = 65 + ((number + 13) - 91)
             else:
                 number = number + 13
         cyphertext[i] = number
