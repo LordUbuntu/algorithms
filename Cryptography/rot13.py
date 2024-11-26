@@ -4,7 +4,7 @@
 
 
 # A basic and common example using something similar to Cesarian cypher
-def rot13(plaintext: str) -> str:
+def encrypt(plaintext: str) -> str:
     # convert letters to numbers (Python)
     cyphertext = [ord(letter) for letter in plaintext.upper()]
     # rotate letters in cypher, bewaring wraparound
