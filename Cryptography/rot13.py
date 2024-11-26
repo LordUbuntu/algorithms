@@ -16,6 +16,7 @@ def rot13(plaintext: str) -> str:
                 number = 65 + (90 - (number + 13))
             else:
                 number = number + 13
+        cyphertext[i] = number
     # convert numbers to letters (Python)
     cyphertext = [chr(number) for number in cyphertext]
     return cyphertext
