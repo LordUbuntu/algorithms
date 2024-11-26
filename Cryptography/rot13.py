@@ -20,3 +20,7 @@ def encrypt(plaintext: str) -> str:
     # convert numbers to letters (Python)
     cyphertext = [chr(number) for number in cyphertext]
     return cyphertext
+
+
+def decrypt(plaintext: str) -> str:
+    pass
