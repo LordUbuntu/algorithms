@@ -23,4 +23,18 @@ def encrypt(plaintext: str) -> str:
 
 
 def decrypt(plaintext: str) -> str:
-    pass
+    # convert letters to numbers (Python)
+    cyphertext = [ord(letter) for letter in plaintext.upper()]
+    # rotate letters in cypher, bewaring wraparound
+    # upper letters are dec 65 - 90
+    for i in range(len(cyphertext)):
+        number = cyphertext[i]
+        if 65 <= number <= 90:
+            if number - 13 < 65:
+                number = (91 - (13 - (number - 65)))
+            else:
+                number = number - 13
+        cyphertext[i] = number
+    # convert numbers to letters (Python)
+    cyphertext = [chr(number) for number in cyphertext]
+    return cyphertext
