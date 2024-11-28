@@ -1,9 +1,16 @@
-# Jacobus Burger (2024-11-23)
-# ROT13, ROTate 13 Cypher
-# A simple rotational cypher algorithm that rotates the values of symbols (letters) within a symbol space (alphabet) over by 13 symbols within that order. Imagine arranging the alphabet in a ring, then take any letter and move 13 in a chosen direction. To decypher, rotate all the letters back the other way.
+# Jacobus Burger (2024-11-27)
+# Algorithm:
+#   ROT13 (ROTate 13 Cypher)
+# Desc:
+#   A simple rotational cypher algorithm that rotates the values of
+#   symbols (letters) within a symbol space (alphabet) over by 13
+#   symbols within that order. Imagine arranging the alphabet in a
+#   ring, then take any letter and move 13 in a chosen direction.
+#   To decypher, rotate all the letters back the other way.
+# Info:
+#   https://en.wikipedia.org/wiki/ROT13
 
 
-# A basic and common example using something similar to Cesarian cypher
 def encrypt(plaintext: str) -> str:
     # convert letters to numbers (Python)
     cyphertext = [ord(letter) for letter in plaintext.upper()]
