@@ -6,3 +6,11 @@
 #   dictator Gaius Julius Caesar
 # Info:
 #   https://en.wikipedia.org/wiki/Caesar_cipher
+
+
+def encrypt(plaintext: str) -> str:
+    pass
+
+
+def decrypt(text: str) -> str:
+    pass
