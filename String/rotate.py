@@ -3,4 +3,7 @@
 
 
 def rotate(s: str, n: int) -> str:
-    pass
+    rot = list(s)
+    for _ in range(n):
+        rot.append(rot.pop(0))
+    return ''.join(rot)
