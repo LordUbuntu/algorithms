@@ -14,7 +14,7 @@ def interleave(a: str, b: str) -> str:
 
 if __name__ == "__main__":
     if len(argv) < 3:
-        quit()
+        exit(1)
     a = argv[1]
     b = argv[2]
     c = interleave(a, b)
