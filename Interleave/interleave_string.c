@@ -6,7 +6,7 @@
 
 char *interleave(char *a, char *b) {
         size_t memsize = strlen(a) + strlen(b) + 1;
-        char *c = calloc(memsize, sizeof(char));
+        char *c = (char*) calloc(memsize, sizeof(char));
         for (size_t i = 0; i < strlen(a); i++)
                 // place a chars in each even index  (even = 2n)
                 c[2 * i] = a[i];
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         // interleave a and b
         char *c = interleave(a, b);
         // print results
-        printf("%s\n%s\n%s\n\n", a, b, c)
+        printf("%s\n%s\n%s\n\n\n", a, b, c);
         free(c);  // don't forget to free since it was allocated manually
         return 0;
 }

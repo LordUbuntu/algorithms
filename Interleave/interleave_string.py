@@ -23,4 +23,3 @@ if __name__ == "__main__":
     c = interleave(a, b)
     # print results
     print("{}\n{}\n{}\n\n".format(a, b, c))
-}
