@@ -13,9 +13,14 @@ def interleave(a: str, b: str) -> str:
 
 
 if __name__ == "__main__":
+    # make sure args are provided
     if len(argv) < 3:
         exit(1)
+    # get a and b from argv
     a = argv[1]
     b = argv[2]
+    # interleave a and b
     c = interleave(a, b)
+    # print results
     print("{}\n{}\n{}\n\n".format(a, b, c))
+}

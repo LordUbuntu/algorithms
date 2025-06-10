@@ -19,15 +19,16 @@ char *interleave(char *a, char *b) {
 
 int main(int argc, char *argv[])
 {
+        // make sure args are provided
         if (argc < 3)
                 return 1;
         // get a and b from argv
         char *a = argv[1];
         char *b = argv[2];
+        // interleave a and b
         char *c = interleave(a, b);
-        puts(a);
-        puts(b);
-        puts(c);
+        // print results
+        printf("%s\n%s\n%s\n\n", a, b, c)
         free(c);  // don't forget to free since it was allocated manually
         return 0;
 }
