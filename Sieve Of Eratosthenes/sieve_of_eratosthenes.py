@@ -1,6 +1,7 @@
 # Jacobus Burger (2022)
 # Sieve of Eratosthenes in Python
 # see: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+from sys import argv
 from math import sqrt as sqrt
 
 
@@ -15,3 +16,14 @@ def sieve(n: int):
                 sieve[i] = False
     # you now have the sieve of eratosthenes
     return sieve
+
+
+if __name__ == "__main__":
+    # get n
+    n = int(argv[1])
+    # sieve primes up to n
+    prime_sieve = sieve(n)
+    # get list of prime numbers using sieve and list comprehension
+    primes = " ".join([str(i) for i in range(len(prime_sieve)) if prime_sieve[i]])
+    # print result
+    print("{}\n{}\n\n".format(n, primes))
