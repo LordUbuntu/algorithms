@@ -18,7 +18,7 @@ bool *sieve(int n) {
         // run sieve of eratosthenes
         for (int p = 2; p < sqrt(n) + 1; p++)
                 if (primes[p])
-                        for (int i = p^2; i < n + 1; i += p)
+                        for (int i = pow(p, 2); i < n + 1; i += p)
                                 primes[i] = 0;
 
         // return solution
