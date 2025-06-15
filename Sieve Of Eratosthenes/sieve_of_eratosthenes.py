@@ -6,6 +6,7 @@ from math import sqrt as sqrt
 
 
 def sieve(n: int):
+    # initialize all except 0 and 1 to True
     sieve = [True if i > 1 else False for i in range(n + 1)]
     # iterate through all integers from 2 to sqrt(n)
     for p in range(2, int(sqrt(n)) + 1):

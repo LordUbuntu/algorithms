@@ -17,7 +17,9 @@ bool *sieve(int n) {
 
         // run sieve of eratosthenes
         for (int p = 2; p < sqrt(n) + 1; p++)
+                // ignore non-primes
                 if (primes[p])
+                        // eliminate multiples of p starting from p^2
                         for (int i = pow(p, 2); i < n + 1; i += p)
                                 primes[i] = 0;
 
