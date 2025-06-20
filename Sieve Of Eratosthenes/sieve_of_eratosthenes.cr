@@ -20,11 +20,13 @@ end
 def main
   n = gets.try(&.to_i) || 0
   primes = sieve(n)
+  puts n
   n.times do |i|
     if primes[i]
       print "#{i} "
     end
   end
+  puts
   puts
 end
 
