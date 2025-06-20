@@ -19,7 +19,13 @@ end
 
 def main
   n = gets.try(&.to_i) || 0
-  puts "#{sieve(n)}"
+  primes = sieve(n)
+  n.times do |i|
+    if primes[i]
+      print "#{i} "
+    end
+  end
+  puts
 end
 
 
