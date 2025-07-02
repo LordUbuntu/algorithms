@@ -2,7 +2,8 @@
  * Sieve of Eratosthenes in C
  * see: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
  *
- * note: when compiling be sure to link math library. eg: -lm
+ * note: when compiling be sure to link math library. eg:
+ *      gcc sieve_of_eratosthenes.c -lm -o sieve
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +12,7 @@
 
 
 bool *sieve(int n) {
+        // 2025-07-01 i realize bitpacking is more space efficient, but it would also be a more efficient headache...
         // initialize array to all true except for index/numbers 0 and 1
         bool *primes = (bool*) calloc(n, sizeof(bool));
         memset(primes + 2, 1, n * sizeof(bool));
