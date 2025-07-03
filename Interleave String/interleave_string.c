@@ -1,3 +1,7 @@
+// Jacobus Burger (2025-06-09)
+// Interleaving data of two strings, though the same principle can
+//      be applied to any sequence/array data type (though the
+//      implementation will differ between them)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
