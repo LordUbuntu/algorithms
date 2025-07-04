@@ -1,14 +1,9 @@
 // Jacobus Burger (2025-07-03)
 // Implementation of bit packing technique.
-// Related concepts seem to be bit arrays which I leive I've implemented
-//      here, and bit fields which are a bit different but still related.
-// Note: is should be weary of endianness.
-// note: when compiling be sure to link math library. eg:
+// Note: when compiling be sure to link math library. eg:
 //      gcc bit_packing.c -lm -o bit_packing
 // See:
 // - https://www.cs.cornell.edu/courses/cs3410/2024fa/notes/bitpack.html
-// - https://www.cs.emory.edu/%7Echeung/Courses/255/Syllabus/1-C-intro/bit-array.html
-// - https://en.wikipedia.org/wiki/Bit_array
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
