@@ -12,6 +12,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 
 // BA = Bit Array
@@ -22,19 +23,24 @@
 #define CLEAR(BA, O)    (BA = BA & ~((size_t)(pow(2, O) - 1) << O))
 
 
-int main(void) {
-        // initialize pack to all 0
-        uint16_t pack = 0;
-        uint8_t data = 0b1101;
-        size_t n = 4;
-        printf("%016b %08b %i\n", pack, data, n);
+int main(int argc, char *argv[]) {
+        // get input
+        if (argc < 3)
+                return 1;
+        int data = atoi(argv[1]);
+        int n = atoi(argv[2]);
+
+        // show initial state
+        uint64_t pack = 0;
+        printf("data: %064b %i, offset: %i\n", data, data, n);
+        printf("memory: %064b %i\n", pack, pack);
         // set packed bits
         PACK(pack, data, n);
-        printf("%016b %08b %i\n", pack, data, n);
+        printf("set memory: %064b %i\n", pack, pack);
         // get packed bits
-        printf("%016b %08b %i %016b\n", pack, data, n, READ(pack, n));
+        printf("get memory: %064b, %i\n", READ(pack, n), READ(pack, n));
         // clear packed bits
         CLEAR(pack, n);
-        printf("%016b %08b %i\n", pack, data, n);
+        printf("clear memory: %064b %i\n\n", pack, pack);
         return 0;
 }
