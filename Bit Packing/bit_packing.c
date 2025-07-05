@@ -25,20 +25,20 @@ int main(int argc, char *argv[]) {
         // get input
         if (argc < 3)
                 return 1;
-        int data = atoi(argv[1]);
-        int n = atoi(argv[2]);
+        utin8_t data = atoi(argv[1]);
+        size_t o = atoi(argv[2]);
 
         // show initial state
         uint64_t pack = 0;
-        printf("data: %064b %i, offset: %i\n", data, data, n);
+        printf("data: %08b %i, offset: %i\n", data, data, o);
         printf("memory: %064b %i\n", pack, pack);
         // set packed bits
-        PACK(pack, data, n);
+        PACK(pack, data, o);
         printf("set memory: %064b %i\n", pack, pack);
         // get packed bits
-        printf("get memory: %064b, %i\n", READ(pack, n), READ(pack, n));
+        printf("get memory: %064b, %i\n", READ(pack, 8, o), READ(pack, 8, o));
         // clear packed bits
-        CLEAR(pack, n);
+        CLEAR(pack, 8, o);
         printf("clear memory: %064b %i\n\n", pack, pack);
         return 0;
 }
