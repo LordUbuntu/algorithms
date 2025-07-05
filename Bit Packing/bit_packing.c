@@ -11,10 +11,14 @@
 
 
 // P = Bit Pack, D = Data, O = Offset, N = mask size
+// PACK or's data D into bit pack P at offset O.
+//      clearing the section to store new data is required.
+// READ unpacks N bits from bit pack P at offset O
+// CLEAR zeroes out N bits from bit pack P at offset O
 #define MASK(N)         ( ((size_t)(pow(2, N) - 1) )
 #define PACK(P, D, O)   ( P = P | (D << O) )
-#define READ(P, N, O)      ( (P & (MASK(N) - 1) << O)) >> O )
-#define CLEAR(P, N, O)     ( P = P & ~(MASK(N) - 1) << O) )
+#define READ(P, N, O)   ( (P & (MASK(N) - 1) << O)) >> O )
+#define CLEAR(P, N, O)  ( P = P & ~(MASK(N) - 1) << O) )
 
 
 int main(int argc, char *argv[]) {
