@@ -16,7 +16,6 @@
 // READ unpacks N bits from bit pack P at offset O
 // CLEAR zeroes out N bits from bit pack P at offset O
 #define MASK(N)         ( ((size_t)pow(2, N)) - 1 )
-// NOTE: this may be able to be done without clear using triple XOR
 #define PACK(P, D, O)   ( P |= (D << O) )
 #define READ(P, N, O)   ( (P & (MASK(N) << O)) >> O )
 #define CLEAR(P, N, O)  ( P &= ~(MASK(N) << O) )
