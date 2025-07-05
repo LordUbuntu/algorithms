@@ -14,11 +14,11 @@
 #include <stddef.h>
 
 
-#define BITS(DATA) (sizeof(DATA) * CHAR_BIT)
-#define SET(A, i) (A[(i / BITS(A[0]))] |= (1 << (i % BITS(A[0]))))
-#define GET(A, i) (A[(i / BITS(A[0]))] & (1 << (i % BITS(A[0]))))
-#define TOGGLE(A, i) (A[(i / BITS(A[0]))] ^= (1 << (i % BITS(A[0]))))
-#define CLEAR(A, i) (A[(i / BITS(A[0]))] &= ~(1 << (i % BITS(A[0]))))
+#define BITS(DATA)   ( sizeof(DATA) * CHAR_BIT )
+#define SET(A, i)    ( A[(i / BITS(A[0]))] |= (1 << (i % BITS(A[0]))) )
+#define GET(A, i)    ( A[(i / BITS(A[0]))] & (1 << (i % BITS(A[0]))) )
+#define TOGGLE(A, i) ( A[(i / BITS(A[0]))] ^= (1 << (i % BITS(A[0]))) )
+#define CLEAR(A, i)  ( A[(i / BITS(A[0]))] &= ~(1 << (i % BITS(A[0]))) )
 
 
 int main(int argc, char *argv[]) {
