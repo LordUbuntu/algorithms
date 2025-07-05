@@ -10,12 +10,11 @@
 #include <stdlib.h>
 
 
-// P = Bit Pack
-// D = Data
-// N = Offset
-#define PACK(P, D, N)  ( P = P | (D << N) )
-#define READ(P, N)     ( (P & ((size_t)(pow(2, N) - 1) << N)) >> N )
-#define CLEAR(P, N)    ( P = P & ~((size_t)(pow(2, N) - 1) << N) )
+// P = Bit Pack, D = Data, O = Offset, N = mask size
+#define MASK(N)         ( ((size_t)(pow(2, N) - 1) )
+#define PACK(P, D, O)   ( P = P | (D << O) )
+#define READ(P, N, O)      ( (P & (MASK(N) - 1) << O)) >> O )
+#define CLEAR(P, N, O)     ( P = P & ~(MASK(N) - 1) << O) )
 
 
 int main(int argc, char *argv[]) {
