@@ -10,12 +10,12 @@
 #include <stdlib.h>
 
 
-// BA = Bit Array
+// P = Bit Pack
 // D = Data
-// O = Offset
-#define PACK(BA, D, O)  (BA = BA | (D << O))
-#define READ(BA, O)     ((BA & ((size_t)(pow(2, O) - 1) << O)) >> O)
-#define CLEAR(BA, O)    (BA = BA & ~((size_t)(pow(2, O) - 1) << O))
+// N = Offset
+#define PACK(P, D, N)  ( P = P | (D << N) )
+#define READ(P, N)     ( (P & ((size_t)(pow(2, N) - 1) << N)) >> N )
+#define CLEAR(P, N)    ( P = P & ~((size_t)(pow(2, N) - 1) << N) )
 
 
 int main(int argc, char *argv[]) {
