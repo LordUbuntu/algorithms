@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
         // get input
         if (argc < 3)
                 return 1;
-        utin8_t data = atoi(argv[1]);
+        uint8_t data = atoi(argv[1]);
         size_t o = atoi(argv[2]);
 
         // show initial state
