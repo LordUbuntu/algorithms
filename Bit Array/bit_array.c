@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
         printf("toggled bit %i: %s\n", n, GET(A, n) ? "T" : "F");
 
         // test clear
-        CLEAR(A, 30);
+        CLEAR(A, n);
         printf("cleared bit %i: %s\n", n, GET(A, n) ? "T" : "F");
 
         // show final state
