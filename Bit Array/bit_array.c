@@ -4,16 +4,19 @@
  * - https://www.cs.emory.edu/%7Echeung/Courses/255/Syllabus/1-C-intro/bit-array.html
  * - https://en.wikipedia.org/wiki/Bit_array
  */
-// note for implementation: sizeof can be used to calculate bytes of int
-//      type at runtime, and thus can be used to calculate bits per
-//      address in array. Then the emory info can be used to produce
-//      macros for setting and reading bits along an array
-//      This can be used in the sieve_of_eratosthenes.c file!
 #include <limits.h>
+#include <stdint.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <stddef.h>
 
 
+/* the underlying principle is simple, we select the i / bits block of
+ *      bits, which is each index of the array A, then we select the
+ *      i % bits bit from that block. Thus we treat an array A as a
+ *      continguous segment of memory of single bits equal in count
+ *      to bits * length of A.
+ */
 #define BITS(DATA)   ( sizeof(DATA) * CHAR_BIT )
 #define SET(A, i)    ( A[(i / BITS(A[0]))] |= (1 << (i % BITS(A[0]))) )
 #define GET(A, i)    ( A[(i / BITS(A[0]))] & (1 << (i % BITS(A[0]))) )
@@ -22,39 +25,36 @@
 
 
 int main(int argc, char *argv[]) {
-        int A[3];
+        // get input
+        if (argc < 2)
+                return 1;
+        size_t n = atoi(argv[1]);
 
-        // show initial state
-        printf("INITIAL STATE\n");
-        printf("bits in int: %i\n", BITS(A[0]));
-        for (size_t i = 0; i < 3; i++)
-                printf("A[%i] = %032b\n", i, A[i]);
-        printf("\n");
+        // setup initial state
+        uint64_t A[4];
+        printf("memory:\n");
+        printf("%064b\n%064b\n%064b\n%064b\n", A[0], A[1], A[2], A[3]);
+        printf("%i bits in total\n\n", BITS(A[0]) * 4);
 
         // set bits
-        SET(A, 30);
-        SET(A, 50);
-        SET(A, 70);
+        SET(A, n);
+        printf("set bit %i\n", n);
+        printf("memory:\n");
+        printf("%064b\n%064b\n%064b\n%064b\n", A[0], A[1], A[2], A[3]);
 
-        // show change in state
-        for (size_t i = 0; i < 3; i++)
-                printf("A[%i] = %032b\n", i, A[i]);
-        printf("\n");
-
-        // test get
-        for (size_t i = 0; i < 3 * BITS(A[0]); i++)
-                if (GET(A, i))
-                        printf("bit %i is set\n", i);
+        printf("bit %i is set: %s\n", n, GET(A, n) ? "T" : "F");
 
         // toggle bit
-        printf("state before toggle: %032b\n", A[0]);
-        TOGGLE(A, 7);
-        printf("state after toggle: %032b\n", A[0]);
+        TOGGLE(A, n);
+        printf("toggled bit %i: %s\n", n, GET(A, n) ? "T" : "F");
+        TOGGLE(A, n);
+        printf("toggled bit %i: %s\n", n, GET(A, n) ? "T" : "F");
 
         // test clear
-        printf("state before clear: %032b\n", A[0]);
         CLEAR(A, 30);
-        if (~GET(A, 30))
-                printf("unset successful\n");
-        printf("state before clear: %032b\n", A[0]);
+        printf("cleared bit %i: %s\n", n, GET(A, n) ? "T" : "F");
+
+        // show final state
+        printf("memory:\n");
+        printf("%064b\n%064b\n%064b\n%064b\n", A[0], A[1], A[2], A[3]);
 }
