@@ -12,7 +12,6 @@
 
 
 bool *sieve(int n) {
-        // 2025-07-01 i realize bitpacking is more space efficient, but it would also be a more efficient headache...
         // initialize array to all true except for index/numbers 0 and 1
         bool *primes = (bool*) calloc(n, sizeof(bool));
         memset(primes + 2, 1, n * sizeof(bool));
