@@ -15,9 +15,13 @@ int main(int argc, char *argv[]) {
         if (argc < 2)
                 return 1;
         int n = atoi(argv[1]);
-        for (int i = 2; i < MAX(argc, n); i++)
-                printf("%i ", atoi(argv[i]));
-        struct Node node = {1, NULL};
-        struct Node *head = &node;
+
+        struct Node *list = &(struct Node*){1, NULL};
+        struct Node **head = &list;
+        struct Node **current = head;
+        for (int i = 2; i < MAX(argc, n); i++) {
+                (*current).value = 
+                struct Node *head = &(struct Node){1, NULL};
+        }
         printf("%i, %i\n", (*head).value, (*head).next);
 }
