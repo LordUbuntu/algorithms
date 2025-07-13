@@ -16,12 +16,13 @@ int main(int argc, char *argv[]) {
                 return 1;
         int n = atoi(argv[1]);
 
-        struct Node *list = &(struct Node*){1, NULL};
+        struct Node *list;
         struct Node **head = &list;
-        struct Node **current = head;
+        struct Node **tail = head;
         for (int i = 2; i < MAX(argc, n); i++) {
-                (*current).value = 
-                struct Node *head = &(struct Node){1, NULL};
+                (**tail).value = atoi(argv[i]);
+                (**tail).next = &(struct Node){.value = 0, .next = NULL};
+                printf("%i, %i\n", (**tail).value, (**tail).next);
+                *tail = (**tail).next;
         }
-        printf("%i, %i\n", (*head).value, (*head).next);
 }
