@@ -12,6 +12,13 @@ typedef struct node {
 
 
 void append(node_t* head, int value) {
+        if (head == NULL) {
+                head = (node_t*) malloc(sizeof(node_t));
+                head->value = value;
+                head->next = NULL;
+                return;
+        }
+
         node_t* current = head;
         while (current->next != NULL)
                 current = current->next;
