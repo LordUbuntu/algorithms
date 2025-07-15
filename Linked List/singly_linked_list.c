@@ -51,6 +51,15 @@ int truncate(node_t* head) {
 }
 
 
+void show(node_t* head) {
+        node_t* current = head;
+        while (current != NULL) {
+                printf("%i ", current->value);
+                current = current->next;
+        }
+}
+
+
 int main(int argc, char *argv[]) {
         if (argc < 2)
                 return 1;
