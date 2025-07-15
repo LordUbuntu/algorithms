@@ -12,6 +12,7 @@ typedef struct node {
 
 
 void append(node_t* head, int value) {
+        // append to empty list
         if (head == NULL) {
                 head = (node_t*) malloc(sizeof(node_t));
                 head->value = value;
@@ -19,6 +20,7 @@ void append(node_t* head, int value) {
                 return;
         }
 
+        // append to non-empty list
         node_t* current = head;
         while (current->next != NULL)
                 current = current->next;
@@ -31,12 +33,14 @@ void append(node_t* head, int value) {
 int truncate(node_t* head) {
         int value = 0;
 
+        // empty list if head is only node
         if (head->next == NULL) {
                 value = head->value;
                 free(head);
                 return value;
         }
 
+        // remove tail node
         node_t* current = head;
         while (current->next->next != NULL)
                 current = current->next;
