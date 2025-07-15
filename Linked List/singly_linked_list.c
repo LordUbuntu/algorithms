@@ -12,11 +12,14 @@ typedef struct node {
 
 
 void append(node_t* head, int value) {
+        // prepare new node (alloc)
+        node_t* node = (node_t*) malloc(sizeof(node_t));
+        node->value = value;
+        node->next = NULL;
+
         // append to empty list
         if (head == NULL) {
-                head = (node_t*) malloc(sizeof(node_t));
-                head->value = value;
-                head->next = NULL;
+                head = node;
                 return;
         }
 
@@ -24,14 +27,16 @@ void append(node_t* head, int value) {
         node_t* current = head;
         while (current->next != NULL)
                 current = current->next;
-        current->next = (node_t*) malloc(sizeof(node_t));
-        current->next->value = value;
-        current->next->next = NULL;
+        current->next = node;
 }
 
 
 int truncate(node_t* head) {
         int value = 0;
+
+        // return early if already empty
+        if (head == NULL)
+                return value;
 
         // empty list if head is only node
         if (head->next == NULL) {
@@ -62,22 +67,10 @@ void show(node_t* head) {
 
 
 int main(int argc, char *argv[]) {
-        if (argc < 2)
-                return 1;
-        int n = atoi(argv[1]);
-
-        printf("n: %i\n", n);
-        node_t* list;
+        node_t* list = NULL;  // required in this implementation
         append(list, 1);
         append(list, 2);
         append(list, 3);
-        append(list, 4);
-        append(list, 5);
         show(list);
         truncate(list);
-        truncate(list);
-        truncate(list);
-        truncate(list);
-        truncate(list);
-        printf("list is: %s\n", list == NULL ? "T" : "F");
 }
