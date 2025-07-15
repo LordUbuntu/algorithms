@@ -37,6 +37,7 @@ int truncate(node_t* head) {
         if (head->next == NULL) {
                 value = head->value;
                 free(head);
+                head = NULL;
                 return value;
         }
 
