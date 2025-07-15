@@ -5,7 +5,7 @@
 #define MAX(A, B) (A > B ? A : B)
 
 
-struct node {
+typedef struct node {
         int value;
         struct node* next;
 } node_t;
@@ -15,10 +15,28 @@ void append(node_t* head, int value) {
         node_t* current = head;
         while (current->next != NULL)
                 current = current->next;
-
         current->next = (node_t*) malloc(sizeof(node_t));
         current->next->value = value;
         current->next->next = NULL;
+}
+
+
+int truncate(node_t* head) {
+        int value = 0;
+
+        if (head->next == NULL) {
+                value = head->value;
+                free(head);
+                return value;
+        }
+
+        node_t* current = head;
+        while (current->next->next != NULL)
+                current = current->next;
+        value = current->next->value;
+        free(current->next);
+        current->next = NULL;
+        return value;
 }
 
 
@@ -28,4 +46,6 @@ int main(int argc, char *argv[]) {
         int n = atoi(argv[1]);
 
         printf("n: %i\n", n);
+        node_t* list;
+        printf("list is: %s\n", list == NULL ? "T" : "F");
 }
