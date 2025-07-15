@@ -68,5 +68,16 @@ int main(int argc, char *argv[]) {
 
         printf("n: %i\n", n);
         node_t* list;
+        append(list, 1);
+        append(list, 2);
+        append(list, 3);
+        append(list, 4);
+        append(list, 5);
+        show(list);
+        truncate(list);
+        truncate(list);
+        truncate(list);
+        truncate(list);
+        truncate(list);
         printf("list is: %s\n", list == NULL ? "T" : "F");
 }
