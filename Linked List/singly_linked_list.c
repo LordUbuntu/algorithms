@@ -1,3 +1,6 @@
+/* Jacobus Burger (2025)
+ *
+ */
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -17,7 +20,7 @@ node_t* new_node(int value) {
 }
 
 
-void append(node_t** head, int value) {
+void insert_tail(node_t** head, int value) {
         // append to empty list
         if (*head == NULL) {
                 *head = new_node(value);
@@ -32,7 +35,7 @@ void append(node_t** head, int value) {
 }
 
 
-int truncate(node_t** head) {
+int remove_tail(node_t** head) {
         // remove from empty list (return error value INT_MIN)
         if (*head == NULL) {
                 return INT_MIN;
@@ -63,8 +66,8 @@ void show(node_t** head) {
                 return;
         }
         node_t* current = *head;
-        while (current->next != NULL) {
-                printf("%i ");
+        while (current != NULL) {
+                printf("%i ", current->value);
                 current = current->next;
         }
         puts("");
@@ -75,9 +78,5 @@ int main(int argc, char *argv[]) {
         node_t* head = NULL;
         append(&head, 1);
         append(&head, 2);
-        show(&head);
-        printf("%i\n", truncate(&head));
-        printf("%i\n", truncate(&head));
-        printf("%i\n", truncate(&head));
         show(&head);
 }
