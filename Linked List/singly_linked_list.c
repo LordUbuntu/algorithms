@@ -1,3 +1,4 @@
+#include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -19,15 +20,15 @@ node_t* new_node(int value) {
 }
 
 
-void append(node_t* head, int value) {
+void append(node_t** head, int value) {
         // append to empty list
-        if (head == NULL) {
-                head = new_node(value);
+        if (*head == NULL) {
+                *head = new_node(value);
                 return;
         }
 
         // append to non-empty list
-        node_t* current = head;
+        node_t* current = *head;
         while (current->next != NULL)
                 current = current->next;
         current->next = new_node(value);
@@ -36,9 +37,8 @@ void append(node_t* head, int value) {
 
 int truncate(node_t* head) {
         // remove from empty list
-        // TODO: how to express error on truncate of NULL list?
         if (head == NULL) {
-                return NULL;
+                return INT_MAX;  // outside usual possibilities
         }
 
         // remove from list with one element (decapitate)
@@ -61,7 +61,6 @@ int truncate(node_t* head) {
 
 
 int main(int argc, char *argv[]) {
-        node_t* list = new_node(1);
-        node_t* head = list;
-        return 0;
+        node_t* head = NULL;
+        append(&head, 1);
 }
