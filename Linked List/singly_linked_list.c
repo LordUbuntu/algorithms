@@ -57,11 +57,27 @@ int truncate(node_t** head) {
 }
 
 
+void show(node_t** head) {
+        if (*head == NULL) {
+                printf("(empty)\n");
+                return;
+        }
+        node_t* current = *head;
+        while (current->next != NULL) {
+                printf("%i ");
+                current = current->next;
+        }
+        puts("");
+}
+
+
 int main(int argc, char *argv[]) {
         node_t* head = NULL;
         append(&head, 1);
         append(&head, 2);
+        show(&head);
         printf("%i\n", truncate(&head));
         printf("%i\n", truncate(&head));
         printf("%i\n", truncate(&head));
+        show(&head);
 }
