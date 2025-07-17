@@ -20,6 +20,20 @@ node_t* new_node(int value) {
 }
 
 
+void insert_head(node_t** head, int value) {
+        // prepend to empty list
+        if (*head == NULL) {
+                *head = new_node(value);
+                return;
+        }
+
+        // prepend to non-empty list
+        node_t* current = new_node(value);
+        current->next = *head;
+        *head = current;
+}
+
+
 void insert_tail(node_t** head, int value) {
         // append to empty list
         if (*head == NULL) {
@@ -35,11 +49,21 @@ void insert_tail(node_t** head, int value) {
 }
 
 
+int remove_head(node_t** head) {
+        if (*head == NULL)
+                return INT_MIN;
+
+        int value = (*head)->value;
+        node_t* node = (*head)->next;
+        free(*head);
+        *head = node;
+}
+
+
 int remove_tail(node_t** head) {
         // remove from empty list (return error value INT_MIN)
-        if (*head == NULL) {
+        if (*head == NULL)
                 return INT_MIN;
-        }
 
         // remove from list with one element (decapitate)
         if ((*head)->next == NULL) {
@@ -76,7 +100,25 @@ void show(node_t** head) {
 
 int main(int argc, char *argv[]) {
         node_t* head = NULL;
-        append(&head, 1);
-        append(&head, 2);
+        show(&head);
+        insert_head(&head, 1);
+        insert_head(&head, 2);
+        show(&head);
+        insert_tail(&head, 3);
+        insert_tail(&head, 4);
+        show(&head);
+        remove_head(&head);
+        show(&head);
+        remove_tail(&head);
+        show(&head);
+        remove_tail(&head);
+        remove_tail(&head);
+        remove_tail(&head);
+        show(&head);
+        insert_head(&head, 13);
+        show(&head);
+        remove_head(&head);
+        show(&head);
+        remove_head(&head);
         show(&head);
 }
