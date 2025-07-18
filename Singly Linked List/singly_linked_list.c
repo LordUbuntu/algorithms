@@ -99,6 +99,10 @@ int remove_tail(node_t** head) {
 }
 
 
+// TODO:
+int remove(node_t** head, int value, int index);
+
+
 void show(node_t** head) {
         // show empty list
         if (*head == NULL) {
