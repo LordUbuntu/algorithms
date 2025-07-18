@@ -8,6 +8,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
+// there doesn't seem to be a single universal implemenation of a singly linked list, there's some with more and some with less functions. So for the sake of simplicity, I'll think about having just insert, remove, and search functions.
 
 
 typedef struct node {
