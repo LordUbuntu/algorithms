@@ -49,6 +49,21 @@ void insert_tail(node_t** head, int value) {
 }
 
 
+void insert(node_t** head, int value, int index) {
+        // append to empty list
+        if (*head == NULL) {
+                *head = new_node(value);
+                return;
+        }
+
+        // append to non-empty list until before index
+        node_t* current = *head;
+        for (int i = 0; i < index && current->next != NULL; i++)
+                current = current->next;
+        current->next = new_node(value);
+}
+
+
 int remove_head(node_t** head) {
         if (*head == NULL)
                 return INT_MIN;
