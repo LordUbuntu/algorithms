@@ -28,9 +28,9 @@ void insert_head(node_t** head, int value) {
         }
 
         // prepend to non-empty list
-        node_t* current = new_node(value);
-        current->next = *head;
-        *head = current;
+        node_t* node = new_node(value);
+        node->next = *head;
+        *head = node;
 }
 
 
@@ -42,10 +42,10 @@ void insert_tail(node_t** head, int value) {
         }
 
         // append to non-empty list
-        node_t* current = *head;
-        while (current->next != NULL)
-                current = current->next;
-        current->next = new_node(value);
+        node_t* node = *head;
+        while (node->next != NULL)
+                node = node->next;
+        node->next = new_node(value);
 }
 
 
@@ -57,10 +57,10 @@ void insert(node_t** head, int value, int index) {
         }
 
         // append to non-empty list until before index
-        node_t* current = *head;
-        for (int i = 0; i < index && current->next != NULL; i++)
-                current = current->next;
-        current->next = new_node(value);
+        node_t* node = *head;
+        for (int i = 0; i < index && node->next != NULL; i++)
+                node = node->next;
+        node->next = new_node(value);
 }
 
 
@@ -89,25 +89,28 @@ int remove_tail(node_t** head) {
         }
 
         // remove from list with more than one element (amputate)
-        node_t* current = *head;
-        while (current->next->next != NULL)
-                current = current->next;
-        int value = current->next->value;
-        free(current->next);
-        current->next = NULL;
+        node_t* node = *head;
+        while (node->next->next != NULL)
+                node = node->next;
+        int value = node->next->value;
+        free(node->next);
+        node->next = NULL;
         return value;
 }
 
 
 void show(node_t** head) {
+        // show empty list
         if (*head == NULL) {
                 printf("(empty)\n");
                 return;
         }
-        node_t* current = *head;
-        while (current != NULL) {
-                printf("%i ", current->value);
-                current = current->next;
+
+        // show non-empty list
+        node_t* node = *head;
+        while (node != NULL) {
+                printf("%i ", node->value);
+                node = node->next;
         }
         puts("");
 }
