@@ -1,9 +1,10 @@
-// Jacobus Burger (2025-07-03)
-// Implementation of bit packing technique.
-// Note: when compiling be sure to link math library. eg:
-//      gcc bit_packing.c -lm -o bit_packing
-// See:
-// - https://www.cs.cornell.edu/courses/cs3410/2024fa/notes/bitpack.html
+/* Jacobus Burger (2025-07-03)
+ * Implementation of bit packing technique.
+ * Note: when compiling be sure to link math library. eg:
+ *      gcc bit_packing.c -lm -o bit_packing
+ * See:
+ * - https://www.cs.cornell.edu/courses/cs3410/2024fa/notes/bitpack.html
+ */
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
