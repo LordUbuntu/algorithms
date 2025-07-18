@@ -1,6 +1,9 @@
 # Jacobus Burger (2022)
-# Linked List implementation in Python for fun and practice
-import operator as op
+# Singly Linked List implemented in Python 3
+#
+# See:
+# - https://en.wikipedia.org/wiki/Linked_list
+# - 
 from functools import total_ordering
 
 

@@ -1,5 +1,9 @@
 /* Jacobus Burger (2025)
+ * Singly Linked List implemented in C
  *
+ * See:
+ * - https://en.wikipedia.org/wiki/Linked_list
+ * - https://www.learn-c.org/en/Linked_lists
  */
 #include <limits.h>
 #include <stdlib.h>
