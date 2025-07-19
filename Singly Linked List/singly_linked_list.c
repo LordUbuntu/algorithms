@@ -73,6 +73,9 @@ int remove(node_t** head, int value, int index) {
 }
 
 
+int search(node_t** head, int value); // TODO:
+
+
 void show(node_t** head) {
         // show empty list
         if (*head == NULL) {
