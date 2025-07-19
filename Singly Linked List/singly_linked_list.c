@@ -25,39 +25,18 @@ node_t* new_node(int value) {
 }
 
 
-void insert_head(node_t** head, int value) {
-        // prepend to empty list
-        if (*head == NULL) {
-                *head = new_node(value);
-                return;
-        }
-
-        // prepend to non-empty list
-        node_t* node = new_node(value);
-        node->next = *head;
-        *head = node;
-}
-
-
-void insert_tail(node_t** head, int value) {
-        // append to empty list
-        if (*head == NULL) {
-                *head = new_node(value);
-                return;
-        }
-
-        // append to non-empty list
-        node_t* node = *head;
-        while (node->next != NULL)
-                node = node->next;
-        node->next = new_node(value);
-}
-
-
 void insert(node_t** head, int value, int index) {
         // append to empty list
         if (*head == NULL) {
                 *head = new_node(value);
+                return;
+        }
+
+        // append to head of non-empty list
+        if (index < 0) {
+                node_t* node = new_node(value);
+                node->next = *head;
+                *head = node;
                 return;
         }
 
