@@ -48,43 +48,29 @@ void insert(node_t** head, int value, int index) {
 }
 
 
-int remove_head(node_t** head) {
-        if (*head == NULL)
-                return INT_MIN;
-
-        int value = (*head)->value;
-        node_t* node = (*head)->next;
-        free(*head);
-        *head = node;
-}
-
-
-int remove_tail(node_t** head) {
+int remove(node_t** head, int value, int index) {
         // remove from empty list (return error value INT_MIN)
         if (*head == NULL)
                 return INT_MIN;
 
-        // remove from list with one element (decapitate)
-        if ((*head)->next == NULL) {
+        // remove from head of non-empty list
+        if (index <= 0) {
                 int value = (*head)->value;
+                node_t* node = (*head)->next;
                 free(*head);
-                *head = NULL;
+                *head = node;
                 return value;
         }
 
-        // remove from list with more than one element (amputate)
+        // remove from body/tail of non-empty list
         node_t* node = *head;
-        while (node->next->next != NULL)
+        for (int i = 0; i < index && node->next->next != NULL; i++)
                 node = node->next;
         int value = node->next->value;
         free(node->next);
         node->next = NULL;
         return value;
 }
-
-
-// TODO:
-int remove(node_t** head, int value, int index);
 
 
 void show(node_t** head) {
