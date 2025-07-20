@@ -23,7 +23,7 @@ node_t* new_node(int value) {
 }
 
 
-void insert(node_t** head, int value, int index) {
+void insert_node(node_t** head, int value, int index) {
         // insert head node for empty list
         if (*head == NULL) {
                 *head = new_node(value);
@@ -46,7 +46,8 @@ void insert(node_t** head, int value, int index) {
 }
 
 
-int remove(node_t** head, int value, int index) {
+// TODO: fix double free
+int remove_node(node_t** head, int index) {
         // remove from empty list (return error value INT_MIN)
         if (*head == NULL)
                 return INT_MIN;
@@ -71,7 +72,7 @@ int remove(node_t** head, int value, int index) {
 }
 
 
-int search(node_t** head, int value) {
+int search_node(node_t** head, int value) {
         // don't scan empty list
         if (*head == NULL)
                 return -1;
@@ -95,7 +96,8 @@ int search(node_t** head, int value) {
 }
 
 
-void show(node_t** head) {
+// TODO: catch cycles!
+void show_node(node_t** head) {
         // show empty list
         if (*head == NULL) {
                 printf("(empty)\n");
@@ -114,5 +116,33 @@ void show(node_t** head) {
 
 int main(int argc, char *argv[]) {
         node_t* head = NULL;
-
+        show_node(&head); // (empty)
+        insert_node(&head, 1, 0);
+        insert_node(&head, 2, -1);
+        insert_node(&head, 3, 0);
+        show_node(&head); // 3 2 1
+        printf("r: %i\n", remove_node(&head, -1)); // 3
+        printf("r: %i\n", remove_node(&head, 1)); // 1
+        show_node(&head); // 2
+        insert_node(&head, 4, 5);
+        insert_node(&head, 5, 3);
+        insert_node(&head, 6, 0);
+        show_node(&head); // 6 2 4 5
+        printf("s: %i\n", search_node(&head, 0)); // -1
+        printf("s: %i\n", search_node(&head, 2)); // 1
+        printf("s: %i\n", search_node(&head, 4)); // 2
+        // create loop
+        node_t* loop = head;
+        while (loop->next != NULL)
+                loop = loop->next;
+        loop->next = head;
+        // test for loop
+        printf("s: %i\n", search_node(&head, 3)); // -1
+        // get back to NULL list
+        remove_node(&head, 0);
+        remove_node(&head, 0);
+        remove_node(&head, 0);
+        remove_node(&head, 0);
+        remove_node(&head, 0); // 1 more than list length to test safety
+        show_node(&head); // (empty)
 }
