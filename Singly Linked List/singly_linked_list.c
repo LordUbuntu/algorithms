@@ -72,7 +72,11 @@ int remove(node_t** head, int value, int index) {
 
 
 int search(node_t** head, int value) {
-        // scan through list for index of value
+        // don't scan empty list
+        if (*head == NULL)
+                return -1;
+
+        // scan through non-empty list for index of value
         node_t* node = *head;
         node_t* hare = node->next != NULL ? node->next->next : NULL;
         size_t index = 0;
@@ -81,10 +85,6 @@ int search(node_t** head, int value) {
                 hare = hare != NULL && hare->next != NULL ? hare->next->next : NULL;
                 index++;
         }
-
-        // could not find element, error value
-        if (node == NULL)
-                return -1;
 
         // cycle detected, error value
         if (node == hare)
