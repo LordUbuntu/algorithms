@@ -1,6 +1,5 @@
 /* Jacobus Burger (2025)
  * Singly Linked List implemented in C
- *
  * See:
  * - https://en.wikipedia.org/wiki/Linked_list
  * - https://www.learn-c.org/en/Linked_lists
@@ -8,7 +7,6 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
-// there doesn't seem to be a single universal implemenation of a singly linked list, there's some with more and some with less functions. So for the sake of simplicity, I'll think about having just insert, remove, and search functions.
 
 
 typedef struct node {
@@ -73,7 +71,22 @@ int remove(node_t** head, int value, int index) {
 }
 
 
-int search(node_t** head, int value); // TODO:
+int search(node_t** head, int value) {
+        // scan through list for index of value
+        node_t* node = *head;
+        size_t index = 0;
+        while (node != NULL && node->value != value) {
+                node = node->next;
+                index++;
+        }
+
+        // could not find element, error value
+        if (node == NULL)
+                return -1;
+
+        // found element, return index of first occurence in list
+        return index;
+}
 
 
 void show(node_t** head) {
