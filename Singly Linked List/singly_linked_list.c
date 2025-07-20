@@ -76,7 +76,7 @@ int search(node_t** head, int value) {
         node_t* node = *head;
         node_t* hare = node->next != NULL ? node->next->next : NULL;
         size_t index = 0;
-        while (node != NULL && node->value != value && node != hare) {
+        while (node != hare && node->value != value) {
                 node = node->next;
                 hare = hare != NULL && hare->next != NULL ? hare->next->next : NULL;
                 index++;
