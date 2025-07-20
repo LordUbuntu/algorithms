@@ -24,21 +24,21 @@ node_t* new_node(int value) {
 
 
 void insert(node_t** head, int value, int index) {
-        // append to empty list
+        // insert head node for empty list
         if (*head == NULL) {
                 *head = new_node(value);
                 return;
         }
 
-        // append to head of non-empty list
-        if (index < 0) {
+        // insert head node for non-empty list
+        if (index <= 0) {
                 node_t* node = new_node(value);
                 node->next = *head;
                 *head = node;
                 return;
         }
 
-        // append to non-empty list until before index
+        // insert node to body/tail of non-empty list
         node_t* node = *head;
         for (int i = 0; i < index && node->next != NULL; i++)
                 node = node->next;
@@ -114,25 +114,5 @@ void show(node_t** head) {
 
 int main(int argc, char *argv[]) {
         node_t* head = NULL;
-        show(&head);
-        insert_head(&head, 1);
-        insert_head(&head, 2);
-        show(&head);
-        insert_tail(&head, 3);
-        insert_tail(&head, 4);
-        show(&head);
-        remove_head(&head);
-        show(&head);
-        remove_tail(&head);
-        show(&head);
-        remove_tail(&head);
-        remove_tail(&head);
-        remove_tail(&head);
-        show(&head);
-        insert_head(&head, 13);
-        show(&head);
-        remove_head(&head);
-        show(&head);
-        remove_head(&head);
-        show(&head);
+
 }
