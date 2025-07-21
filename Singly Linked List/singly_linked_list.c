@@ -99,7 +99,6 @@ int search_node(node_t** head, int value) {
 }
 
 
-// TODO: catch cycles!
 void show_node(node_t** head) {
         // show empty list
         if (*head == NULL) {
@@ -112,6 +111,10 @@ void show_node(node_t** head) {
         while (node != NULL) {
                 printf("%i ", node->value);
                 node = node->next;
+                if (node == *head) {
+                        printf("(loop)");
+                        break;
+                }
         }
         puts("");
 }
@@ -139,6 +142,7 @@ int main(int argc, char *argv[]) {
         while (loop->next != NULL)
                 loop = loop->next;
         loop->next = head;
+        show_node(&head); // 6 2 4 5 (loop)
         // get back to NULL list
         remove_node(&head, 0);
         remove_node(&head, 0); // 1 more than list length to test safety
