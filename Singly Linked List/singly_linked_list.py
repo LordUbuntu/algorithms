@@ -39,6 +39,7 @@ class Node:
 class List:
     # A karg of values of any type are taken instead of a karg of Nodes to make it
     # much easier to simply initialize a long linked list of generic values.
+    # TODO: simplify to 3 functions, remove tail (not necessary for SLL)
     def __init__(self):
         # head and tail are initially both None because the simplest linked list
         # graph is an empty one, and from there the initial node and all subsequent
