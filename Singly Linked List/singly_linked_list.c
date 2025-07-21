@@ -46,7 +46,6 @@ void insert_node(node_t** head, int value, int index) {
 }
 
 
-// TODO: fix double free
 int remove_node(node_t** head, int index) {
         // remove from empty list (return error value INT_MIN)
         if (*head == NULL)
@@ -54,6 +53,10 @@ int remove_node(node_t** head, int index) {
 
         // remove from head of non-empty list
         if (index <= 0) {
+                // resolve loops
+                if ((*head)->next != NULL && (*head)->next->next == *head)
+                        (*head)->next->next = NULL;
+                // remove head node
                 int value = (*head)->value;
                 node_t* node = (*head)->next;
                 free(*head);
@@ -136,13 +139,9 @@ int main(int argc, char *argv[]) {
         while (loop->next != NULL)
                 loop = loop->next;
         loop->next = head;
-        // test for loop
-        printf("s: %i\n", search_node(&head, 3)); // -1
         // get back to NULL list
         remove_node(&head, 0);
-        remove_node(&head, 0);
-        remove_node(&head, 0);
-        remove_node(&head, 0);
+        remove_node(&head, 0); // 1 more than list length to test safety
         remove_node(&head, 0); // 1 more than list length to test safety
         show_node(&head); // (empty)
 }
