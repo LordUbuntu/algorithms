@@ -106,6 +106,8 @@ void show_node(node_t** head) {
                 return;
         }
 
+        // TODO: fix segfaulting after emptying loop list
+
         // show non-empty list
         node_t* node = *head;
         while (node != NULL) {
