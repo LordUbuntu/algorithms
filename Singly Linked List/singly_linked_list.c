@@ -51,6 +51,14 @@ int remove_node(node_t** head, int index) {
         if (*head == NULL)
                 return INT_MIN;
 
+        // remove head as only element from list
+        if ((*head)->next == NULL) {
+                int value = (*head)->value;
+                free(*head);
+                *head = NULL;
+                return value;
+        }
+
         // remove from head of non-empty list
         if (index <= 0) {
                 // resolve loops
@@ -105,8 +113,6 @@ void show_node(node_t** head) {
                 printf("(empty)\n");
                 return;
         }
-
-        // TODO: fix segfaulting after emptying loop list
 
         // show non-empty list
         node_t* node = *head;
