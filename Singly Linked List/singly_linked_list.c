@@ -117,6 +117,7 @@ void show_node(node_t** head) {
         // show non-empty list
         node_t* node = *head;
         while (node != NULL) {
+                // BUG: segfault because (*head)->next != NULL but i freed
                 printf("%i ", node->value);
                 node = node->next;
                 if (node == *head) {
