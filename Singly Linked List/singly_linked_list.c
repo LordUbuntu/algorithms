@@ -23,6 +23,12 @@ node_t* new_node(int value) {
 }
 
 
+void has_loop(node_t** head);
+
+
+void remove_loop(node_t** head);
+
+
 void insert_node(node_t** head, int value, int index) {
         // insert head node for empty list
         if (*head == NULL) {
@@ -61,13 +67,9 @@ int remove_node(node_t** head, int index) {
 
         // remove from head of non-empty list
         if (index <= 0) {
-                // resolve loops
-                if ((*head)->next != NULL && (*head)->next->next == *head)
-                        (*head)->next->next = NULL;
-                // remove head node
                 int value = (*head)->value;
                 node_t* node = (*head)->next;
-                free(*head);
+                free(*head); // double-frees when list has loop
                 *head = node;
                 return value;
         }
@@ -98,7 +100,7 @@ int search_node(node_t** head, int value) {
                 index++;
         }
 
-        // cycle detected, error value
+        // cycle detected using floyd's algorithm, return error
         if (node == hare)
                 return -1;
 
@@ -117,7 +119,6 @@ void show_node(node_t** head) {
         // show non-empty list
         node_t* node = *head;
         while (node != NULL) {
-                // BUG: segfault because (*head)->next != NULL but i freed
                 printf("%i ", node->value);
                 node = node->next;
                 if (node == *head) {
@@ -146,12 +147,6 @@ int main(int argc, char *argv[]) {
         printf("s: %i\n", search_node(&head, 0)); // -1
         printf("s: %i\n", search_node(&head, 2)); // 1
         printf("s: %i\n", search_node(&head, 4)); // 2
-        // create loop
-        node_t* loop = head;
-        while (loop->next != NULL)
-                loop = loop->next;
-        loop->next = head;
-        show_node(&head); // 6 2 4 5 (loop)
         // get back to NULL list
         remove_node(&head, 0);
         remove_node(&head, 0); // 1 more than list length to test safety
