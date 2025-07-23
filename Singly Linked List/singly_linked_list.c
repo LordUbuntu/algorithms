@@ -23,12 +23,6 @@ node_t* new_node(int value) {
 }
 
 
-void has_loop(node_t** head);
-
-
-void remove_loop(node_t** head);
-
-
 void insert_node(node_t** head, int value, int index) {
         // insert head node for empty list
         if (*head == NULL) {
@@ -92,17 +86,11 @@ int search_node(node_t** head, int value) {
 
         // scan through non-empty list for index of value
         node_t* node = *head;
-        node_t* hare = node->next != NULL ? node->next->next : NULL;
         size_t index = 0;
-        while (node != hare && node->value != value) {
+        while (node != NULL && node->value != value) {
                 node = node->next;
-                hare = hare != NULL && hare->next != NULL ? hare->next->next : NULL;
                 index++;
         }
-
-        // cycle detected using floyd's algorithm, return error
-        if (node == hare)
-                return -1;
 
         // found element, return index of first occurence in list
         return index;
@@ -121,10 +109,6 @@ void show_node(node_t** head) {
         while (node != NULL) {
                 printf("%i ", node->value);
                 node = node->next;
-                if (node == *head) {
-                        printf("(loop)");
-                        break;
-                }
         }
         puts("");
 }
