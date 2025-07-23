@@ -1,6 +1,5 @@
 # Jacobus Burger (2022)
 # Singly Linked List implemented in Python 3
-#
 # See:
 # - https://en.wikipedia.org/wiki/Linked_list
 # - 
@@ -72,38 +71,25 @@ class List:
             current.next = node
         self.length += 1
 
-    def pop(self):
-        if self.length == 0:
-            return None
-        else:
-            node = self.head
-            self.head = self.head.next
-            node.next = None
-            self.length -= 1
-            return node
-
-    def truncate(self):
-        if self.length == 0:
-            return None
-        else:
-            prev = self.head
-            while prev.next != self.tail:
-                prev = prev.next
-            node = self.tail
-            self.tail = prev
-            self.length -= 1
-            return node
-
     def remove(self, index):
         if self.length == 0:
             # remove from empty list
             return None
         elif index <= 0:
             # remove from head
-            return self.pop()
+            node = self.head
+            self.head = self.head.next
+            node.next = None
+            self.length -= 1
+            return node
         elif index > self.length - 1:
             # remove from tail
-            return self.truncate()
+            prev = self.head
+            while prev.next != self.tail:
+                prev = prev.next
+            node = self.tail
+            self.length -= 1
+            return node
         else:
             # remove from spine/body
             current = self.head
