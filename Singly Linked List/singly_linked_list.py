@@ -87,7 +87,8 @@ class List:
             prev = self.head
             while prev.next != self.tail:
                 prev = prev.next
-            node = self.tail
+            node = prev.next
+            prev.next = None
             self.length -= 1
             return node
         else:
