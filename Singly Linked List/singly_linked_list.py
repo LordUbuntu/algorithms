@@ -47,37 +47,21 @@ class List:
         self.head = None
         self.tail = None
         self.length = 0  # memoize length for O(1) time and space
-    
-    def prepend(self, value):
-        node = Node(value)
-        if self.length == 0:
-            self.head = node
-            self.tail = node
-        else:
-            node.next = self.head
-            self.head = node
-        self.length += 1
-
-    def append(self, value):
-        node = Node(value)
-        if self.length == 0:
-            self.head = node
-            self.tail = node
-        else:
-            self.tail.next = node
-            self.tail = node
-        self.length += 1
 
     def insert(self, value, index):
+        node = Node(value)
         if self.length == 0:
-            # insert into empty list
-            self.prepend(value)
+            # insert at head of empty list
+            self.head = node
+            self.tail = node
         elif index <= 0:
-            # insert into the head
-            self.prepend(value)
+            # insert at head of non-empty list
+            node.next = self.head
+            self.head = node
         elif index > self.length - 1:
             # insert into the tail
-            self.append(value)
+            self.tail.next = node
+            self.tail - node
         else:
             # insert into the spine/body
             current = self.head
