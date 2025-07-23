@@ -116,24 +116,10 @@ void show_node(node_t** head) {
 
 int main(int argc, char *argv[]) {
         node_t* head = NULL;
+
         show_node(&head); // (empty)
-        insert_node(&head, 1, 0);
-        insert_node(&head, 2, -1);
-        insert_node(&head, 3, 0);
-        show_node(&head); // 3 2 1
-        printf("r: %i\n", remove_node(&head, -1)); // 3
-        printf("r: %i\n", remove_node(&head, 1)); // 1
-        show_node(&head); // 2
-        insert_node(&head, 4, 5);
-        insert_node(&head, 5, 3);
-        insert_node(&head, 6, 0);
-        show_node(&head); // 6 2 4 5
-        printf("s: %i\n", search_node(&head, 0)); // -1
-        printf("s: %i\n", search_node(&head, 2)); // 1
-        printf("s: %i\n", search_node(&head, 4)); // 2
-        // get back to NULL list
-        remove_node(&head, 0);
-        remove_node(&head, 0); // 1 more than list length to test safety
-        remove_node(&head, 0); // 1 more than list length to test safety
-        show_node(&head); // (empty)
+
+        for (int i = 1; i < argc; i++)
+                insert_node(&head, atoi(argv[i]), argc);
+        show_node(&head);
 }
