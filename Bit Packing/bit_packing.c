@@ -1,13 +1,12 @@
 /* Jacobus Burger (2025-07-03)
  * Implementation of bit packing technique.
- * Note: when compiling be sure to link math library. eg:
- *      gcc bit_packing.c -lm -o bit_packing
  * See:
  * - https://www.cs.cornell.edu/courses/cs3410/2024fa/notes/bitpack.html
  */
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <limits.h>
 
 
 // P = Bit Pack, D = Data, O = Offset, N = mask size
@@ -15,8 +14,7 @@
 //      clearing the section to store new data is required.
 // READ unpacks N bits from bit pack P at offset O
 // CLEAR zeroes out N bits from bit pack P at offset O
-#define MASK(N)         ( (1 << N) - 1 )
-//      ^ maybe there's a way to implement a mask without relying on pow?
+#define MASK(N)         ( N >= (sizeof(N) * CHAR_BIT) ? -1 : (1 << N) - 1 )
 #define PACK(P, D, O)   ( P |= (D << O) )
 #define READ(P, N, O)   ( (P & (MASK(N) << O)) >> O )
 #define CLEAR(P, N, O)  ( P &= ~(MASK(N) << O) )
