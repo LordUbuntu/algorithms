@@ -1,5 +1,5 @@
 /* Jacobus Burger (2025-07-05)
- * Implementation of a bit field (a compact represenation of data)
+ * Implementation of a bit field
  * See:
  * - https://en.wikipedia.org/wiki/Bit_field
  * - https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Bit-Field-Packing.html
