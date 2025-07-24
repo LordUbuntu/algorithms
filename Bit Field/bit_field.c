@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 
+// Example of a Bit Field in action
 #define A 0b01100001
 #define B 0b01100010
 #define C 0b01100011
