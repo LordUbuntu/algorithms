@@ -26,6 +26,12 @@ class List:
     def __init__(self):
         self.head = None
 
+    def __iter__(self):
+        current = self.head
+        while current:
+            yield current.value
+            current = current.next
+
     def insert(self, value, index):
         node = Node(value)
         if self.head is None:
