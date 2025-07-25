@@ -6,16 +6,9 @@
 from functools import total_ordering
 
 
-
-# total ordering was used because I am lazy :)
 @total_ordering
 class Node:
     def __init__(self, value=None):
-        # I include both next and prev for singly and doubly linked list
-        # implementations, but I could just as well have a list of reference nodes
-        # for a more generic graph (where each vertex can have n edges). Because
-        # linked lists are a linear directed graph which is a subset of a more
-        # general graph.
         self.value = value
         self.next = None
 
@@ -29,20 +22,8 @@ class Node:
         return Node(self.value)
 
 
-# A linked list is composed of Nodes, so it does not inherit from a Node base class
-# composition over inheritence
-# It's possible to implement singly and doubly linked lists recursively
-# I decided to implement just a doubly linked list since it's an extension of the
-# singly linked list and has broader applications. The difference only involves
-# anywhere where prev is used
 class List:
-    # A karg of values of any type are taken instead of a karg of Nodes to make it
-    # much easier to simply initialize a long linked list of generic values.
-    # TODO: simplify to 3 functions, remove tail (not necessary for SLL)
     def __init__(self):
-        # head and tail are initially both None because the simplest linked list
-        # graph is an empty one, and from there the initial node and all subsequent
-        # nodes can be constructed
         self.head = None
         self.tail = None
         self.length = 0  # memoize length for O(1) time and space
