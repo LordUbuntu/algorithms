@@ -25,27 +25,34 @@ node_t* new_node(int value) {
 
 
 void insert_node(node_t** head, int value, int index) {
+        node_t* node = new_node(value);
+
         // insert head node for empty list
         if (*head == NULL) {
-                *head = new_node(value);
+                *head = node;
                 return;
         }
 
         // insert head node for non-empty list
         if (index <= 0) {
-                node_t* node = new_node(value);
                 node->next = *head;
                 *head = node;
                 return;
         }
 
         // insert node to body/tail of non-empty list
-        node_t* node = *head;
-        for (int i = 0; i < index && node->next != NULL; i++)
-                node = node->next;
-        node_t* temp = new_node(value);
-        temp->next = node->next;
-        node->next = temp;
+        node_t* current = *head;
+        for (int i = 0; i < index && current->next != NULL; i++)
+                current = current->next;
+        if (current->next == NULL) {
+                current->next = node;
+                return;
+        }
+        node_t* temp = current->next;
+        current->next = node;
+        node->next = temp->next;
+        temp->next = NULL;
+        free(temp);
 }
 
 
