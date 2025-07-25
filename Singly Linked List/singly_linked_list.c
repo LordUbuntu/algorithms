@@ -1,4 +1,4 @@
-/* Jacobus Burger (2025)
+/* Jacobus Burger (2025-07-17)
  * Singly Linked List implemented in C
  * See:
  * - https://en.wikipedia.org/wiki/Linked_list
