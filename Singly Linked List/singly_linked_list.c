@@ -93,9 +93,14 @@ int search_node(node_t** head, int value) {
         node_t* node = *head;
         size_t index = 0;
         bool found = false;
-        while (node != NULL && node->value != value) {
+        while (node != NULL) {
+                if (node->value == value) {
+                        found = true;
+                        break;
+                }
                 node = node->next;
                 index++;
+
         }
 
         // if found element, return index of first occurence in list
