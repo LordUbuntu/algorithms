@@ -42,7 +42,9 @@ void insert_node(node_t** head, int value, int index) {
         node_t* node = *head;
         for (int i = 0; i < index && node->next != NULL; i++)
                 node = node->next;
-        node->next = new_node(value);
+        node_t* temp = new_node(value);
+        temp->next = node->next;
+        node->next = temp;
 }
 
 
