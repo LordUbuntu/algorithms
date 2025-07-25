@@ -7,6 +7,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 
 typedef struct node {
@@ -75,8 +76,10 @@ int remove_node(node_t** head, int index) {
         for (int i = 0; i < index && node->next->next != NULL; i++)
                 node = node->next;
         int value = node->next->value;
-        free(node->next);
-        node->next = NULL;
+        node_t* temp = node->next;
+        node->next = node->next->next;
+        temp->next = NULL;
+        free(temp);
         return value;
 }
 
