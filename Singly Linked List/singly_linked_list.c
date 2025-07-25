@@ -50,9 +50,7 @@ void insert_node(node_t** head, int value, int index) {
         }
         node_t* temp = current->next;
         current->next = node;
-        node->next = temp->next;
-        temp->next = NULL;
-        free(temp);
+        node->next = temp
 }
 
 
