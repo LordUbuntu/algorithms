@@ -87,13 +87,17 @@ int search_node(node_t** head, int value) {
         // scan through non-empty list for index of value
         node_t* node = *head;
         size_t index = 0;
+        bool found = false;
         while (node != NULL && node->value != value) {
                 node = node->next;
                 index++;
         }
 
-        // found element, return index of first occurence in list
-        return index;
+        // if found element, return index of first occurence in list
+        if (found)
+                return index;
+        else
+                return -1;
 }
 
 
@@ -117,9 +121,42 @@ void show_node(node_t** head) {
 int main(int argc, char *argv[]) {
         node_t* head = NULL;
 
+        puts("start:");
         show_node(&head); // (empty)
 
+        puts("insert nodes:");
         for (int i = 1; i < argc; i++)
                 insert_node(&head, atoi(argv[i]), argc);
+        show_node(&head);
+
+        puts("search for node with value 13:");
+        if (search_node(&head, 13) > -1)
+                printf("13 found at %i\n", search_node(&head, 13));
+        else
+                puts("13 not found");
+
+        puts("remove from head:");
+        printf("value: %i\n", remove_node(&head, -1));
+        show_node(&head);
+
+        puts("remove from tail:");
+        printf("value: %i\n", remove_node(&head, 1));
+        show_node(&head);
+
+
+        puts("remove from end of tail:");
+        printf("value: %i\n", remove_node(&head, INT_MAX - 1));
+        show_node(&head);
+
+
+        puts("removing all nodes:");
+        while (head != NULL) {
+                show_node(&head);
+                remove_node(&head, 0);
+        }
+
+        puts("removing from empty list");
+        remove_node(&head, -1);
+        remove_node(&head, 1);
         show_node(&head);
 }
