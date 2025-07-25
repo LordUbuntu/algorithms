@@ -25,32 +25,29 @@ class Node:
 class List:
     def __init__(self):
         self.head = None
-        self.tail = None
-        self.length = 0  # memoize length for O(1) time and space
 
     def insert(self, value, index):
         node = Node(value)
-        if self.length == 0:
+        if self.head is None:
             # insert at head of empty list
             self.head = node
-            self.tail = node
         elif index <= 0:
             # insert at head of non-empty list
             node.next = self.head
             self.head = node
-        elif index > self.length - 1:
-            # insert into the tail
-            self.tail.next = node
-            self.tail - node
         else:
-            # insert into the spine/body
+            # insert into the body/tail
             current = self.head
             for _ in range(index):
+                if current.next is None:
+                    break
                 current = current.next
-            node = Node(value)
-            node.next = current.next
-            current.next = node
-        self.length += 1
+            if current.next is None:
+                current.next = Node(value)
+            else:
+                temp = current.next
+                current.next = temp.next
+                temp.next = None
 
     def remove(self, index):
         if self.length == 0:
