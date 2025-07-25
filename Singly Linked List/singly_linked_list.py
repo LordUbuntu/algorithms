@@ -8,7 +8,7 @@ from functools import total_ordering
 
 @total_ordering
 class Node:
-    def __init__(self, value=None):
+    def __init__(self, value):
         self.value = value
         self.next = None
 
@@ -25,6 +25,9 @@ class Node:
 class List:
     def __init__(self):
         self.head = None
+
+    def __str__(self):
+        return " -> ".join([str(node.value) for node in self])
 
     def __iter__(self):
         current = self.head
@@ -53,8 +56,7 @@ class List:
             else:
                 temp = current.next
                 current.next = node
-                node.next = temp.next
-                temp.next = None
+                node.next = temp
 
     def remove(self, index):
         if self.length == 0:
