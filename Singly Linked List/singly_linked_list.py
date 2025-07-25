@@ -43,10 +43,11 @@ class List:
                     break
                 current = current.next
             if current.next is None:
-                current.next = Node(value)
+                current.next = node
             else:
                 temp = current.next
-                current.next = temp.next
+                current.next = node
+                node.next = temp.next
                 temp.next = None
 
     def remove(self, index):
