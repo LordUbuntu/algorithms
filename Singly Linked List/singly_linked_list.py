@@ -34,7 +34,7 @@ class List:
 
     def insert(self, value, index):
         node = Node(value)
-        if self.head is None:
+        if not self.head:
             # insert at head of empty list
             self.head = node
         elif index <= 0:
@@ -45,10 +45,10 @@ class List:
             # insert into the body/tail
             current = self.head
             for _ in range(index):
-                if current.next is None:
+                if not current.next:
                     break
                 current = current.next
-            if current.next is None:
+            if not current.next:
                 current.next = node
             else:
                 temp = current.next
