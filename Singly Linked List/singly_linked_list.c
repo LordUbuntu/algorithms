@@ -70,9 +70,10 @@ int remove_node(node_t** head, int index) {
         // remove from head of non-empty list
         if (index <= 0) {
                 int value = (*head)->value;
-                node_t* node = (*head)->next;
-                free(*head); // double-frees when list has loop
-                *head = node;
+                node_t* prev = *head;
+                *head = (*head)->next;
+                prev->next = NULL;
+                free(prev);
                 return value;
         }
 
