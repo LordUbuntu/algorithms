@@ -69,9 +69,9 @@ int remove_node(node_t** head, int index) {
 
         // remove from head of non-empty list
         if (index <= 0) {
-                int value = (*head)->value;
                 node_t* prev = *head;
-                *head = (*head)->next;
+                int value = prev->value;
+                *head = prev->next;
                 prev->next = NULL;
                 free(prev);
                 return value;

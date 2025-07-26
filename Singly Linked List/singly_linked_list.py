@@ -59,33 +59,23 @@ class List:
                 node.next = temp
 
     def remove(self, index):
-        if self.length == 0:
+        if not self.head:
             # remove from empty list
             return None
         elif index <= 0:
             # remove from head
-            node = self.head
-            self.head = self.head.next
-            node.next = None
-            self.length -= 1
-            return node
-        elif index > self.length - 1:
-            # remove from tail
             prev = self.head
-            while prev.next != self.tail:
-                prev = prev.next
-            node = prev.next
+            self.head = prev.next
             prev.next = None
-            self.length -= 1
-            return node
+            return prev
         else:
-            # remove from spine/body
+            # remove from body/tail
             current = self.head
-            prev = self.head
             for _ in range(index):
-                prev = current
+                if not current.next:
+                    break
                 current = current.next
-            node = current
-            prev.next = node.next
-            node.next = None
-            return node
+            next = current.next
+            current.next = next.next
+            next.next = None
+            return next
