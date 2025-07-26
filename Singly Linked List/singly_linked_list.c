@@ -50,7 +50,7 @@ void insert_node(node_t** head, int value, int index) {
         }
         node_t* temp = current->next;
         current->next = node;
-        node->next = temp
+        node->next = temp;
 }
 
 
@@ -78,14 +78,14 @@ int remove_node(node_t** head, int index) {
         }
 
         // remove from body/tail of non-empty list
-        node_t* node = *head;
-        for (int i = 0; i < index && node->next->next != NULL; i++)
-                node = node->next;
-        int value = node->next->value;
-        node_t* temp = node->next;
-        node->next = node->next->next;
-        temp->next = NULL;
-        free(temp);
+        node_t* current = *head;
+        for (int i = 0; i < index && current->next->next != NULL; i++)
+                current = current->next;
+        node_t* next = current->next;
+        int value = next->value;
+        current->next = next->next;
+        next->next = NULL;
+        free(next);
         return value;
 }
 
