@@ -2,7 +2,7 @@
 # Singly Linked List implemented in Python 3
 # See:
 # - https://en.wikipedia.org/wiki/Linked_list
-# - 
+from sys import argv
 from functools import total_ordering
 
 
@@ -93,3 +93,10 @@ class List:
             current = current.next
             index += 1
         return -1
+
+
+if __name__ == "__main__":
+    if argv < 2:
+        exit(1)
+    for arg in argv[1:]:
+        print(arg)
