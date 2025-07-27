@@ -28,7 +28,7 @@ void insert_node(node_t** head, int index, int value) {
         node_t* node = new_node(value);
 
         // insert head node for empty list
-        if (*head == NULL) {
+        if (!*head) {
                 *head = node;
                 return;
         }
@@ -42,9 +42,9 @@ void insert_node(node_t** head, int index, int value) {
 
         // insert node to body/tail of non-empty list
         node_t* current = *head;
-        for (int i = 0; i < index && current->next != NULL; i++)
+        for (int i = 0; i < index && current->next; i++)
                 current = current->next;
-        if (current->next == NULL) {
+        if (!current->next) {
                 current->next = node;
                 return;
         }
@@ -56,11 +56,11 @@ void insert_node(node_t** head, int index, int value) {
 
 int remove_node(node_t** head, int index) {
         // remove from empty list (return error value INT_MIN)
-        if (*head == NULL)
+        if (!*head)
                 return INT_MIN;
 
         // remove head as only element from list
-        if ((*head)->next == NULL) {
+        if (!(*head)->next) {
                 int value = (*head)->value;
                 free(*head);
                 *head = NULL;
@@ -79,7 +79,7 @@ int remove_node(node_t** head, int index) {
 
         // remove from body/tail of non-empty list
         node_t* current = *head;
-        for (int i = 0; i < index && current->next->next != NULL; i++)
+        for (int i = 0; i < index && current->next->next; i++)
                 current = current->next;
         node_t* next = current->next;
         int value = next->value;
@@ -92,13 +92,13 @@ int remove_node(node_t** head, int index) {
 
 int search_node(node_t** head, int value) {
         // don't scan empty list
-        if (*head == NULL)
+        if (!*head)
                 return -1;
 
         // scan through non-empty list for index of value
         node_t* current = *head;
         size_t index = 0;
-        while (current != NULL) {
+        while (current) {
                 if (current->value == value)
                         return index;
                 current = current->next;
@@ -111,14 +111,14 @@ int search_node(node_t** head, int value) {
 
 void show_node(node_t** head) {
         // show empty list
-        if (*head == NULL) {
+        if (!*head) {
                 printf("(empty)\n");
                 return;
         }
 
         // show non-empty list
         node_t* node = *head;
-        while (node != NULL) {
+        while (node) {
                 printf("%i ", node->value);
                 node = node->next;
         }
@@ -158,7 +158,7 @@ int main(int argc, char *argv[]) {
 
 
         puts("removing all nodes:");
-        while (head != NULL) {
+        while (head) {
                 show_node(&head);
                 remove_node(&head, 0);
         }
