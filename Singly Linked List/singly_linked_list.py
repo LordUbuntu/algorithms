@@ -81,4 +81,15 @@ class List:
             return next
 
     def search(self, value):
-        pass
+        # don't search empty lists
+        if not self.head:
+            return -1
+        # search non-empty list
+        current = self.head
+        index = 0
+        while self.head:
+            if current.value == value:
+                return index
+            current = current.next
+            index += 1
+        return -1
