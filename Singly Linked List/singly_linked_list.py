@@ -79,3 +79,6 @@ class List:
             current.next = next.next
             next.next = None
             return next
+
+    def search(self, value):
+        pass
