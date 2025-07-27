@@ -42,7 +42,7 @@ void insert_node(node_t** head, int index, int value) {
 
         // insert node to body/tail of non-empty list
         node_t* current = *head;
-        for (int i = 0; i < index && current->next; i++)
+        for (int i = 0; current->next && i < index; i++)
                 current = current->next;
         if (!current->next) {
                 current->next = node;
@@ -79,7 +79,7 @@ int remove_node(node_t** head, int index) {
 
         // remove from body/tail of non-empty list
         node_t* current = *head;
-        for (int i = 0; i < index && current->next->next; i++)
+        for (int i = 0; current->next->next && i < index; i++)
                 current = current->next;
         node_t* next = current->next;
         int value = next->value;
