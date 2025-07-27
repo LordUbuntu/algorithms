@@ -96,24 +96,16 @@ int search_node(node_t** head, int value) {
                 return -1;
 
         // scan through non-empty list for index of value
-        node_t* node = *head;
+        node_t* current = *head;
         size_t index = 0;
-        bool found = false;
-        while (node != NULL) {
-                if (node->value == value) {
-                        found = true;
-                        break;
-                }
-                node = node->next;
+        while (current != NULL) {
+                if (current->value == value)
+                        return index;
+                current = current->next;
                 index++;
 
         }
-
-        // if found element, return index of first occurence in list
-        if (found)
-                return index;
-        else
-                return -1;
+        return -1;
 }
 
 
