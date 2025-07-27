@@ -24,7 +24,7 @@ node_t* new_node(int value) {
 }
 
 
-void insert_node(node_t** head, int value, int index) {
+void insert_node(node_t** head, int index, int value) {
         node_t* node = new_node(value);
 
         // insert head node for empty list
@@ -142,7 +142,7 @@ int main(int argc, char *argv[]) {
 
         puts("insert nodes:");
         for (int i = 1; i < argc; i++)
-                insert_node(&head, atoi(argv[i]), argc);
+                insert_node(&head, argc, atoi(argv[i]));
         show_node(&head);
 
         puts("search for node with value 13:");
