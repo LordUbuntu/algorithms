@@ -12,6 +12,9 @@ class Node:
         self.value = value
         self.next = None
 
+    def __str__(self):
+        return str(self.value)
+
     def __lt__(self, other):
         return self.value < other.value
 
@@ -27,12 +30,12 @@ class List:
         self.head = None
 
     def __str__(self):
-        return " -> ".join([str(node.value) for node in self])
+        return " -> ".join([str(node) for node in self])
 
     def __iter__(self):
         current = self.head
         while current:
-            yield current.value
+            yield current
             current = current.next
 
     def insert(self, value, index):
@@ -72,7 +75,7 @@ class List:
             # remove from body/tail
             current = self.head
             for _ in range(index):
-                if not current.next:
+                if not current.next.next:
                     break
                 current = current.next
             next = current.next
@@ -80,23 +83,71 @@ class List:
             next.next = None
             return next
 
-    def search(self, value):
+    def find(self, value):
         # don't search empty lists
         if not self.head:
             return -1
         # search non-empty list
         current = self.head
         index = 0
-        while self.head:
+        while current:
             if current.value == value:
                 return index
             current = current.next
             index += 1
         return -1
 
+    def peek(self, index):
+        # don't peek empty list
+        if not self.head:
+            return None
+        else:
+            current = self.head
+            i = 0
+            while current:
+                if (i == index):
+                    return current.value
+                current = current.next
+                i += 1
+            return None
+
 
 if __name__ == "__main__":
-    if argv < 2:
+    if len(argv) < 2:
         exit(1)
-    for arg in argv[1:]:
-        print(arg)
+    list = List()
+
+    print("start")
+    print(list.head)
+    print(list)
+
+    print("insert nodes:")
+    for i in range(1, len(argv)):
+        list.insert(int(argv[i]), 0)
+    print(list)
+
+    print("search for node with value 13: {}".format(list.find(13)))
+
+    print("value of node at index 2: {}".format(list.peek(2)))
+
+    print("remove from head:")
+    print("value: {}".format(list.remove(-1)))
+    print(list)
+
+    print("remove from tail:")
+    print("value: {}".format(list.remove(1)))
+    print(list)
+
+    print("remove from end:")
+    print("value: {}".format(list.remove(1_000_000)))
+    print(list)
+
+    print("removing all nodes:")
+    while list.head:
+        print(list)
+        print("  {}".format(list.remove(0)))
+
+    print("remove from empty list:")
+    list.remove(-1)
+    list.remove(1)
+    print(list)
