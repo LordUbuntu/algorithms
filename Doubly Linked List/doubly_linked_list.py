@@ -31,3 +31,9 @@ class List:
 
     def remove(self, index):
         pass
+
+    def find(self, value):
+        pass
+
+    def peek(self, index):
+        pass
