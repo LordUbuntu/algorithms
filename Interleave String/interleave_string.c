@@ -2,15 +2,16 @@
 // Interleaving data of two strings, though the same principle can
 //      be applied to any sequence/array data type (though the
 //      implementation will differ between them)
+// see: https://en.wikipedia.org/wiki/Interleaving_(data)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #define MIN(A, B) (A < B ? A : B)
 
 
-char *interleave(char *a, char *b) {
+char* interleave(char* a, char* b) {
         size_t memsize = strlen(a) + strlen(b) + 1;
-        char *c = (char*) calloc(memsize, sizeof(char));
+        char* c = (char*) calloc(memsize, sizeof(char));
         for (size_t i = 0; i < strlen(a); i++)
                 // place a chars in each even index  (even = 2n)
                 c[2 * i] = a[i];

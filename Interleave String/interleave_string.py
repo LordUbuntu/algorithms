@@ -2,17 +2,12 @@
 # Interleaving data of two strings, though the same principle can
 #      be applied to any sequence/array data type (though the
 #      implementation will differ between them)
+# see: https://en.wikipedia.org/wiki/Interleaving_(data)
 from sys import argv
 
 
 def interleave(a: str, b: str) -> str:
-    """
-    Interleave 2 strings together.
-
-    1. zip elements together pair-wise
-    2. concatenate pairs
-    3. return full string
-    """
+    # i love snakelang 🐍
     return ''.join([a + b for a, b in zip(a, b)])
 
 
