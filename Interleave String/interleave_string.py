@@ -2,7 +2,8 @@
 # Interleaving data of two strings, though the same principle can
 #      be applied to any sequence/array data type (though the
 #      implementation will differ between them)
-# see: https://en.wikipedia.org/wiki/Interleaving_(data)
+# see:
+# - https://en.wikipedia.org/wiki/Interleaving_(data)
 from sys import argv
 
 
