@@ -1,5 +1,5 @@
 /* Jacobus Burger (2025-07-17)
- * Singly Linked List implemented in C
+ * Singly Linked List
  * See:
  * - https://en.wikipedia.org/wiki/Linked_list
  * - https://www.learn-c.org/en/Linked_lists
