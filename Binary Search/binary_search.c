@@ -1,5 +1,6 @@
 // Jacobus Burger (2023-06-02)
 // Binary Search (C99)
+// O(log n)
 // see:
 // - https://en.wikipedia.org/wiki/Binary_search_algorithm
 #include <stdio.h>
