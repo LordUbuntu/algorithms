@@ -1,4 +1,5 @@
 # Jacobus Burger (2022)
+# Reverse a string (Python 3)
 # Description:
 # Reverse characters in a string. The principles behind this can
 #   be generalized on a string of any data type (strings do not
