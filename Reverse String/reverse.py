@@ -1,25 +1,31 @@
 # Jacobus Burger (2022)
+# Description:
+# Reverse characters in a string. The principles behind this can
+#   be generalized on a string of any data type (strings do not
+#   have to be a string of characters).
+# There's many approaches to doing this. One approach is to modify
+#   an existing array provided, another is to create and return a new
+#   array, and more.
 # Info:
-#   Python equivalent of the C program by the same name
+# - https://en.wikipedia.org/wiki/String_(computer_science)#Reversal
+# - https://rosettacode.org/wiki/Reverse_a_string
 
 
 # I love snakelang
 def reverse(array):
+    # time: O(n)
+    # space: O(n)
     return array[::-1]
 
 
-# another general solution
-def rev(array):
-    reversed = type(array)()
-    for element in array:
-        reversed = element + reversed
-    return reversed
-
-
-def rec_rev(array):
-    if len(array) == 0:
-        return []
-    return [array[-1]] + rec_rev(array[:-1])
+def reverse(array):
+    # time: O(n)
+    # space: O(n)
+    # iterate from end to start so s1_0 == s2_n, s1_1 == s2_n-1, etc
+    result = []
+    for i in range(len(array), -1, -1):
+        result.append(array[i])
+    return result
 
 
 if __name__ == '__main__':
