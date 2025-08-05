@@ -1,7 +1,13 @@
 // Jacobus Burger (2023-06-02)
 // Binary Search (C99)
-// O(log n)
-// see:
+// Descrption:
+// Binary Search, find an element in a sorted array by dividing the
+//      search area in half to the left or right each time until the
+//      desired value is found (or not).
+// Complexity:
+// - time: O(log n)
+// - space: O(1)
+// Info:
 // - https://en.wikipedia.org/wiki/Binary_search_algorithm
 #include <stdio.h>
 
