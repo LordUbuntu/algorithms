@@ -9,6 +9,10 @@
  */
 
 
+/* Complexity:
+ * - Time: O(1)
+ * - Space: O(1)
+ */
 void swap(void* a, void* b) {
         // XOR swap when a == b sets to 0, so avoid it
         if (a == b) return;
