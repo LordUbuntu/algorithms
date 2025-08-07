@@ -1,5 +1,4 @@
-- from now all, demos are quick and simple and static instead of taking args and processing user input and stuff like that
-
+- each file will implement the algorithm code snippets alone, but i don't want to write a demo program for each one so i'll leave that out except to check and verify the program works as intended.
 
 
 - For reference on structure see https://github.com/TheAlgorithms/Python
