@@ -23,12 +23,15 @@ int main(int argc, char *argv[]) {
         // get user input
         if (argc < 2)
                 return 1;
-        int* array = (int*) malloc(sizeof(int) * argc);
-        for (int i = 1; i < argc; i++)
-                array[i] = atoi(argv[i]);
+        // this part is frustrating...
+        // 1 2 3 -> 1 2 3 0
+        // why?
+        int* array = (int*) malloc(sizeof(int) * (argc - 2));
+        for (int i = 0; i < argc; i++)
+                array[i] = atoi(argv[i + 1]);
         
         // show unsorted
-        for (int i = 1; i < argc; i++)
+        for (int i = 0; i < argc; i++)
                 printf("%i ", array[i]);
         puts("");
 
@@ -36,7 +39,7 @@ int main(int argc, char *argv[]) {
         sort(array, argc);
 
         // show sorted
-        for (int i = 1; i < argc; i++)
+        for (int i = 0; i < argc; i++)
                 printf("%i ", array[i]);
         puts("");
 }
