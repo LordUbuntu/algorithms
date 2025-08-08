@@ -1,5 +1,9 @@
 /* Jacobus Burger (2025-07-03)
- * Implementation of bit packing technique.
+ * Bit Packing (C99)
+ * Bit Packing is a method to pack multiple smaller pieces of data
+ *      like byte/char, nibbles, octals, and bits into a more space
+ *      efficient format by mixing them into a single larger
+ *      data type like a word/int.
  * See:
  * - https://www.cs.cornell.edu/courses/cs3410/2024fa/notes/bitpack.html
  */
