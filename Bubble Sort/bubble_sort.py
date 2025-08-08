@@ -10,3 +10,7 @@ def sort(array: list) -> list:
             if array[index - 1] >= array[index]:
                 array[index - 1], array[index] = array[index], array[index - 1]
     return array
+
+
+if __name__ == "__main__":
+    pass
