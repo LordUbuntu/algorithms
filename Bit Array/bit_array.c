@@ -1,5 +1,9 @@
 /* Jacobus Burger (2025-07-03)
- * Implemenation of a bit array (a linear sequence of single-bit flags)
+ * Bit Array (C99)
+ * Description:
+ * Bit Array, a block of data like an array of integers is treated as a
+ *      large contiguous array of single bit flags, useful for
+ *      representing a large array of booleans in a space efficient way.
  * See:
  * - https://www.cs.emory.edu/%7Echeung/Courses/255/Syllabus/1-C-intro/bit-array.html
  * - https://en.wikipedia.org/wiki/Bit_array
