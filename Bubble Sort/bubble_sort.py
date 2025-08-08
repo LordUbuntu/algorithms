@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # get user input
     if len(argv) < 2:
         exit(1)
-    array = [int(arg) for arg in argv]
+    array = [int(argv[i]) for i in range(len(argv))]
 
     # show unsorted
     for n in array:
