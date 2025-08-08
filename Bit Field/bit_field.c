@@ -1,6 +1,9 @@
 /* Jacobus Burger (2025-07-05)
- * Implementation of a bit field
- * See:
+ * Bit Field (
+ * Bit Field, a set of bits that are often used
+ *      to express what buttons are pressed on a controller, alongside
+ *      other regular and densely packed data representations.
+ * Info:
  * - https://en.wikipedia.org/wiki/Bit_field
  * - https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Bit-Field-Packing.html
  */
