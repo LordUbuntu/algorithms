@@ -2,6 +2,7 @@
 # Bubble Sort (Python 3)
 # see:
 # - https://en.wikipedia.org/wiki/Bubble_sort
+from sys import argv
 
 
 def sort(array: list) -> list:
@@ -13,4 +14,20 @@ def sort(array: list) -> list:
 
 
 if __name__ == "__main__":
-    pass
+    # get user input
+    if len(argv) < 2:
+        exit(1)
+    array = [int(arg) for arg in argv]
+
+    # show unsorted
+    for n in array:
+        print(n, end='')
+    print("")
+
+    # sort
+    sort(array)
+
+    # show sorted
+    for n in array:
+        print(n, end='')
+    print("")
