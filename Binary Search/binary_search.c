@@ -26,9 +26,3 @@ int search(int* array, int length, int target) {
         }
         return -1;
 }
-
-
-int main(void) {
-        int arr[5] = {1, 3, 4, 7, 8};
-        printf("target: %i, result: %i\n", 3, search(arr, 5, 3));
-}

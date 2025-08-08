@@ -21,9 +21,4 @@ def search(array, target):
             low = mid + 1
         elif target < array[mid]:
             high = mid - 1
-    return None
-
-
-if __name__ == '__main__':
-    array = [1, 3, 4, 7, 8]
-    print("target: ", 3, "result: ", search(array, 3))
+    return -1
