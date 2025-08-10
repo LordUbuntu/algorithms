@@ -5,6 +5,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX(A, B) ( A > B ? A : B )
 
 
 int* sort(int* array, int length) {
@@ -23,23 +24,25 @@ int main(int argc, char *argv[]) {
         // get user input
         if (argc < 2)
                 return 1;
-        // this part is frustrating...
-        // 1 2 3 -> 1 2 3 0
-        // why?
-        int* array = (int*) malloc(sizeof(int) * (argc - 2));
-        for (int i = 0; i < argc; i++)
-                array[i] = atoi(argv[i + 1]);
-        
-        // show unsorted
-        for (int i = 0; i < argc; i++)
+        int *array = (int*) malloc(MAX(0, argc - 1) * sizeof(int));
+        if (!array)
+                return 1;
+        for (int i = 1; i < argc; i++)
+                array[i - 1] = atoi(argv[i]);
+
+        // show unsorted array
+        for (int i = 0; i < argc - 1; i++)
                 printf("%i ", array[i]);
         puts("");
 
         // sort array
-        sort(array, argc);
+        sort(array, argc - 1);
 
-        // show sorted
-        for (int i = 0; i < argc; i++)
+        // show sorted array
+        for (int i = 0; i < argc - 1; i++)
                 printf("%i ", array[i]);
         puts("");
+
+        // end
+        return 0;
 }
