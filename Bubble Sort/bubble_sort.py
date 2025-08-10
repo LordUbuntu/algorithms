@@ -17,11 +17,11 @@ if __name__ == "__main__":
     # get user input
     if len(argv) < 2:
         exit(1)
-    array = [int(argv[i]) for i in range(len(argv))]
+    array = [int(argv[i]) for i in range(1, len(argv))]
 
     # show unsorted
     for n in array:
-        print(n, end='')
+        print(n, end=' ')
     print("")
 
     # sort
@@ -29,5 +29,5 @@ if __name__ == "__main__":
 
     # show sorted
     for n in array:
-        print(n, end='')
+        print(n, end=' ')
     print("")
