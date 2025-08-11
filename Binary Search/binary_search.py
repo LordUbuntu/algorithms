@@ -22,3 +22,14 @@ def search(array, target):
         elif target < array[mid]:
             high = mid - 1
     return -1
+
+
+if __name__ == "__main__":
+    # create array
+    array = [2, 3, 5, 7, 11, 13, 17, 19, 23, 31]
+    # show array
+    for n in array:
+        print(n, end=' ')
+    print("")
+    # show location
+    print("13 located at {}".format(search(array, 13)))
