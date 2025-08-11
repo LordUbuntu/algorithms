@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 
-int search(int *array, int length, int target)
+int search(int* array, int length, int target)
 {
         int left = 0, right = length - 1;
         while (left <= right) {

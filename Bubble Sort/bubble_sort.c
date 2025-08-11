@@ -6,8 +6,7 @@
 #include <stdio.h>
 
 
-// might be possible to do this with void *array instead
-void sort(int *array, int length) {
+void sort(int* array, int length) {
         for (int i = 1; i < length; i++) {
                 for (int j = 1; j < length; j++) {
                         if (array[j - 1] >= array[j]) {
