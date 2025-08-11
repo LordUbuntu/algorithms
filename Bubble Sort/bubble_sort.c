@@ -4,8 +4,6 @@
  * - https://en.wikipedia.org/wiki/Bubble_sort
  */
 #include <stdio.h>
-#include <stdlib.h>
-#define MAX(A, B) ( A > B ? A : B )
 
 
 int* sort(int* array, int length) {
@@ -20,26 +18,21 @@ int* sort(int* array, int length) {
 }
 
 
-int main(int argc, char *argv[]) {
-        // get user input
-        if (argc < 2)
-                return 1;
-        int *array = (int*) malloc(MAX(0, argc - 1) * sizeof(int));
-        if (!array)
-                return 1;
-        for (int i = 1; i < argc; i++)
-                array[i - 1] = atoi(argv[i]);
+int main(void) {
+        #define LEN 10
+
+        int array[LEN] = {2, 1, 3, 7, 4, 5, 9, 8, 0, 6}
 
         // show unsorted array
-        for (int i = 0; i < argc - 1; i++)
+        for (int i = 0; i < LEN; i++)
                 printf("%i ", array[i]);
         puts("");
 
         // sort array
-        sort(array, argc - 1);
+        sort(array, LEN);
 
         // show sorted array
-        for (int i = 0; i < argc - 1; i++)
+        for (int i = 0; i < LEN; i++)
                 printf("%i ", array[i]);
         puts("");
 
