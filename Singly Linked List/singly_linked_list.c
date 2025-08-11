@@ -42,8 +42,9 @@ void insert_node(node_t** head, int index, int value) {
 
         // insert node to body/tail of non-empty list
         node_t* current = *head;
-        for (int i = 0; current->next && i < index; i++)
+        for (int i = 0; current->next && i < index; i++) {
                 current = current->next;
+        }
         if (!current->next) {
                 current->next = node;
                 return;
@@ -56,8 +57,9 @@ void insert_node(node_t** head, int index, int value) {
 
 int remove_node(node_t** head, int index) {
         // remove from empty list (return error value INT_MIN)
-        if (!*head)
+        if (!*head) {
                 return INT_MIN;
+        }
 
         // remove head as only element from list
         if (!(*head)->next) {
@@ -79,8 +81,9 @@ int remove_node(node_t** head, int index) {
 
         // remove from body/tail of non-empty list
         node_t* current = *head;
-        for (int i = 0; current->next->next && i < index; i++)
+        for (int i = 0; current->next->next && i < index; i++) {
                 current = current->next;
+        }
         node_t* next = current->next;
         int value = next->value;
         current->next = next->next;
@@ -92,18 +95,19 @@ int remove_node(node_t** head, int index) {
 
 int find_node(node_t** head, int value) {
         // don't scan empty list
-        if (!*head)
+        if (!*head) {
                 return -1;
+        }
 
         // scan through non-empty list for index of value
         node_t* current = *head;
         size_t index = 0;
         while (current) {
-                if (current->value == value)
+                if (current->value == value) {
                         return index;
+                }
                 current = current->next;
                 index++;
-
         }
         return -1;
 }
@@ -111,14 +115,16 @@ int find_node(node_t** head, int value) {
 
 int peek_node(node_t** head, int index) {
         // don't peek empty list
-        if (!*head)
+        if (!*head) {
                 return INT_MIN;
+        }
 
         // peek for a node in a non-empty list
         node_t* current = *head;
         for (int i = 0; current->next; i++) {
-                if (i == index)
+                if (i == index) {
                         return current->value;
+                }
                 current = current->next;
         }
         return INT_MIN;
@@ -142,15 +148,17 @@ void show_node(node_t** head) {
 }
 
 
-int main(int argc, char *argv[]) {
+int main(void) {
         node_t* head = NULL;
 
         puts("start:");
         show_node(&head); // (empty)
 
         puts("insert nodes:");
-        for (int i = 1; i < argc; i++)
-                insert_node(&head, argc, atoi(argv[i]));
+        #define LEN 31
+        for (int i = 1; i < LEN; i++) {
+                insert_node(&head, LEN, i);
+        }
         show_node(&head);
 
         printf("search for node with value 13: %i\n", find_node(&head, 13));
@@ -167,7 +175,7 @@ int main(int argc, char *argv[]) {
 
 
         puts("remove from end of tail:");
-        printf("value: %i\n", remove_node(&head, INT_MAX - 1));
+        printf("value: %i\n", remove_node(&head, LEN));
         show_node(&head);
 
 

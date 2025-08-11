@@ -17,12 +17,15 @@ bool *sieve(int n) {
         memset(primes + 2, 1, n * sizeof(bool));
 
         // run sieve of eratosthenes
-        for (int p = 2; p < sqrt(n) + 1; p++)
+        for (int p = 2; p < sqrt(n) + 1; p++) {
                 // ignore non-primes
-                if (primes[p])
+                if (primes[p]) {
                         // eliminate multiples of p starting from p^2
-                        for (int i = pow(p, 2); i < n + 1; i += p)
+                        for (int i = pow(p, 2); i < n + 1; i += p) {
                                 primes[i] = 0;
+                        }
+                }
+        }
 
         // return solution
         return primes;
@@ -40,10 +43,9 @@ int main(int argc, char *argv[]) {
         printf("%i\n", n);
         for (int i = 0; i < n; i++) {
                 // print array elements that are prime
-                if (primes[i])
+                if (primes[i]) {
                         printf("%i ", i);
-                else
-                        continue;
+                }
         }
         printf("\n\n");
         // end program
