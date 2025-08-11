@@ -10,6 +10,7 @@
 // Info:
 // - https://en.wikipedia.org/wiki/Binary_search_algorithm
 #include <stdio.h>
+#include <stdlib.h>
 
 
 int search(int *array, int length, int target)
@@ -29,10 +30,16 @@ int search(int *array, int length, int target)
 }
 
 
-int main(int argc, char *argv[])
+int main(void)
 {
-        if (argc < 2) {
-                return 1;
-        }
+        #define LEN 10
+        // create sorted array
+        int array[LEN] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 31};
+        // show array
+        for (int i = 0; i < LEN; i++)
+                printf("%i ", array[i]);
+        puts("");
+        // show location of value
+        printf("%i at %i\n", 13, search(array, LEN, 13));
         return 0;
 }
