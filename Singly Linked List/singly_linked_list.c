@@ -10,13 +10,14 @@
 #include <stdbool.h>
 
 
-typedef struct node {
+typedef struct {
         int value;
         struct node* next;
 } node_t;
 
 
-node_t* new_node(int value) {
+node_t* new_node(int value)
+{
         node_t* node = (node_t*) malloc(sizeof(node_t));
         node->value = value;
         node->next = NULL;
@@ -24,7 +25,8 @@ node_t* new_node(int value) {
 }
 
 
-void insert_node(node_t** head, int index, int value) {
+void insert_node(node_t** head, int index, int value)
+{
         node_t* node = new_node(value);
 
         // insert head node for empty list
@@ -55,7 +57,8 @@ void insert_node(node_t** head, int index, int value) {
 }
 
 
-int remove_node(node_t** head, int index) {
+int remove_node(node_t** head, int index)
+{
         // remove from empty list (return error value INT_MIN)
         if (!*head) {
                 return INT_MIN;
@@ -93,7 +96,8 @@ int remove_node(node_t** head, int index) {
 }
 
 
-int find_node(node_t** head, int value) {
+int find_node(node_t** head, int value)
+{
         // don't scan empty list
         if (!*head) {
                 return -1;
@@ -113,7 +117,8 @@ int find_node(node_t** head, int value) {
 }
 
 
-int peek_node(node_t** head, int index) {
+int peek_node(node_t** head, int index)
+{
         // don't peek empty list
         if (!*head) {
                 return INT_MIN;
@@ -131,7 +136,8 @@ int peek_node(node_t** head, int index) {
 }
 
 
-void show_node(node_t** head) {
+void show_node(node_t** head)
+{
         // show empty list
         if (!*head) {
                 printf("(empty)\n");
@@ -148,7 +154,8 @@ void show_node(node_t** head) {
 }
 
 
-int main(void) {
+int main(void)
+{
         node_t* head = NULL;
 
         puts("start:");
