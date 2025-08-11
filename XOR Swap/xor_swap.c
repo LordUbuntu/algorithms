@@ -7,6 +7,7 @@
  * see:
  * - https://en.wikipedia.org/wiki/XOR_swap_algorithm
  */
+#include <stdio.h>
 
 
 /* Complexity:
@@ -20,4 +21,14 @@ void swap(void* a, void* b) {
         *a ^= *b; // a = b xor a
         *b ^= *a; // b = a xor b
         *a ^= *b; // a = b xor a
+}
+
+
+int main(void)
+{
+        int a = 13;
+        int b = 31;
+        printf("%i %i\n", a, b);
+        swap(&a, &b);
+        printf("%i %i\n", a, b);
 }
