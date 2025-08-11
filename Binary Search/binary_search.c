@@ -12,7 +12,8 @@
 #include <stdio.h>
 
 
-int search(int* array, int length, int target) {
+int search(int *array, int length, int target)
+{
         int left = 0, right = length - 1;
         while (left <= right) {
                 int middle = (left + right) / 2;
@@ -25,4 +26,13 @@ int search(int* array, int length, int target) {
                 }
         }
         return -1;
+}
+
+
+int main(int argc, char *argv[])
+{
+        if (argc < 2) {
+                return 1;
+        }
+        return 0;
 }
