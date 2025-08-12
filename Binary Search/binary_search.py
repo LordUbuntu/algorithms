@@ -32,4 +32,4 @@ if __name__ == "__main__":
         print(n, end=' ')
     print("")
     # show location
-    print("13 located at {}".format(search(array, 13)))
+    print("17 located at {}".format(search(array, 17)))

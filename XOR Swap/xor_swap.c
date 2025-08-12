@@ -26,8 +26,8 @@ void swap(void* a, void* b) {
 
 int main(void)
 {
-        int a = 13;
-        int b = 31;
+        int a = 1;
+        int b = 2;
         printf("%i %i\n", a, b);
         swap(&a, &b);
         printf("%i %i\n", a, b);

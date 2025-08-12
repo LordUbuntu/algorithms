@@ -41,6 +41,6 @@ int main(void)
                 printf("%i ", array[i]);
         puts("");
         // show location of value
-        printf("%i at %i\n", 13, search(array, LEN, 13));
+        printf("%i at %i\n", 17, search(array, LEN, 17));
         return 0;
 }

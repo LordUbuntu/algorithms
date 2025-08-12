@@ -162,13 +162,13 @@ int main(void)
         show_node(&head); // (empty)
 
         puts("insert nodes:");
-        #define LEN 31
+        #define LEN 14
         for (int i = 1; i < LEN; i++) {
                 insert_node(&head, LEN, i);
         }
         show_node(&head);
 
-        printf("search for node with value 13: %i\n", find_node(&head, 13));
+        printf("search for node with value 7: %i\n", find_node(&head, 7));
 
         printf("peek node at index 2: %i\n", peek_node(&head, 2));
 
