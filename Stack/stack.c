@@ -14,11 +14,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Stack Abstract Data Type (ADT)
+ * int size: number of elements in stack
+ * int* stack: array of data
+ * int** head: reference to top of stack
+ */
 typedef struct {
-        int size;
-        int head_index;
-        int* items;
+        size_t size;
+        void **head;
+        void *items;
 } stack;
-
-void push(stack* s, int n);
-int pop(stack* s);
