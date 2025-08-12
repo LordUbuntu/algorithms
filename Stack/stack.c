@@ -14,13 +14,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define LEN 10
+
 /* Stack Abstract Data Type (ADT)
- * int size: number of elements in stack
- * int* stack: array of data
- * int** head: reference to top of stack
+ * size_t head: top of stack index (and size of stack)
+ * unsigned data[LEN]: array of data (static data for now)
  */
 typedef struct {
-        size_t size;
-        void **head;
-        void *items;
+        size_t head;
+        unsigned data[LEN];
 } stack;
+
+void push(stack *s, int value)
+{
+        if (s->head + 1 >= LEN)
+                return;
+        s->items[s->head] = value;
+        s->head++;
+}
+
+int pop(stack *s)
+{
+        if (s->head - 1 <= 0)
+                return -1;
+        int value = s->items[s->head];
+        s->head--;
+        return value;
+}
