@@ -29,15 +29,30 @@ void push(stack *s, int value)
 {
         if (s->head + 1 >= LEN)
                 return;
-        s->items[s->head] = value;
+        s->data[s->head] = value;
         s->head++;
 }
 
 int pop(stack *s)
 {
-        if (s->head - 1 <= 0)
+        if (s->head <= 0)
                 return -1;
-        int value = s->items[s->head];
         s->head--;
+        int value = s->data[s->head];
         return value;
+}
+
+int main(void)
+{
+        stack s;
+        printf("%i %i\n", s.head, sizeof(s));
+        push(&s, 1);
+        push(&s, 2);
+        push(&s, 3);
+        printf("%i %i\n", s.head, sizeof(s));
+        printf("%i\n", pop(&s));
+        printf("%i\n", pop(&s));
+        printf("%i\n", pop(&s));
+        printf("%i\n", pop(&s));
+        printf("%i %i\n", s.head, sizeof(s));
 }
