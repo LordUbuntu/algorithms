@@ -24,10 +24,27 @@ void insert(dynarr_t *array, int n)
         // realloc space when capacity reached
         if (array->size >= array->capacity) {
                 array->capacity = array->capacity * 2;
-                int ret = realloc(array->data, sizeof(n) * array->capacity);
-                if (!ret)
-                        exit(1);
+                array->data = (int*) realloc(array->data, sizeof(n) * array->capacity);
+                if (!array->data)
+                        exit(1);  // failure to realloc memory
         }
         array->data[array->size] = n;
         array->size++;
+}
+
+int main(void)
+{
+        dynarr_t* array = new_dynarr();
+        printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
+        insert(array, 1);
+        insert(array, 2);
+        insert(array, 3);
+        insert(array, 4);
+        insert(array, 5);
+        printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
+        printf("data: ");
+        for (int i = 0; i < array->size; i++)
+                printf("%i ", array->data[i]);
+        puts("");
+        free_dynarr(array);
 }
