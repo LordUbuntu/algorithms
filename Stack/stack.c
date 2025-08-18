@@ -4,10 +4,6 @@
  * Stacks are a First In Last Out (FILO) data structure where you can
  *      `push` items to the top, or `pop` items from the top, like adding
  *      and removing sheets of paper from the top of a stack of paper.
- * Complexity:
- * - Structure Space O(n)
- * - Push Time O(1) 
- * - Pop Time O(1) 
  * Info:
  * - https://en.wikipedia.org/wiki/Stack_(abstract_data_type)
  */
@@ -25,6 +21,9 @@ typedef struct {
         unsigned data[LEN];
 } stack;
 
+/* Time Complexity: O(1)
+ * Space Complexity: O(1)
+ */
 void push(stack *s, int value)
 {
         if (s->head + 1 >= LEN)
@@ -33,6 +32,9 @@ void push(stack *s, int value)
         s->head++;
 }
 
+/* Time Complexity: O(1)
+ * Space Complexity: O(1)
+ */
 int pop(stack *s)
 {
         if (s->head <= 0)
