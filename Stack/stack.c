@@ -9,22 +9,23 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 #define LEN 10
 
 /* Stack Abstract Data Type (ADT)
  * size_t head: top of stack index (and size of stack)
- * unsigned data[LEN]: array of data (static data for now)
+ * int data[LEN]: array of data (static data for now)
  */
 typedef struct {
         size_t head;
-        unsigned data[LEN];
-} stack;
+        int data[LEN];
+} stack_t;
 
 /* Time Complexity: O(1)
  * Space Complexity: O(1)
  */
-void push(stack *s, int value)
+void push(stack_t *s, int value)
 {
         if (s->head + 1 >= LEN)
                 return;
@@ -35,7 +36,7 @@ void push(stack *s, int value)
 /* Time Complexity: O(1)
  * Space Complexity: O(1)
  */
-int pop(stack *s)
+int pop(stack_t *s)
 {
         if (s->head <= 0)
                 return -1;
@@ -46,15 +47,12 @@ int pop(stack *s)
 
 int main(void)
 {
-        stack s;
-        printf("%i %i\n", s.head, sizeof(s));
+        stack_t s;
         push(&s, 1);
         push(&s, 2);
         push(&s, 3);
-        printf("%i %i\n", s.head, sizeof(s));
         printf("%i\n", pop(&s));
         printf("%i\n", pop(&s));
         printf("%i\n", pop(&s));
         printf("%i\n", pop(&s));
-        printf("%i %i\n", s.head, sizeof(s));
 }
