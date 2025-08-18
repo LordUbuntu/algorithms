@@ -32,6 +32,22 @@ void insert(dynarr_t *array, int n)
         array->size++;
 }
 
+dynarr_t* new_dynarr(void)
+{
+        dynarr_t* array = (dynarr_t*) malloc(sizeof(dynarr_t));
+        array->size = 0;
+        array->capacity = 1;
+        array->data = (int*) malloc(sizeof(int));
+        return array;
+}
+
+void free_dynarr(dynarr_t* array)
+{
+        free(array->data);
+        free(array);
+        array = NULL;
+}
+
 int main(void)
 {
         dynarr_t* array = new_dynarr();
