@@ -7,18 +7,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MIN(A, B) (A < B ? A : B)
 
 
-char* interleave(char* a, char* b) {
+/* Time Complexity: O(n) where n is longer string
+ * Space Complexity: O(nm)
+ */
+char* interleave(char *a, char *b) {
         size_t memsize = strlen(a) + strlen(b) + 1;
-        char* c = (char*) calloc(memsize, sizeof(char));
-        for (size_t i = 0; i < strlen(a); i++)
+        char *c = (char*) calloc(memsize, sizeof(char));
+        for (size_t i = 0; i < strlen(a); i++) {
                 // place a chars in each even index  (even = 2n)
                 c[2 * i] = a[i];
-        for (size_t i = 0; i < strlen(b); i++)
+        }
+        for (size_t i = 0; i < strlen(b); i++) {
                 // place b chars in each odd index  (odd = 2n + 1)
                 c[2 * i + 1] = b[i];
+        }
         return c;
 }
 

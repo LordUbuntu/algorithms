@@ -4,13 +4,12 @@
 # Binary Search, find an element in a sorted array by dividing the
 #      search area in half to the left or right each time until the
 #      desired value is found (or not).
-# Complexity:
-# - time: O(log n)
-# - space: O(1)
 # Info:
 # - https://en.wikipedia.org/wiki/Binary_search_algorithm
 
 
+# Time Complexity: O(log n)
+# Space Complexity: O(1)
 def search(array, target):
     low, high = 0, len(array) - 1
     while low <= high:

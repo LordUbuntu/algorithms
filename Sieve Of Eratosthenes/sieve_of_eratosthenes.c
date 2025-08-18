@@ -11,7 +11,7 @@
 #include <math.h>
 
 
-bool *sieve(int n) {
+bool* sieve(int n) {
         // initialize array to all true except for index/numbers 0 and 1
         bool *primes = (bool*) calloc(n, sizeof(bool));
         memset(primes + 2, 1, n * sizeof(bool));
