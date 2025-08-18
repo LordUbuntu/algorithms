@@ -9,14 +9,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/* Dynamic / Growable Array Abstract Data Type (ADT)
+ * size_t capacity: allocated space for array
+ * size_t size: currently used space for array
+ * int *data: underlying dynamically allocated memory region for array
+ */
 typedef struct {
         size_t capacity;
         size_t size;
         int *data;
 } dynarr_t;
 
-/* Time Complexity: O(1)
- * Space Complexity: O(n), on realloc O(2n)
+/* Time Complexity: O(1), O(n) for realloc
  * Growth Factor: 2
  */
 void insert(dynarr_t *array, int n)
@@ -32,25 +36,15 @@ void insert(dynarr_t *array, int n)
         array->size++;
 }
 
-dynarr_t* alloc_dynarr(void)
+int main(void)
 {
+        // allocate array for demo
         dynarr_t* array = (dynarr_t*) malloc(sizeof(dynarr_t));
         array->size = 0;
         array->capacity = 1;
         array->data = (int*) malloc(sizeof(int));
-        return array;
-}
 
-void free_dynarr(dynarr_t* array)
-{
-        free(array->data);
-        free(array);
-        array = NULL;
-}
-
-int main(void)
-{
-        dynarr_t* array = alloc_dynarr();
+        // show off array functions
         printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
         insert(array, 1);
         insert(array, 2);
@@ -62,5 +56,9 @@ int main(void)
         for (int i = 0; i < array->size; i++)
                 printf("%i ", array->data[i]);
         puts("");
-        free_dynarr(array);
+
+        // free dynamically allocated dynamic array
+        free(array->data);
+        free(array);
+        array = NULL;
 }
