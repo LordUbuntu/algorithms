@@ -14,14 +14,14 @@
 
 # Time Complexity: O(n)
 # Space Complexity: O(n)
-def reverse_a(array):
+def reverse_slice(array):
     # I love snakelang
     return array[::-1]
 
 
 # Time Complexity: O(n)
 # Space Complexity: O(n)
-def reverse_b(array):
+def reverse(array):
     # iterate from end to start so s1_0 == s2_n, s1_1 == s2_n-1, etc
     result = []
     for i in range(len(array), -1, -1):
@@ -31,4 +31,5 @@ def reverse_b(array):
 
 if __name__ == '__main__':
     array = [i for i in range(1, 17)]
-    print(array, reverse_b(array))
+    print(array, reverse_slice(array))
+    print(array, reverse(array))
