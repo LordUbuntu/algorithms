@@ -1,9 +1,9 @@
 /* Jacobus Burger (2025-08-02)
  * XOR Swap (C99)
- * description:
  * A common method of swapping values is to use a temporary variable, but
  *      it is possible to swap two variables without the use of a
- *      temporary variable by utilizing a sequence of 3 xor operations.
+ *      temporary variable by utilizing a sequence of 3 xor operations,
+ *      thus utilizing NO ADDITIONAL SPACE!
  * see:
  * - https://en.wikipedia.org/wiki/XOR_swap_algorithm
  */
