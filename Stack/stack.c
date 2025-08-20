@@ -19,7 +19,7 @@
  */
 typedef struct {
         size_t head;
-        int data[LEN];
+        int data[LEN];  // this can also be done using a dynamic / growable array
 } stack_t;
 
 /* Time Complexity: O(1)
