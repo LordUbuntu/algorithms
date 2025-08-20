@@ -1,5 +1,5 @@
 /* Jacobus Burger (2025-07-05)
- * Bit Field (
+ * Bit Field (C99)
  * Bit Field, a set of bits that are often used
  *      to express what buttons are pressed on a controller, alongside
  *      other regular and densely packed data representations.
@@ -11,7 +11,12 @@
 #include <stdlib.h>
 
 
-// Example of a Bit Field in action
+/* Bit Field Abstract Data Structure (ADS)
+ * Uses a constant amount of space to define a field of bits corresponding
+ *      to some purpose, in this case representing ASCII character values.
+ *      This allows for constant time lookup, combinations of keypresses on
+ *      a keyboard or keypad, and many many different uses.
+ */
 #define A 0b01100001
 #define B 0b01100010
 #define C 0b01100011
