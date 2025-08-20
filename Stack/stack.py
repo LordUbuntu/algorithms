@@ -13,23 +13,19 @@
 # data: array of data (static data for now)
 class Stack:
     def __init__(self, head: int = 0, data: list = []) -> None:
-        self.head = head
-        self.data = data
+        self.data = data  # Python 3 lists are dynamic arrays
 
     # Time Complexity: O(1)
     # Space Complexity: O(1)
     def push(self, value: int) -> None:
         self.data.append(value)
-        self.head += 1
 
     # Time Complexity: O(1)
     # Space Complexity: O(1)
     def pop(self) -> int:
-        if self.head <= 0:
+        if len(self.data) <= 0:
             return -1
-        value = self.data.pop()
-        self.head -= 1
-        return value
+        return self.data.pop()
 
 
 if __name__ == "__main__":
