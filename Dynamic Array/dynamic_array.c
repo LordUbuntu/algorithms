@@ -39,7 +39,7 @@ void insert(dynarr_t *array, int n)
 int main(void)
 {
         // allocate array for demo
-        dynarr_t* array = (dynarr_t*) malloc(sizeof(dynarr_t));
+        dynarr_t *array = (dynarr_t*) malloc(sizeof(dynarr_t));
         array->size = 0;
         array->capacity = 1;
         array->data = (int*) malloc(sizeof(int));
