@@ -1,5 +1,11 @@
 /* Jacobus Burger (2025-07-17)
- * Singly Linked List
+ * Singly Linked List (C99)
+ * A Singly Linked List is a collection of data where each element
+ *      in the sequence points to the next element. It allows for easy
+ *      insertion and deletion of data in the sequence without requiring
+ *      reorganization or reallocation of the entire structure to do so,
+ *      the tradeoff is linear time to access data since each node in the
+ *      list must be accessed in sequence.
  * See:
  * - https://en.wikipedia.org/wiki/Linked_list
  * - https://www.learn-c.org/en/Linked_lists
@@ -10,24 +16,34 @@
 #include <stdbool.h>
 
 
+/* Node Abstract Data Structure (ADS)
+ * int value: the value being stored in this node in the list.
+ * struct node *next: a reference / link to the next node in the list.
+ */
 typedef struct {
         int value;
-        struct node* next;
+        struct node *next;
 } node_t;
 
 
+/* Time Complexity: O(1)
+ * Space Complexity: O(1)
+ */
 node_t* new_node(int value)
 {
-        node_t* node = (node_t*) malloc(sizeof(node_t));
+        node_t *node = (node_t*) malloc(sizeof(node_t));
         node->value = value;
         node->next = NULL;
         return node;
 }
 
 
-void insert_node(node_t** head, int index, int value)
+/* Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+void insert_node(node_t **head, int index, int value)
 {
-        node_t* node = new_node(value);
+        node_t *node = new_node(value);
 
         // insert head node for empty list
         if (!*head) {
@@ -43,7 +59,7 @@ void insert_node(node_t** head, int index, int value)
         }
 
         // insert node to body/tail of non-empty list
-        node_t* current = *head;
+        node_t *current = *head;
         for (int i = 0; current->next && i < index; i++) {
                 current = current->next;
         }
@@ -51,13 +67,16 @@ void insert_node(node_t** head, int index, int value)
                 current->next = node;
                 return;
         }
-        node_t* temp = current->next;
+        node_t *temp = current->next;
         current->next = node;
         node->next = temp;
 }
 
 
-int remove_node(node_t** head, int index)
+/* Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int remove_node(node_t **head, int index)
 {
         // remove from empty list (return error value INT_MIN)
         if (!*head) {
@@ -74,7 +93,7 @@ int remove_node(node_t** head, int index)
 
         // remove from head of non-empty list
         if (index <= 0) {
-                node_t* prev = *head;
+                node_t *prev = *head;
                 int value = prev->value;
                 *head = prev->next;
                 prev->next = NULL;
@@ -83,11 +102,11 @@ int remove_node(node_t** head, int index)
         }
 
         // remove from body/tail of non-empty list
-        node_t* current = *head;
+        node_t *current = *head;
         for (int i = 0; current->next->next && i < index; i++) {
                 current = current->next;
         }
-        node_t* next = current->next;
+        node_t *next = current->next;
         int value = next->value;
         current->next = next->next;
         next->next = NULL;
@@ -96,7 +115,10 @@ int remove_node(node_t** head, int index)
 }
 
 
-int find_node(node_t** head, int value)
+/* Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int find_node(node_t **head, int value)
 {
         // don't scan empty list
         if (!*head) {
@@ -104,7 +126,7 @@ int find_node(node_t** head, int value)
         }
 
         // scan through non-empty list for index of value
-        node_t* current = *head;
+        node_t *current = *head;
         size_t index = 0;
         while (current) {
                 if (current->value == value) {
@@ -117,7 +139,10 @@ int find_node(node_t** head, int value)
 }
 
 
-int peek_node(node_t** head, int index)
+/* Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int peek_node(node_t **head, int index)
 {
         // don't peek empty list
         if (!*head) {
@@ -125,7 +150,7 @@ int peek_node(node_t** head, int index)
         }
 
         // peek for a node in a non-empty list
-        node_t* current = *head;
+        node_t *current = *head;
         for (int i = 0; current->next; i++) {
                 if (i == index) {
                         return current->value;
@@ -136,7 +161,10 @@ int peek_node(node_t** head, int index)
 }
 
 
-void show_node(node_t** head)
+/* Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+void show_node(node_t **head)
 {
         // show empty list
         if (!*head) {
@@ -145,7 +173,7 @@ void show_node(node_t** head)
         }
 
         // show non-empty list
-        node_t* node = *head;
+        node_t *node = *head;
         while (node) {
                 printf("%i ", node->value);
                 node = node->next;
@@ -156,7 +184,7 @@ void show_node(node_t** head)
 
 int main(void)
 {
-        node_t* head = NULL;
+        node_t *head = NULL;
 
         puts("start:");
         show_node(&head); // (empty)
