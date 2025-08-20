@@ -33,10 +33,10 @@ int main(int argc, char *argv[])
         if (argc < 3)
                 return 1;
         // get a and b from argv
-        char* a = argv[1];
-        char* b = argv[2];
+        char *a = argv[1];
+        char *b = argv[2];
         // interleave a and b
-        char* c = interleave(a, b);
+        char *c = interleave(a, b);
         // print results
         printf("%s\n%s\n%s\n\n\n", a, b, c);
         free(c);  // don't forget to free since it was allocated manually
