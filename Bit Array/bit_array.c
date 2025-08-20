@@ -20,6 +20,8 @@
  *      i % bits bit from that block. Thus we treat an array A as a
  *      continguous segment of memory of single bits equal in count
  *      to bits * length of A.
+ * Time Complexity: O(1)
+ * Space Complexity: O(1)
  */
 #define BITS(DATA)   ( sizeof(DATA) * CHAR_BIT )
 #define SET(A, i)    ( A[(i / BITS(A[0]))] |= (1 << (i % BITS(A[0]))) )
