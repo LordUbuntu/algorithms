@@ -1,11 +1,21 @@
 # Jacobus Burger (2022)
-# Singly Linked List implemented in Python 3
+# Singly Linked List (Python 3)
+# A Singly Linked List is a collection of data where each element
+#      in the sequence points to the next element. It allows for easy
+#      insertion and deletion of data in the sequence without requiring
+#      reorganization or reallocation of the entire structure to do so,
+#      the tradeoff is linear time to access data since each node in the
+#      list must be accessed in sequence.
 # See:
 # - https://en.wikipedia.org/wiki/Linked_list
+# - https://www.learn-c.org/en/Linked_lists
 from sys import argv
 from functools import total_ordering
 
 
+# Node Abstract Data Structure (ADS)
+# value: the value being stored in this node Object in the list.
+# next: a reference / link to the next node Object in the list.
 @total_ordering
 class Node:
     def __init__(self, value):
@@ -38,6 +48,8 @@ class List:
             yield current
             current = current.next
 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def insert(self, value, index):
         node = Node(value)
         if not self.head:
@@ -61,6 +73,8 @@ class List:
                 current.next = node
                 node.next = temp
 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def remove(self, index):
         if not self.head:
             # remove from empty list
@@ -83,6 +97,8 @@ class List:
             next.next = None
             return next
 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def find(self, value):
         # don't search empty lists
         if not self.head:
@@ -97,6 +113,8 @@ class List:
             index += 1
         return -1
 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def peek(self, index):
         # don't peek empty list
         if not self.head:
