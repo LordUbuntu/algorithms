@@ -24,12 +24,12 @@ def reverse_slice(array):
 def reverse(array):
     # iterate from end to start so s1_0 == s2_n, s1_1 == s2_n-1, etc
     result = []
-    for i in range(len(array), -1, -1):
+    for i in range(len(array) - 1, -1, -1):
         result.append(array[i])
     return result
 
 
 if __name__ == '__main__':
-    array = [i for i in range(1, 17)]
-    print(array, reverse_slice(array))
-    print(array, reverse(array))
+    array = "hello world"
+    print("{}\n{}".format(array, reverse_slice(array)))
+    print("{}\n{}".format(array, ''.join(reverse(array))))
