@@ -1,14 +1,22 @@
 /* Jacobus Burger (2025)
  * Sieve of Eratosthenes (C99)
- * The Sieve of Eratosthenes is an ancient and effective algorithm for finding
- *      all the prime numbers up to a given limit through a process of
- *      elimination (like how a sieve filters out bigger particles). It does
- *      this by iteratively canceling out all the multiples of numbers starting
- *      from the first known prime number 2, thus canceling out every even
- *      number besides 2, then it starts with the next number which is then
- *      known to be prime too, and it keeps iterating on this process until all
- *      composite numbers are eliminated. Once all known composites are
- *      removed, what remains are all the prime numbers in the range!
+ * The Sieve of Eratosthenes is an ancient and effective algorithm
+ *      for finding all the prime numbers up to a given limit through a
+ *      process of elimination (like how a sieve filters out bigger 
+ *      particles). It does this by iteratively canceling out all the 
+ *      multiples of numbers starting from the first known prime number 
+ *      2, thus canceling out every even number besides 2, then it
+ *      starts with the next number which is then known to be prime too, 
+ *      and it keeps iterating on this process until all composite 
+ *      numbers are eliminated. Once all known composites are removed, 
+ *      what remains are all the prime numbers in the range!
+ * There's many ways to do it, the common approach is an array of
+ *      boolean values all initially set to true from index 2 upwards,
+ *      after the sieve is applied all values which remain true have
+ *      indices corresponding to primes in that range.
+ * One memory efficient approach for lower level languages like C
+ *      is to use a Bit Array, since each bit can correspond to
+ *      a single number.
  * Info:
  * - https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
  * Compilation:
