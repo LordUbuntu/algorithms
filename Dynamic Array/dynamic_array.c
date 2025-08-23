@@ -65,11 +65,11 @@ int main(void)
         array->data = (int*) malloc(sizeof(int));
 
         // grow array by 5
-        printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
+        printf("size: %zu, capacity: %zu, first: %i\n", array->size, array->capacity, array->data[0]);
         for (int i = 1; i < 6; i++) {
                 insert_data(array, i);
         }
-        printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
+        printf("size: %zu, capacity: %zu, first: %i\n", array->size, array->capacity, array->data[0]);
         printf("data: ");
         for (int i = 0; i < array->size; i++) {
                 printf("%i ", array->data[i]);
@@ -77,11 +77,11 @@ int main(void)
         puts("");
 
         // shrink array by 5
-        printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
+        printf("size: %zu, capacity: %zu, first: %i\n", array->size, array->capacity, array->data[0]);
         for (int i = 0; i < 5; i++) {
                 printf(" %i\n", remove_data(array));
         }
-        printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
+        printf("size: %zu, capacity: %zu, first: %i\n", array->size, array->capacity, array->data[0]);
         printf("data: ");
         for (int i = 0; i < array->size; i++) {
                 printf("%i ", array->data[i]);
