@@ -1,15 +1,16 @@
 // Jacobus Burger (2025-06-09)
+// Interleave String (C99)
 // Interleaving data of two strings, though the same principle can
 //      be applied to any sequence/array data type (though the
 //      implementation will differ between them)
-// see:
+// Info:
 // - https://en.wikipedia.org/wiki/Interleaving_(data)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 
-/* Time Complexity: O(n) where n is longer string
+/* Time Complexity: O(n) where n is length of longer string
  * Space Complexity: O(nm)
  */
 char* interleave(char *a, char *b) {
