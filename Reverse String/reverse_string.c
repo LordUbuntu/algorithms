@@ -12,15 +12,21 @@
  * - https://rosettacode.org/wiki/Reverse_a_string
  */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 
 /* Time Complexity: O(n)
- * Space Complexity: O(1)
+ * Space Complexity: O(n)
  */
 char* reverse(char *string, size_t length)
 {
-        return string;
+        char *result = (char*) malloc(sizeof(char) * length);
+        for (size_t i = 0; i < length; i++) {
+                // B[0] = A[n], B[1] = A[n - 1], ..., B[n] = A[0]
+                result[i] = string[(length - 1) - i];
+        }
+        return result;
 }
 
 
@@ -30,8 +36,9 @@ int main(int argc, char *argv[])
                 return 1;
         }
         char *string = argv[1];
-        printf("%s\n", string);
+        printf("%s %i\n", string, strlen(string));
 
         char *result = reverse(string, strlen(string));
-        printf("%s\n", result);
+        printf("%s %i\n", result, strlen(result));
+        free(result);
 }
