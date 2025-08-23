@@ -2,6 +2,8 @@
 
 - As always, algorithms and data structures can be combined however you would like, implemented with eachother, and whatever else. I chose to keep each algorithm and data structure file self-contained without any dependencies on eachother.
 
+- every string algorithm can be done on _ANY_ string of data, not just strings of characters. String here can often mean text-interpreted data, but any other form of data interpretation is possible! So long as its a sequential list of symbols. The only limit is your imagination!
+
 - for C99:
   - should be able to compile with any compiler (gcc and clang are main)
   - valgrind on code with dynamic memory to check for leaks
