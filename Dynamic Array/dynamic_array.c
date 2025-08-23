@@ -23,17 +23,37 @@ typedef struct {
 /* Time Complexity: O(1), O(n) for realloc
  * Growth Factor: 2
  */
-void insert(dynarr_t *array, int n)
+void insert_data(dynarr_t *array, int n)
 {
         // realloc space when capacity reached
         if (array->size >= array->capacity) {
                 array->capacity = array->capacity * 2;
-                array->data = (int*) realloc(array->data, sizeof(n) * array->capacity);
+                array->data = (int*) realloc(array->data, sizeof(int) * array->capacity);
                 if (!array->data)
                         exit(1);  // failure to realloc memory
         }
         array->data[array->size] = n;
         array->size++;
+}
+
+/* Time Complexity: O(1), O(n) for realloc
+ * Shrink Factor: 2
+ */
+int remove_data(dynarr_t *array)
+{
+        // get element from array
+        if (array->size <= 0)
+                return -1;
+        array->size--;
+        int value = array->data[array->size];
+        // realloc space when capacity reduced
+        if (array->size < array->capacity / 2 && array->size > 1) {
+                array->capacity = array->capacity / 2;
+                array->data = (int*) realloc(array->data, sizeof(int) * array->capacity);
+                if (!array->data)
+                        exit(1);  // failure to realloc memory
+        }
+        return value;
 }
 
 int main(void)
@@ -44,17 +64,28 @@ int main(void)
         array->capacity = 1;
         array->data = (int*) malloc(sizeof(int));
 
-        // show off array functions
+        // grow array by 5
         printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
-        insert(array, 1);
-        insert(array, 2);
-        insert(array, 3);
-        insert(array, 4);
-        insert(array, 5);
+        for (int i = 1; i < 6; i++) {
+                insert_data(array, i);
+        }
         printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
         printf("data: ");
-        for (int i = 0; i < array->size; i++)
+        for (int i = 0; i < array->size; i++) {
                 printf("%i ", array->data[i]);
+        }
+        puts("");
+
+        // shrink array by 5
+        printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
+        for (int i = 0; i < 5; i++) {
+                printf(" %i\n", remove_data(array));
+        }
+        printf("size: %i, capacity: %i, first: %i\n", array->size, array->capacity, array->data[0]);
+        printf("data: ");
+        for (int i = 0; i < array->size; i++) {
+                printf("%i ", array->data[i]);
+        }
         puts("");
 
         // free dynamically allocated dynamic array
