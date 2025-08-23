@@ -1,5 +1,9 @@
 - use https://en.wikipedia.org/wiki/List_of_algorithms
 
+- for C99:
+  - clang compiler (more thorough it looks like)
+  - valgrind on code with dynamic memory to check for leaks
+
 - i'll leave demos, i'll add them when needed but let code rest on its own otherwise. Good to though, lets people play around with and see how these Data Structures and Algorithms work in action.
 
 - For reference on structure see https://github.com/TheAlgorithms/Python
