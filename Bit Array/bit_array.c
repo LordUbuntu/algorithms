@@ -5,9 +5,10 @@
  *      large contiguous array of single bit flags, useful for
  *      representing a large array of booleans in a space efficient way.
  * An interesting observation is that the measured time between doing
- *      this with bit shifts and more, and doing this by setting values
+ *      this with this implementatin, and doing this by setting values
  *      directly as numbers assigned to those arrays, turns out to be
- *      indistinguishable.
+ *      indistinguishable. This way generates 3 ASM OPs per action,
+ *      while assigning only generates a single mov ASM OP.
  * See:
  * - https://www.cs.emory.edu/%7Echeung/Courses/255/Syllabus/1-C-intro/bit-array.html
  * - https://en.wikipedia.org/wiki/Bit_array
