@@ -10,5 +10,7 @@
  * Pattern Matching has a lot of great applications in multiple
  *      disciplines, such as for bioinformatics.
  * Info:
- * - ...
+ * - https://en.wikipedia.org/wiki/String-searching_algorithm#Naive_string_search
+ * - https://www.youtube.com/watch?v=u6MgvwO8m_8
+ * - https://www.youtube.com/watch?v=yKhPWrdA6U8
  */
