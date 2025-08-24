@@ -9,6 +9,9 @@
  *      directly as numbers assigned to those arrays, turns out to be
  *      indistinguishable. This way generates 3 ASM OPs per action,
  *      while assigning only generates a single mov ASM OP.
+ * That alternative approach is to use eg: 64 + 128 to set multiple
+ *      bits simultaneously, which will work immediately and is more
+ *      effective the more bits to change at once.
  * See:
  * - https://www.cs.emory.edu/%7Echeung/Courses/255/Syllabus/1-C-intro/bit-array.html
  * - https://en.wikipedia.org/wiki/Bit_array
