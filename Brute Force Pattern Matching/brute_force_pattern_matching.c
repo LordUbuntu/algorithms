@@ -14,3 +14,19 @@
  * - https://www.youtube.com/watch?v=u6MgvwO8m_8
  * - https://www.youtube.com/watch?v=yKhPWrdA6U8
  */
+
+/* Time Complexity:  O(nm)
+ * Space Complexity: O(1)
+ */
+int match(char *pattern, char *string)
+{
+        return 0;
+}
+
+int main(int argc, char *argv[])
+{
+        if (argc < 3)
+                return 1;
+        char *pattern = argv[2];
+        char *string = argv[1];
+}
