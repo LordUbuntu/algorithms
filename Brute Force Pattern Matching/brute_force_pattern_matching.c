@@ -20,7 +20,23 @@
  */
 int match(char *pattern, char *string)
 {
-        return 0;
+        // NOTE: beware string terminator of pattern should be excluded
+
+        // scan across string
+        for (size_t n = 0; n <= strlen(string) - strlen(pattern); n++) {
+                // check if match found on whole substring
+                int found = 1;
+                for (size_t m = 0; m < strlen(pattern); m++) {
+                        if (pattern[m] != string[n + m]) {
+                                found = 0;
+                                break;
+                        }
+                }
+                if (found) {
+                        return n;
+                }
+        }
+        return -1;  // no match found
 }
 
 int main(int argc, char *argv[])
