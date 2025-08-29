@@ -15,4 +15,4 @@
 # Time Complexity: O(n)
 # Space Complexity: O(n)
 # equivalent to &p⇌&sc
-&p reverse &sc
+&p⇌ &sc
