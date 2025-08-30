@@ -14,5 +14,4 @@
 # Assumed...
 # Time Complexity: O(n)
 # Space Complexity: O(n)
-# equivalent to &p⇌&sc
 &p⇌ &sc
