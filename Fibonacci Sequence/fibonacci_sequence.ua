@@ -8,7 +8,6 @@
 # - https://en.wikipedia.org/wiki/Fibonacci_sequence
 # - https://rosettacode.org/wiki/Fibonacci_sequence#Uiua
 
-
 # Fib = dip pop repeat ( off add ) dip both 1
 # Fib N => call Fib with N on top of stack
 # dip both 1 => set stack below N to [1 1], stack becomes [N 1 1]

@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 int fibonacci(int n)
 {
         if (n <= 1) {
@@ -26,7 +25,6 @@ int fibonacci(int n)
         }
         return b;
 }
-
 
 int main(int argc, char *argv[])
 {
