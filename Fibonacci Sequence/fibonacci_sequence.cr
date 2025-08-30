@@ -9,7 +9,7 @@
 # - https://rosettacode.org/wiki/Fibonacci_sequence#Crystal
 
 
-def fibonacci(n: Int64)
+def fibonacci(n : Int64)
   return n if n <= 1
   a, b = 0, 0
   n.times do
@@ -23,3 +23,6 @@ def main
   n = gets.try(&.to_i) || 0
   print "fib #{n} = #{fibonacci(n)}"
 end
+
+
+main
