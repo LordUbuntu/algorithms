@@ -25,7 +25,7 @@ def sieve(n : Int64)
       end
     end
   end
-  return primes
+  primes
 end
 
 
