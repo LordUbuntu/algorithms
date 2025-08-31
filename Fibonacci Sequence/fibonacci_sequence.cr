@@ -14,9 +14,10 @@
 
 def fibonacci(n : Int64)
   # TODO: make work for all int
+  # TODO: why does it overflow for n = 50?
   return n if n <= 1
-  a, b = 0, 0
-  n.times do
+  a, b = 1, 1
+  (n - 1).times do
     a, b = b, a + b
   end
   b
@@ -25,7 +26,7 @@ end
 
 def main
   n = gets.try(&.to_i) || 0
-  print "fib #{n} = #{fibonacci(n)}"
+  print "fib #{n} = #{fibonacci(n)}\n"
 end
 
 
