@@ -15,7 +15,7 @@
 #   keeping previous below, thus iterating over fibonacci sequence
 # dip pop = remove the top value leaving the result of the fibonacci
 #   sequence function as the remaining value on the stack
-Fibonacci ← ⊙◌⍥(⤚+)⊙∩1
+Fibonacci ← ⊙◌⍥(⤚+)⊙∩1 -1
 
 # Main = &p Fib parse &sc
 # &sc = read input from stdin
