@@ -13,14 +13,10 @@
 
 
 def fibonacci(n: int) -> int:
-    # TODO: make work for all int
-    # - how would i make this work on negatives?
-    if n <= 1:
-        return 1
-
     a, b = 1, 1
-    for i in range(n - 1):
-        a, b = b, a + b
+    while n != 0:
+        a, b = b, a + b if n > 0 else a - b
+        n = n - 1 if n > 0 else n + 1
     return b
 
 
