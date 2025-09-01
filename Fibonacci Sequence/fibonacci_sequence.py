@@ -14,6 +14,7 @@
 
 def fibonacci(n: int) -> int:
     # TODO: make work for all int
+    # - how would i make this work on negatives?
     if n <= 1:
         return 1
 
