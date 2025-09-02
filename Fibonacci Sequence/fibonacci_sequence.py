@@ -14,9 +14,13 @@
 
 def fibonacci(n: int) -> int:
     a, b = 1, 1
-    while n != 0:
-        a, b = b, a + b if n > 0 else a - b
-        n = n - 1 if n > 0 else n + 1
+    while n != 1:
+        if n > 1:
+            a, b = b, a + b
+            n -= 1
+        else:
+            a, b = b, a - b
+            n += 1
     return b
 
 
