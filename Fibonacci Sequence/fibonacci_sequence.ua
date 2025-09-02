@@ -26,6 +26,6 @@ Fibonacci ← ⊙◌⍥(⤚+)⊙∩1 -1
 # Fib = call Fib with top value on stack being N
 # &p = print top value on stack to stdout
 # TODO: figure out how to print $"fib _ = _"
-Main ← &p Fibonacci ⋕ &sc
+Main ← &p $"_ = _"⊃($"fib _")(Fibonacci) ⋕&sc
 
 Main
