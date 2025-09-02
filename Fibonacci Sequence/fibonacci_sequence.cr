@@ -10,13 +10,13 @@
 # Info:
 # - https://en.wikipedia.org/wiki/Fibonacci_sequence
 # - https://rosettacode.org/wiki/Fibonacci_sequence#Crystal
+require "big"
 
 
-def fibonacci(n : Int64)
+def fibonacci(n : UInt64)
   # TODO: make work for all int
-  # TODO: why does it overflow for n = 50?
   return n if n <= 1
-  a, b = 1, 1
+  a, b = BigInt.new(1), BigInt.new(1)
   (n - 1).times do
     a, b = b, a + b
   end
@@ -25,7 +25,7 @@ end
 
 
 def main
-  n = gets.try(&.to_i) || 0
+  n : UInt64 = gets.try(&.to_u64) || 0_u64
   print "fib #{n} = #{fibonacci(n)}\n"
 end
 
