@@ -12,18 +12,21 @@
  */
 #include <stdio.h>
 
-int fibonacci(int n)
+unsigned long long int fibonacci(int n)
 {
-        // TODO: make work for all int
-        if (n <= 1) {
-                return 1;
-        }
-
-        int a = 1, b = 1, temp = 0;
-        for (size_t i = 0; i < n - 1; i++) {
-                temp = b;
-                b = a + b;
-                a = temp;
+        unsigned long long int a = 1, b = 1, temp = 1;
+        while (n != 1) {
+                if (n > 1) {
+                        temp = b;
+                        b = a + b;
+                        a = temp;
+                        n--;
+                } else {
+                        temp = b;
+                        b = a - b;
+                        a = temp;
+                        n++;
+                }
         }
         return b;
 }
