@@ -13,7 +13,7 @@
 require "big"
 
 
-def fibonacci(n : UInt64)
+def fibonacci(n : Int64)
   # TODO: make work for all int
   return n if n <= 1
   a, b = BigInt.new(1), BigInt.new(1)
@@ -25,7 +25,7 @@ end
 
 
 def main
-  n : UInt64 = gets.try(&.to_u64) || 0_u64
+  n : Int64 = gets.try(&.to_i64) || 0_i64
   print "fib #{n} = #{fibonacci(n)}\n"
 end
 
