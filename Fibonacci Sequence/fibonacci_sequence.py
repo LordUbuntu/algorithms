@@ -13,6 +13,7 @@
 
 
 def fibonacci(n: int) -> int:
+    # TODO: surely there's a way to do this with an equation iteratively
     a, b = 1, 1
     while n != 1:
         if n > 1:
