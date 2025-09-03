@@ -14,6 +14,7 @@
 
 unsigned long long int fibonacci(int n)
 {
+        // BUG: this math doesn't work out right...
         unsigned long long int a = 1, b = 1, temp = 1;
         while (n != 1) {
                 if (n > 1) {
