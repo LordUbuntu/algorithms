@@ -35,5 +35,5 @@ int main(void)
 {
         int n;
         scanf("%i", &n);
-        printf("fib %i = %i\n", n, fibonacci(n));
+        printf("fib %i = %llu\n", n, fibonacci(n));
 }
