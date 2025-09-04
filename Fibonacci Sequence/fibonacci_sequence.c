@@ -12,29 +12,20 @@
  */
 #include <stdio.h>
 
-unsigned long long int fibonacci(int n)
+long long fibonacci(int n)
 {
-        // BUG: this math doesn't work out right...
-        unsigned long long int a = 1, b = 1, temp = 1;
-        while (n != 1) {
-                if (n > 1) {
-                        temp = b;
-                        b = a + b;
-                        a = temp;
-                        n--;
-                } else {
-                        temp = b;
-                        b = a - b;
-                        a = temp;
-                        n++;
-                }
+        long long a = 0, b = 1, temp = 1;
+        while (n-- > 0) {
+                temp = a + b;
+                a = b;
+                b = temp;
         }
-        return b;
+        return a;
 }
 
 int main(void)
 {
         int n;
         scanf("%i", &n);
-        printf("fib %i = %llu\n", n, fibonacci(n));
+        printf("fib %i = %lli\n", n, fibonacci(n));
 }
