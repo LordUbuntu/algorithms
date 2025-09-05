@@ -6,6 +6,7 @@
 #    .    1 = 1
 #   . .   2 = 3
 #  . . .  3 = 6
+# . . . . 4 = 10
 #  etc...
 # Info:
 # - https://en.wikipedia.org/wiki/Triangular_number
