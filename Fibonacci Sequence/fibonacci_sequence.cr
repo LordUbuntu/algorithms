@@ -15,9 +15,9 @@ require "big"
 
 def fibonacci(n : Int64)
   # TODO: make work for all int
-  return n if n <= 1
-  a, b = BigInt.new(1), BigInt.new(1)
-  (n - 1).times do
+  return n if n < 2
+  a, b = BigInt.new(0), BigInt.new(1)
+  (n).times do
     a, b = b, a + b
   end
   b
