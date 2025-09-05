@@ -1,3 +1,13 @@
+
+
+
+
+- main guiding principles:
+  - start with main languages (Python, C) preferred
+  - any languages may be used
+  - write the solution in a way that is idiomatic to the given language
+
+
 - use https://en.wikipedia.org/wiki/List_of_algorithms
 
 - As always, algorithms and data structures can be combined however you would like, implemented with eachother, and whatever else. I chose to keep each algorithm and data structure file self-contained without any dependencies on eachother.
