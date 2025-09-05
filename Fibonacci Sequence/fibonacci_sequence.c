@@ -22,6 +22,11 @@ long long fibonacci(int n)
         // F-1 = F1 - F0 = 1 - 0 = -1
         // F-2 = F0 - F-1 = 0 - -1 = 1
         // This works, but how to calculate future terms ahead?
+        // Uiua one works symetrically because for negative n it
+        //      inverts the functions, so `off add` becomes
+        //      `with backward sub`, which means that it should be
+        //      posssible to get a similar logic going in C and
+        //      other more imperative languages.
         long long a = 0, b = 1, temp = 1;
         while (n-- > 0) {
                 temp = a + b;
