@@ -13,16 +13,10 @@
 
 
 def fibonacci(n: int) -> int:
-    # TODO: surely there's a way to do this with an equation iteratively
-    a, b = 1, 1
-    while n != 1:
-        if n > 1:
-            a, b = b, a + b
-            n -= 1
-        else:
-            a, b = b, a - b
-            n += 1
-    return b
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
 
 
 if __name__ == "__main__":
