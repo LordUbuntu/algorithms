@@ -14,8 +14,12 @@
 
 def fibonacci(n: int) -> int:
     a, b = 0, 1
+    # n >= 0
     for _ in range(n):
         a, b = b, a + b
+    # n < 0
+    for _ in range(n, 0):
+        a, b = b - a, a
     return a
 
 
