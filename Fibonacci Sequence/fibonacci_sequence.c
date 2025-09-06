@@ -14,23 +14,20 @@
 
 long long fibonacci(int n)
 {
-        // F0 = 0, F1 = 1
-        // Fn = Fn+2 - Fn+1
-        // F2 = F4 - F3 = 3 - 2 = 1
-        // F1 = F3 - F2 = 2 - 1 = 1
-        // F0 = F2 - F1 = 1 - 1 = 0
-        // F-1 = F1 - F0 = 1 - 0 = -1
-        // F-2 = F0 - F-1 = 0 - -1 = 1
-        // This works, but how to calculate future terms ahead?
-        // Uiua one works symetrically because for negative n it
-        //      inverts the functions, so `off add` becomes
-        //      `with backward sub`, which means that it should be
-        //      posssible to get a similar logic going in C and
-        //      other more imperative languages.
-        long long a = 0, b = 1, temp = 1;
-        while (n-- > 0) {
-                temp = a + b;
-                a = b;
+        // inspired by Uiua's automatic inversion, i just need to swap
+        //      around a and b for the negative recurrence of
+        //      Fibonacci sequence
+        long long a = 0, b = 1, temp = a;
+        // n >= 0
+        for (int i = 0; i < n; i++) {
+                temp = b;
+                b = a + b;
+                a = temp;
+        }
+        // n < 0
+        for (int i = n; i < 0; i++) {
+                temp = a;
+                a = b - a;
                 b = temp;
         }
         return a;
