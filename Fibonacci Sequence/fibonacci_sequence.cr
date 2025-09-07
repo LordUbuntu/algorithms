@@ -5,7 +5,7 @@
 #   subsequent value Fn = Fn-1 + Fn-2. It often starts like F0 = F1 = 1,
 #   interestingly it works bi-directionally in both positive and negative
 #   values for n.
-#                               F0 F1
+#                            F0 F1
 #   13, -8, 5, -3, 2, -1, 1, 0, 1  1  2 3 5 8 13 ...
 # Info:
 # - https://en.wikipedia.org/wiki/Fibonacci_sequence
@@ -14,13 +14,20 @@ require "big"
 
 
 def fibonacci(n : Int64)
-  # TODO: make work for all int
-  return n if n < 2
   a, b = BigInt.new(0), BigInt.new(1)
-  (n).times do
+  # n >= 0
+  i = 0
+  while i < n
     a, b = b, a + b
+    i += 1
   end
-  b
+  # n < 0
+  i = n
+  while i < 0
+    a, b = b - a, a
+    i += 1
+  end
+  a
 end
 
 
