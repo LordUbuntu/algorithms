@@ -20,8 +20,6 @@
  */
 int match(char *pattern, char *string)
 {
-        // NOTE: beware string terminator of pattern should be excluded
-
         // scan across string
         for (size_t n = 0; n <= strlen(string) - strlen(pattern); n++) {
                 // check if match found on whole substring
@@ -45,4 +43,10 @@ int main(int argc, char *argv[])
                 return 1;
         char *pattern = argv[2];
         char *string = argv[1];
+
+        int n = match(pattern, string);
+        if (n < 0)
+                printf("no pattern match of %s in %s", pattern, string);
+        else
+                printf("match of %s in %s at %i", pattern, string, n);
 }
