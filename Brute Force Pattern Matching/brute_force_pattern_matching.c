@@ -23,6 +23,10 @@
  */
 int match(char *pattern, char *string)
 {
+        // beware case where pattern is longer than string
+        if (strlen(pattern) > strlen(string))
+                return -1;
+
         // scan across string
         for (size_t n = 0; n <= strlen(string) - strlen(pattern); n++) {
                 // check if match found on whole substring
