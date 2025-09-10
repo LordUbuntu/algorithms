@@ -11,6 +11,11 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+/* There are many ways to dynamically handle stack size, that could be
+ *      done using a linked list, a dynamic array, or other data
+ *      structures under the hood. Implementation details are left to
+ *      the programmer to decide what tradeoffs to make.
+ */
 #define LEN 10
 
 /* Stack Abstract Data Type (ADT)
@@ -19,7 +24,7 @@
  */
 typedef struct {
         size_t head;
-        int data[LEN];  // this can also be done using a dynamic / growable array
+        int data[LEN]; // this can also be done with a dynamic array
 } stack_t;
 
 /* Time Complexity: O(1)
