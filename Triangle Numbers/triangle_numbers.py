@@ -13,10 +13,7 @@
 
 
 def triangle_numbers(n: int) -> int:
-    sum = 0
-    for i in range(1, n + 1):
-        sum += i
-    return sum
+    return sum([i + 1 for i in range(n)])
 
 
 if __name__ == "__main__":
