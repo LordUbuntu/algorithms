@@ -1,4 +1,4 @@
-- i think string structs like ropes etc need to be investigated
+- investigate ropes and other string data structure implementations
 
 
 
@@ -9,6 +9,8 @@
   - write the solution in a way that is idiomatic to the given language
 
 
+- a friend asked a good question, what's the domain and bigger goals!?
+- (list of data structures)
 - use https://en.wikipedia.org/wiki/List_of_algorithms
 
 - As always, algorithms and data structures can be combined however you would like, implemented with eachother, and whatever else. I chose to keep each algorithm and data structure file self-contained without any dependencies on eachother.
