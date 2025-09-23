@@ -11,7 +11,8 @@
 # - https://en.wikipedia.org/wiki/String_(computer_science)#Reversal
 # - https://rosettacode.org/wiki/Reverse_a_string
 
-# Assumed...
-# Time Complexity: O(n)
-# Space Complexity: O(n)
+# &p reverse &sc
+# &sc => SCan input line
+# reverse => reverse array on stack (in this case, a string)
+# &p => print output line
 &p⇌ &sc
