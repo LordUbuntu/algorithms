@@ -3,10 +3,10 @@
  * Description:
  * Triangle Numbers are a count of the number of objects arranged in
  *   an equilateral traingle for a given row number.
- *    .    1 = 1
- *   . .   2 = 3
- *  . . .  3 = 6
- * . . . . 4 = 10
+ *     .    1 = 1
+ *    . .   2 = 3
+ *   . . .  3 = 6
+ *  . . . . 4 = 10
  *  etc...
  * Info:
  * - https://en.wikipedia.org/wiki/Triangular_number
