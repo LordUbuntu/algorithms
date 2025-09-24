@@ -12,6 +12,10 @@
 # - https://rosettacode.org/wiki/Fibonacci_sequence#Python
 
 
+# while 2 loops exclusive to different ranges and a single loop with an
+#   if-else statement are equivalent in time complexity, this approach
+#   seems to express intent clearer than the exclusive loops. Though that
+#   approach is a fascinating one to remember.
 def fibonacci(n: int) -> int:
     a, b = 0, 1
     for _ in range(abs(n)):
