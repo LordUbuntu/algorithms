@@ -13,19 +13,20 @@
 ]]
 
 
-function fibonacci(n)
+local function fibonacci(n)
   local a, b = 0, 1
-  for _ = 1, n do
-    a, b = b, a + b
-  end
-  for _ = n, 1, -1 do
-    a, b = b - a, a
+  for _ = 1, math.abs(n) do
+    if n >= 0 then
+      a, b = b, a + b
+    else
+      a, b = b - a, a
+    end
   end
   return a
 end
 
 
-function main()
+local function main()
   local n = io.read("n")
   print(fibonacci(n))
   print(string.format("fib %i = %i", n, fibonacci(n)))
