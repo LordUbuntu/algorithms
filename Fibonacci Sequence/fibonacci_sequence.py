@@ -13,17 +13,12 @@
 
 
 def fibonacci(n: int) -> int:
-    # is there a way to do this with abs trickery?
-    # 0 1
-    # for |n|
-    # ???
     a, b = 0, 1
-    # n >= 0
-    for _ in range(n):
-        a, b = b, a + b
-    # n < 0
-    for _ in range(n, 0):
-        a, b = b - a, a
+    for _ in range(abs(n)):
+        if n >= 0:
+            a, b = b, a + b
+        else:
+            a, b = b - a, a
     return a
 
 
