@@ -1,3 +1,25 @@
+- 2025-09-24
+  - change bubble sort implementations (to align with actual Bubble Sort algorithm)
+  - change C99 and Python 3.13 programs to align with Lua 5.4 program main function
+  - change C99 and Python 3.13 comment headers to align with Lua 5.4's
+
+
+
+
+
+
+
+
+
+
+
+- create a checklist of algorithms to implement and learn, to keep track of what was
+  implemented. Then this can be a place to quickly learn a new language by going
+  through a fast-checklist of algorithms, maybe even make a speedrun of it!
+
+
+
+
 - investigate ropes and other string data structure implementations
 
 
