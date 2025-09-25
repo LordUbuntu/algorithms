@@ -8,6 +8,7 @@
  * - https://en.wikipedia.org/wiki/Bubble_sort
  */
 #include <stdio.h>
+#include <stdlib.h>
 
 /* Time Complexity: O(n^2)
  * Space Complexity: O(1)
@@ -27,25 +28,27 @@ void sort(int *array, int length)
 }
 
 int main(void) {
-        #define LEN 10
-
-        int array[LEN] = {2, 1, 3, 7, 4, 5, 9, 8, 0, 6}
+        // get input
+        int n;
+        scanf("%i", &n);
+        int *array = (int*) malloc(n * sizeof(int));
+        for (int i = 0; i < n; i++)
+                array[i] = rand() % n;
 
         // show unsorted array
-        for (int i = 0; i < LEN; i++) {
+        for (int i = 0; i < n; i++)
                 printf("%i ", array[i]);
-        }
         puts("");
 
         // sort array
-        sort(array, LEN);
+        sort(array, n);
 
         // show sorted array
-        for (int i = 0; i < LEN; i++) {
+        for (int i = 0; i < n; i++)
                 printf("%i ", array[i]);
-        }
         puts("");
 
         // end
+        free(array);
         return 0;
 }
