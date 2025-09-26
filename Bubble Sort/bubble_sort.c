@@ -2,7 +2,8 @@
  * Bubble Sort (C99)
  * Bubble Sort is one of the first sorting algorithms taught in standard
  *   Computing Science courses. While it's time complexity is "bad", it's
- *   generally efficient on small volumes of data and very easy to implement.
+ *   generally efficient on small volumes of data and very
+ *   easy to implement.
  * see:
  * - https://en.wikipedia.org/wiki/Bubble_sort
  */
