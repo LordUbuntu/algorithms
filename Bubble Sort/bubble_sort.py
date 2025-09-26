@@ -7,7 +7,7 @@
 #   arrays. Overall, it's a decent if inefficient sorting algorithm!
 # see:
 # - https://en.wikipedia.org/wiki/Bubble_sort
-from sys import argv
+from random import randint
 
 
 # Time Complexity: O(n^2)
@@ -21,20 +21,16 @@ def sort(array: list) -> list:
 
 
 if __name__ == "__main__":
-    # get user input
-    if len(argv) < 2:
-        exit(1)
-    array = [int(argv[i]) for i in range(1, len(argv))]
+    # get input
+    n = int(input())
+    array = [randint(0, n) for _ in range(n)]
 
     # show unsorted
-    for n in array:
-        print(n, end=' ')
-    print("")
+    # NOTE: cool snakelang trick to avoid looping when printing a list
+    print(*array, sep=' ')
 
     # sort
-    sort(array)
+    array = sort(array)
 
     # show sorted
-    for n in array:
-        print(n, end=' ')
-    print("")
+    print(*array, sep=' ')
