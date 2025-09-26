@@ -25,27 +25,23 @@ end
 
 local function main()
   -- get input
-  math.randomseed(os.time())
   local n = io.read("n")
+  -- sadly, no comprehensions in moonlang 🌕 like in snakelang 🐍
+  math.randomseed(os.time())
   local array = {}
   for _ = 1, n do
     table.insert(array, math.random(n))
   end
 
   -- show unsorted
-  for i = 1, n do
-    io.write(string.format("%i ", array[i]))
-  end
-  print()
+  -- moonlang 🌕 does have nice features like table.concat
+  print(table.concat(array, ' '))
 
   -- sort
   sort(array)
 
   -- show sorted
-  for i = 1, n do
-    io.write(string.format("%i ", array[i]))
-  end
-  print()
+  print(table.concat(array, ' '))
 end
 
 
