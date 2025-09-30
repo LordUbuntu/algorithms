@@ -14,9 +14,9 @@
 
 void sort(int *array, int length)
 {
-        bool sorted = true;
-        while (sorted && length > 0) {
-                sorted = true;
+        bool changed = false;
+        while (!changed && length > 0) {
+                changed = false;
                 for (int i = 1; i < length; i++) {
                         if (array[i - 1] > array[i]) {
                                 // XOR swap
@@ -24,11 +24,14 @@ void sort(int *array, int length)
                                 array[i] ^= array[i - 1];
                                 array[i - 1] ^= array[i];
                                 // not sorted yet
-                                sorted = false;
+                                changed = true;
                         }
                 }
+                if (!changed)
+                        break;
                 length--;
         }
+
 }
 
 int main(void) {
