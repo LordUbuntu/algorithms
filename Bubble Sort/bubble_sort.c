@@ -11,12 +11,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 void sort(int *array, int length)
 {
-        bool changed = false;
-        while (!changed && length > 0) {
-                changed = false;
+        bool unsorted = true;
+        while (unsorted) {
+                unsorted = false;
                 for (int i = 1; i < length; i++) {
                         if (array[i - 1] > array[i]) {
                                 // XOR swap
@@ -24,11 +25,9 @@ void sort(int *array, int length)
                                 array[i] ^= array[i - 1];
                                 array[i - 1] ^= array[i];
                                 // not sorted yet
-                                changed = true;
+                                unsorted = true;
                         }
                 }
-                if (!changed)
-                        break;
                 length--;
         }
 
@@ -39,6 +38,7 @@ int main(void) {
         int n;
         scanf("%i", &n);
         int *array = (int*) malloc(n * sizeof(int));
+        srand(time(NULL));  // ensure random seed for program
         for (int i = 0; i < n; i++)
                 array[i] = rand() % n;
 
