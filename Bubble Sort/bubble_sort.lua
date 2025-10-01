@@ -13,11 +13,11 @@
 
 
 local function sort(array)
-  for _ = 1, #array do
+  local unsorted = true
+  while unsorted do
+    unsorted = false
     for i = 2, #array do
-      if array[i - 1] > array[i] then
-        array[i - 1], array[i] = array[i], array[i - 1]
-      end
+      array[i - 1], array[i] = array[i], array[i - 1]
     end
   end
 end
