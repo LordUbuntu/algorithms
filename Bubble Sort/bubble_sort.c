@@ -30,7 +30,6 @@ void sort(int *array, int length)
                 }
                 length--;
         }
-
 }
 
 int main(void) {
@@ -38,7 +37,7 @@ int main(void) {
         int n;
         scanf("%i", &n);
         int *array = (int*) malloc(n * sizeof(int));
-        srand(time(NULL));  // ensure random seed for program
+        srand(time(NULL));
         for (int i = 0; i < n; i++)
                 array[i] = rand() % n;
 
