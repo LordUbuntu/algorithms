@@ -13,12 +13,12 @@
 #include <stdbool.h>
 #include <time.h>
 
-void sort(int *array, int length)
+void sort(int *array, size_t length)
 {
         bool unsorted = true;
         while (unsorted) {
                 unsorted = false;
-                for (int i = 1; i < length; i++) {
+                for (size_t i = 1; i < length; i++) {
                         if (array[i - 1] > array[i]) {
                                 // XOR swap
                                 array[i - 1] ^= array[i];
@@ -34,15 +34,15 @@ void sort(int *array, int length)
 
 int main(void) {
         // get input
-        int n;
-        scanf("%i", &n);
+        unsigned long n;
+        scanf("%lu", &n);
         int *array = (int*) malloc(n * sizeof(int));
         srand(time(NULL));
-        for (int i = 0; i < n; i++)
+        for (size_t i = 0; i < n; i++)
                 array[i] = rand() % n;
 
         // show unsorted array
-        for (int i = 0; i < n; i++)
+        for (size_t i = 0; i < n; i++)
                 printf("%i ", array[i]);
         puts("");
 
@@ -50,7 +50,7 @@ int main(void) {
         sort(array, n);
 
         // show sorted array
-        for (int i = 0; i < n; i++)
+        for (size_t i = 0; i < n; i++)
                 printf("%i ", array[i]);
         puts("");
 
