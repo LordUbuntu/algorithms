@@ -13,10 +13,12 @@ from random import randint
 # Time Complexity: O(n^2)
 # Space Complexity: O(1)
 def sort(array: list) -> list:
-    for _ in range(1, len(array)):
-        for index in range(1, len(array)):
-            if array[index - 1] >= array[index]:
-                array[index - 1], array[index] = array[index], array[index - 1]
+    unsorted = True
+    while unsorted:
+        unsorted = False
+        for i in range(1, len(array)):
+            if array[i - 1] > array[i]:
+                array[i - 1], array[i] = array[i], array[i - 1]
     return array
 
 

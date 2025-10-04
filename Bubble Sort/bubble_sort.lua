@@ -17,7 +17,9 @@ local function sort(array)
   while unsorted do
     unsorted = false
     for i = 2, #array do
-      array[i - 1], array[i] = array[i], array[i - 1]
+      if array[i - 1] > array[i] then
+        array[i - 1], array[i] = array[i], array[i - 1]
+      end
     end
   end
 end
