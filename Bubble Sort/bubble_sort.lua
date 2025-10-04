@@ -19,6 +19,7 @@ local function sort(array)
     for i = 2, #array do
       if array[i - 1] > array[i] then
         array[i - 1], array[i] = array[i], array[i - 1]
+        unsorted = true
       end
     end
   end
