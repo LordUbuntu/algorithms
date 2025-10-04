@@ -19,7 +19,7 @@ def sort(array: list) -> list:
         for i in range(1, len(array)):
             if array[i - 1] > array[i]:
                 array[i - 1], array[i] = array[i], array[i - 1]
-    return array
+                unsorted = True
 
 
 if __name__ == "__main__":
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     print(*array, sep=' ')
 
     # sort
-    array = sort(array)
+    sort(array)
 
     # show sorted
     print(*array, sep=' ')
