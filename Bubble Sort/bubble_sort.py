@@ -7,6 +7,7 @@
 #   arrays. Overall, it's a decent if inefficient sorting algorithm!
 # see:
 # - https://en.wikipedia.org/wiki/Bubble_sort
+# - https://rosettacode.org/wiki/Sorting_algorithms/Bubble_sort#Python
 from random import randint
 
 
