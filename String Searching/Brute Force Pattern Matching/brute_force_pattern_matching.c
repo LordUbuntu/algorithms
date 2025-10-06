@@ -11,12 +11,16 @@
  *      disciplines, such as for bioinformatics.
  * Info:
  * - https://en.wikipedia.org/wiki/String-searching_algorithm#Naive_string_search
+ * - https://www.cs.purdue.edu/homes/ayg/CS251/slides/chap11.pdf
+ * - https://www.cis.uoguelph.ca/~xli/courses/cis2520/c16.pdf
+ * - https://cs.brown.edu/cgc/java3.datastructures.net/handouts/PatternMatching.pdf
  * - https://www.youtube.com/watch?v=u6MgvwO8m_8
  * - https://www.youtube.com/watch?v=yKhPWrdA6U8
  */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 /* Time Complexity:  O(nm)
  * Space Complexity: O(1)
@@ -30,16 +34,15 @@ int match(char *pattern, char *string)
         // scan across string
         for (size_t n = 0; n <= strlen(string) - strlen(pattern); n++) {
                 // check if match found on whole substring
-                int found = 1;
+                bool found = true;
                 for (size_t m = 0; m < strlen(pattern); m++) {
                         if (pattern[m] != string[n + m]) {
-                                found = 0;
+                                found = false;
                                 break;
                         }
                 }
-                if (found) {
+                if (found)
                         return n;
-                }
         }
         return -1;  // no match found
 }
