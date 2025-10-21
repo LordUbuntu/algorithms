@@ -1,5 +1,5 @@
 # Jacobus Burger (2025-08-23)
-# Brute Force Pattern Matching (C99)
+# Brute Force Pattern Matching (Python 3.13)
 # Brute Force Pattern Matching is a brute force approach to matching
 #      a substring of a larger string of contiguous data. It does so
 #      by comparing the first letter of the substring with the current
