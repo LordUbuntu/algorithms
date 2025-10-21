@@ -17,7 +17,9 @@ from os import argv
 
 
 def match(pattern: str, string: str) -> int:
-    pass
+    if len(pattern) > len(string):
+        return -1
+    return -1
 
 
 if __name__ == "__main__":
