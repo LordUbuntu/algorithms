@@ -21,6 +21,10 @@ def match(pattern: str, string: str) -> int:
         return -1
     for n in range((len(string) - len(pattern)) + 1):
         found = True
+        for m in range(len(pattern)):
+            if pattern[m] != string[n + m]:
+                found = False
+                break
         if found:
             return n
     return -1
