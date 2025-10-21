@@ -19,6 +19,10 @@ from os import argv
 def match(pattern: str, string: str) -> int:
     if len(pattern) > len(string):
         return -1
+    for n in range((len(string) - len(pattern)) + 1):
+        found = True
+        if found:
+            return n
     return -1
 
 
