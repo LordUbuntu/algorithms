@@ -13,6 +13,7 @@
 # - https://en.wikipedia.org/wiki/String-searching_algorithm#Naive_string_search
 # - https://www.youtube.com/watch?v=u6MgvwO8m_8
 # - https://www.youtube.com/watch?v=yKhPWrdA6U8
+# - https://www.youtube.com/watch?v=fCJBtVG2kQo
 from sys import argv
 
 
